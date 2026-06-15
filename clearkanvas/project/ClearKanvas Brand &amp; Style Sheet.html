@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ClearKanvas — Brand & Style Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Inter+Tight:wght@400;450;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg:#FFFFFF; --bg-warm:#F7F6F2; --navy:#0F1E3D; --navy-deep:#0A1124;
+    --slate:#2A3550; --muted:#6B7690; --orange:#FF6A2B; --orange-ink:#E4561B;
+    --line:#E7E4DB; --line-2:rgba(15,30,61,0.08);
+    --display:"Schibsted Grotesk", system-ui, sans-serif;
+    --body:"Inter Tight", system-ui, sans-serif;
+    --r-md:14px; --r-lg:22px; --r-pill:999px;
+    --shadow-card:0 1px 2px rgba(15,30,61,0.04), 0 14px 36px -22px rgba(15,30,61,0.28);
+    --ease:cubic-bezier(0.22,0.61,0.36,1);
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#EDEBE6; color:var(--slate); font-family:var(--body); font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3,h4 { font-family:var(--display); color:var(--navy); margin:0; letter-spacing:-0.02em; line-height:1.05; }
+  p { margin:0; }
+  .page { max-width:1240px; margin:0 auto; padding:64px 40px 96px; }
+
+  /* Doc header */
+  .doc-head { display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:8px; }
+  .doc-head .brand { display:flex; align-items:center; gap:12px; }
+  .doc-head .brand .word { font-family:var(--display); font-weight:700; font-size:24px; color:var(--navy); letter-spacing:-0.02em; }
+  .doc-head .tag { font-size:14px; color:var(--muted); }
+  .doc-sub { font-size:15px; color:var(--muted); margin-top:6px; }
+
+  /* Section scaffold */
+  .sec { margin-top:56px; }
+  .sec-label { display:inline-flex; align-items:center; gap:10px; font-weight:600; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:20px; }
+  .sec-label::before { content:""; width:22px; height:2px; background:var(--orange); border-radius:2px; }
+  .card { background:var(--bg); border:1px solid var(--line); border-radius:var(--r-lg); box-shadow:var(--shadow-card); }
+  .grid { display:grid; gap:20px; }
+
+  /* Logo directions */
+  .logo-dirs { grid-template-columns:repeat(3,1fr); }
+  .logo-tile { padding:34px; display:flex; flex-direction:column; gap:0; }
+  .logo-tile .canvas { height:150px; display:grid; place-items:center; background:var(--bg-warm); border-radius:var(--r-md); border:1px solid var(--line); }
+  .logo-tile h4 { font-size:17px; margin-top:20px; }
+  .logo-tile p { font-size:13.5px; color:var(--muted); margin-top:7px; }
+  .pill-chosen { display:inline-flex; align-items:center; gap:7px; font-family:var(--body); font-weight:600; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--orange-ink); background:rgba(255,106,43,0.10); border:1px solid rgba(255,106,43,0.28); padding:4px 10px; border-radius:var(--r-pill); margin-top:14px; width:max-content; }
+  .pill-alt { color:var(--muted); background:var(--bg-warm); border-color:var(--line); }
+
+  /* Logo system */
+  .logo-sys { grid-template-columns:1.3fr 1fr; }
+  .panel { padding:36px; }
+  .panel .ttl { font-family:var(--body); font-weight:600; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:18px; }
+  .lockup { display:flex; align-items:center; gap:16px; }
+  .lockup .word { font-family:var(--display); font-weight:700; font-size:40px; color:var(--navy); letter-spacing:-0.025em; }
+  .sys-row { display:flex; align-items:center; gap:40px; flex-wrap:wrap; }
+  .swatch-on-navy { background:linear-gradient(180deg,var(--navy),var(--navy-deep)); border-radius:var(--r-md); padding:30px; display:flex; align-items:center; gap:16px; }
+  .swatch-on-navy .word { color:#fff; }
+  .favs { display:flex; align-items:flex-end; gap:22px; }
+  .fav { display:flex; flex-direction:column; align-items:center; gap:10px; }
+  .fav .chip { background:var(--bg-warm); border:1px solid var(--line); border-radius:10px; display:grid; place-items:center; }
+  .fav .chip.dark { background:var(--navy); border-color:var(--navy); }
+  .fav span { font-size:11px; color:var(--muted); font-family:var(--body); }
+  .clearspace { display:grid; place-items:center; background:var(--bg-warm); border-radius:var(--r-md); border:1px solid var(--line); padding:30px; }
+
+  /* Colors */
+  .color-grid { grid-template-columns:repeat(4,1fr); }
+  .sw { border-radius:var(--r-md); overflow:hidden; border:1px solid var(--line); background:#fff; }
+  .sw .chip { height:96px; }
+  .sw .meta { padding:14px 16px; }
+  .sw .name { font-family:var(--display); font-weight:600; font-size:15px; color:var(--navy); }
+  .sw .role { font-size:12.5px; color:var(--muted); margin-top:2px; }
+  .sw .vals { display:flex; justify-content:space-between; align-items:center; margin-top:10px; }
+  .sw .hex { font-family:var(--body); font-size:13px; font-weight:600; color:var(--slate); letter-spacing:0.02em; }
+  .sw .tok { font-family:var(--body); font-size:11.5px; color:var(--muted); background:var(--bg-warm); border:1px solid var(--line); border-radius:6px; padding:2px 7px; }
+
+  /* Type */
+  .type-panel { padding:36px; }
+  .type-row { display:flex; align-items:baseline; gap:20px; padding:18px 0; border-bottom:1px dashed var(--line-2); flex-wrap:wrap; }
+  .type-row:last-child { border-bottom:0; }
+  .type-row .spec { width:160px; flex:none; font-family:var(--body); font-size:12px; color:var(--muted); line-height:1.4; }
+  .type-row .spec b { display:block; color:var(--navy); font-size:13px; font-weight:600; font-family:var(--body); }
+  .t-h1 { font-family:var(--display); font-weight:800; font-size:52px; color:var(--navy); letter-spacing:-0.035em; line-height:1; }
+  .t-h2 { font-family:var(--display); font-weight:700; font-size:38px; color:var(--navy); letter-spacing:-0.03em; }
+  .t-h3 { font-family:var(--display); font-weight:700; font-size:24px; color:var(--navy); }
+  .t-ey { font-family:var(--body); font-weight:600; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); }
+  .t-body { font-family:var(--body); font-weight:450; font-size:17px; color:var(--slate); max-width:52ch; }
+  .t-small { font-family:var(--body); font-weight:500; font-size:13.5px; color:var(--muted); }
+  .fontcards { grid-template-columns:1fr 1fr; margin-bottom:20px; }
+  .fontcard { padding:30px 34px; }
+  .fontcard .big { font-size:58px; color:var(--navy); line-height:1; }
+  .fontcard .lbl { font-family:var(--body); font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-top:18px; }
+  .fontcard .nm { font-family:var(--display); font-weight:700; font-size:20px; color:var(--navy); margin-top:4px; }
+  .fontcard .set { font-size:14px; color:var(--muted); margin-top:10px; }
+
+  /* Buttons */
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; font-family:var(--body); font-weight:600; font-size:15px; padding:14px 24px; border-radius:var(--r-pill); border:1.5px solid transparent; cursor:pointer; }
+  .btn-primary { background:var(--orange); color:#fff; box-shadow:0 8px 22px -14px rgba(255,106,43,0.9); }
+  .btn-primary.hov { background:var(--orange-ink); transform:translateY(-2px); box-shadow:0 12px 34px -12px rgba(255,106,43,0.55); }
+  .btn-ghost { background:transparent; color:var(--navy); border-color:var(--line); }
+  .btn-ghost.hov { border-color:var(--navy); transform:translateY(-2px); }
+  .btn-sm { padding:11px 18px; font-size:14px; }
+  .states { padding:36px; }
+  .state-row { display:flex; gap:40px; flex-wrap:wrap; }
+  .state-col { display:flex; flex-direction:column; gap:16px; }
+  .state-col .st-lbl { font-family:var(--body); font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
+  .state-col .pair { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+  .tagm { font-family:var(--body); font-size:12px; color:var(--muted); }
+
+  /* Card states demo */
+  .cards-demo { grid-template-columns:1fr 1fr; }
+  .svc-card { position:relative; background:var(--bg); border:1px solid var(--line); border-radius:var(--r-lg); padding:30px; overflow:hidden; }
+  .svc-card.lift { transform:translateY(-6px); box-shadow:0 18px 50px -22px rgba(15,30,61,0.40); border-color:transparent; }
+  .svc-card.lift::before { content:""; position:absolute; left:0; right:0; top:0; height:3px; background:var(--orange); }
+  .svc-card .num { font-family:var(--display); font-weight:700; font-size:13px; color:var(--orange); letter-spacing:0.1em; }
+  .svc-card h4 { font-size:22px; margin-top:14px; }
+  .svc-card .desc { font-size:15px; color:var(--slate); margin-top:10px; }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+  .chip2 { font-size:13px; font-weight:500; color:var(--slate); background:var(--bg-warm); border:1px solid var(--line); border-radius:var(--r-pill); padding:6px 12px; }
+  .learn { display:inline-flex; align-items:center; gap:7px; margin-top:18px; font-weight:600; font-size:14px; color:var(--orange-ink); }
+  .card-cap { font-family:var(--body); font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:14px; }
+
+  /* Spacing + radius + shadow */
+  .util { grid-template-columns:1.3fr 1fr; }
+  .space-row { display:flex; align-items:center; gap:16px; padding:9px 0; }
+  .space-row .lab { width:96px; flex:none; font-family:var(--body); font-size:13px; color:var(--slate); }
+  .space-row .lab b { color:var(--navy); font-weight:600; }
+  .space-row .bar { height:16px; background:var(--orange); border-radius:4px; opacity:0.92; }
+  .tok-row { display:flex; align-items:center; gap:16px; padding:14px 0; border-bottom:1px dashed var(--line-2); }
+  .tok-row:last-child { border-bottom:0; }
+  .tok-row .box { width:64px; height:48px; flex:none; background:#fff; border:1px solid var(--line); }
+  .tok-row .info { font-size:13.5px; }
+  .tok-row .info b { font-family:var(--body); color:var(--navy); }
+  .tok-row .info .d { color:var(--muted); font-size:12.5px; }
+
+  .two { grid-template-columns:1fr 1fr; }
+  .pad { padding:36px; }
+  @media (max-width:900px){
+    .page{ padding:48px 22px 72px; }
+    .logo-dirs,.color-grid,.cards-demo,.fontcards,.logo-sys,.util,.two{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Header -->
+    <header class="doc-head">
+      <div>
+        <div class="brand">
+          <svg width="34" height="34" viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="11" stroke="#0F1E3D" stroke-width="3"/>
+            <path d="M16 5 A11 11 0 0 1 27 16" stroke="#FF6A2B" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <span class="word">ClearKanvas</span>
+        </div>
+        <p class="doc-sub">Brand and style sheet — tokens ready for Tailwind. Where complexity becomes clarity.</p>
+      </div>
+      <p class="tag">v1.0 · Logo, color, type, components, spacing</p>
+    </header>
+
+    <!-- ============ LOGO DIRECTIONS ============ -->
+    <section class="sec">
+      <span class="sec-label">Logo — mark directions</span>
+      <div class="grid logo-dirs">
+        <div class="card logo-tile">
+          <div class="canvas">
+            <svg width="76" height="76" viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="16" r="11" stroke="#0F1E3D" stroke-width="3"/>
+              <path d="M16 5 A11 11 0 0 1 27 16" stroke="#FF6A2B" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h4>Aperture ring</h4>
+          <p>A navy ring with one aligned orange arc. A lens or canvas resolving into focus. Reads cleanly at favicon size.</p>
+          <span class="pill-chosen">Selected direction</span>
+        </div>
+        <div class="card logo-tile">
+          <div class="canvas">
+            <svg width="76" height="76" viewBox="0 0 32 32" fill="none">
+              <rect x="6.5" y="6.5" width="19" height="19" rx="4" stroke="#0F1E3D" stroke-width="3"/>
+              <rect x="12.5" y="12.5" width="7" height="7" rx="1.5" fill="#FF6A2B"/>
+            </svg>
+          </div>
+          <h4>Aligned frame</h4>
+          <p>A rounded canvas frame with a centered, aligned orange square. Structure containing a single clear element.</p>
+          <span class="pill-chosen pill-alt">Alternate</span>
+        </div>
+        <div class="card logo-tile">
+          <div class="canvas">
+            <svg width="78" height="78" viewBox="0 0 32 32" fill="none" stroke-linecap="round">
+              <path d="M7 11V8.5A1.5 1.5 0 0 1 8.5 7H11" stroke="#0F1E3D" stroke-width="3"/>
+              <path d="M21 7h2.5A1.5 1.5 0 0 1 25 8.5V11" stroke="#FF6A2B" stroke-width="3"/>
+              <path d="M25 21v2.5a1.5 1.5 0 0 1-1.5 1.5H21" stroke="#0F1E3D" stroke-width="3"/>
+              <path d="M11 25H8.5A1.5 1.5 0 0 1 7 23.5V21" stroke="#0F1E3D" stroke-width="3"/>
+            </svg>
+          </div>
+          <h4>Canvas corners</h4>
+          <p>Four crop-style corners framing space, one resolved in orange. Evokes a canvas being squared up and aligned.</p>
+          <span class="pill-chosen pill-alt">Alternate</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LOGO SYSTEM ============ -->
+    <section class="sec">
+      <span class="sec-label">Logo — system (selected)</span>
+      <div class="grid logo-sys">
+        <div class="card panel">
+          <p class="ttl">Primary lockup</p>
+          <div class="clearspace">
+            <div class="lockup">
+              <svg width="44" height="44" viewBox="0 0 32 32" fill="none">
+                <circle cx="16" cy="16" r="11" stroke="#0F1E3D" stroke-width="3"/>
+                <path d="M16 5 A11 11 0 0 1 27 16" stroke="#FF6A2B" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+              <span class="word">ClearKanvas</span>
+            </div>
+          </div>
+          <div style="margin-top:24px;">
+            <p class="ttl">Reverse lockup (deep navy)</p>
+            <div class="swatch-on-navy">
+              <svg width="40" height="40" viewBox="0 0 32 32" fill="none">
+                <circle cx="16" cy="16" r="11" stroke="#FFFFFF" stroke-width="3"/>
+                <path d="M16 5 A11 11 0 0 1 27 16" stroke="#FF6A2B" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+              <span class="word">ClearKanvas</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card panel">
+          <p class="ttl">Mark and favicon</p>
+          <div class="favs">
+            <div class="fav">
+              <div class="chip" style="width:72px;height:72px;">
+                <svg width="42" height="42" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11" stroke="#0F1E3D" stroke-width="3"/><path d="M16 5 A11 11 0 0 1 27 16" stroke="#FF6A2B" stroke-width="3" stroke-linecap="round"/></svg>
+              </div>
+              <span>48 px</span>
+            </div>
+            <div class="fav">
+              <div class="chip" style="width:48px;height:48px;">
+                <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11" stroke="#0F1E3D" stroke-width="3"/><path d="M16 5 A11 11 0 0 1 27 16" stroke="#FF6A2B" stroke-width="3" stroke-linecap="round"/></svg>
+              </div>
+              <span>32 px</span>
+            </div>
+            <div class="fav">
+              <div class="chip dark" style="width:40px;height:40px;">
+                <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11" stroke="#FFFFFF" stroke-width="3"/><path d="M16 5 A11 11 0 0 1 27 16" stroke="#FF6A2B" stroke-width="3" stroke-linecap="round"/></svg>
+              </div>
+              <span>Navy</span>
+            </div>
+            <div class="fav">
+              <div class="chip" style="width:28px;height:28px;">
+                <svg width="18" height="18" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11" stroke="#0F1E3D" stroke-width="3.4"/><path d="M16 5 A11 11 0 0 1 27 16" stroke="#FF6A2B" stroke-width="3.4" stroke-linecap="round"/></svg>
+              </div>
+              <span>16 px</span>
+            </div>
+          </div>
+          <p class="ttl" style="margin-top:30px;">Wordmark only</p>
+          <div class="clearspace" style="padding:24px;">
+            <span class="word" style="font-family:var(--display);font-weight:700;font-size:34px;color:var(--navy);letter-spacing:-0.025em;">ClearKanvas</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COLOR ============ -->
+    <section class="sec">
+      <span class="sec-label">Color</span>
+      <div class="grid color-grid">
+        <div class="sw"><div class="chip" style="background:#FFFFFF;border-bottom:1px solid var(--line);"></div><div class="meta"><div class="name">White</div><div class="role">Primary background</div><div class="vals"><span class="hex">#FFFFFF</span><span class="tok">bg</span></div></div></div>
+        <div class="sw"><div class="chip" style="background:#F7F6F2;"></div><div class="meta"><div class="name">Warm Sand</div><div class="role">Section background</div><div class="vals"><span class="hex">#F7F6F2</span><span class="tok">bg-warm</span></div></div></div>
+        <div class="sw"><div class="chip" style="background:#0F1E3D;"></div><div class="meta"><div class="name">Navy</div><div class="role">Headings, nav, structure</div><div class="vals"><span class="hex">#0F1E3D</span><span class="tok">navy</span></div></div></div>
+        <div class="sw"><div class="chip" style="background:#0A1124;"></div><div class="meta"><div class="name">Navy Deep</div><div class="role">Footer, dark bands</div><div class="vals"><span class="hex">#0A1124</span><span class="tok">navy-deep</span></div></div></div>
+        <div class="sw"><div class="chip" style="background:#2A3550;"></div><div class="meta"><div class="name">Slate</div><div class="role">Body text</div><div class="vals"><span class="hex">#2A3550</span><span class="tok">slate</span></div></div></div>
+        <div class="sw"><div class="chip" style="background:#6B7690;"></div><div class="meta"><div class="name">Muted</div><div class="role">Secondary text, eyebrows</div><div class="vals"><span class="hex">#6B7690</span><span class="tok">muted</span></div></div></div>
+        <div class="sw"><div class="chip" style="background:#FF6A2B;"></div><div class="meta"><div class="name">Orange</div><div class="role">Accent, primary CTA</div><div class="vals"><span class="hex">#FF6A2B</span><span class="tok">orange</span></div></div></div>
+        <div class="sw"><div class="chip" style="background:#E4561B;"></div><div class="meta"><div class="name">Orange Ink</div><div class="role">Accent hover, links</div><div class="vals"><span class="hex">#E4561B</span><span class="tok">orange-ink</span></div></div></div>
+      </div>
+      <p class="tagm" style="margin-top:16px;">Orange is a minimal, sharp accent only — buttons, the highlighted hero word, small underlines, arrows, and hover glows. It never dominates a layout.</p>
+    </section>
+
+    <!-- ============ TYPE ============ -->
+    <section class="sec">
+      <span class="sec-label">Typography</span>
+      <div class="grid fontcards">
+        <div class="card fontcard">
+          <div class="big" style="font-family:var(--display);font-weight:800;">Ag</div>
+          <div class="lbl">Display</div>
+          <div class="nm">Schibsted Grotesk</div>
+          <div class="set">Headings, eyebrows, numerals. Weights 600 / 700 / 800. Tight tracking, set negative on large sizes.</div>
+        </div>
+        <div class="card fontcard">
+          <div class="big" style="font-family:var(--body);font-weight:500;">Ag</div>
+          <div class="lbl">Body</div>
+          <div class="nm">Inter Tight</div>
+          <div class="set">Body, UI, labels. Weights 450 / 500 / 600. Highly readable at small sizes, calm and neutral.</div>
+        </div>
+      </div>
+      <div class="card type-panel">
+        <div class="type-row"><div class="spec"><b>Display / H1</b>Schibsted 800 · 52–92px · -3.5%</div><div class="t-h1">Where complexity becomes clarity</div></div>
+        <div class="type-row"><div class="spec"><b>Heading / H2</b>Schibsted 700 · 32–52px · -3%</div><div class="t-h2">The functions that keep your business moving</div></div>
+        <div class="type-row"><div class="spec"><b>Subheading / H3</b>Schibsted 700 · 21–24px</div><div class="t-h3">People &amp; Talent</div></div>
+        <div class="type-row"><div class="spec"><b>Eyebrow</b>Inter Tight 600 · 13px · +16% · upper</div><div class="t-ey">What we do</div></div>
+        <div class="type-row"><div class="spec"><b>Body</b>Inter Tight 450 · 17px · 1.6</div><div class="t-body">ClearKanvas is a Global Business Services partner that runs the back office and people functions for you, so your team can focus on growth.</div></div>
+        <div class="type-row"><div class="spec"><b>Small / Label</b>Inter Tight 500 · 13.5px</div><div class="t-small">Talent Acquisition · HR Shared Services · Payroll Coordination</div></div>
+      </div>
+    </section>
+
+    <!-- ============ BUTTONS ============ -->
+    <section class="sec">
+      <span class="sec-label">Buttons — states</span>
+      <div class="card states">
+        <div class="state-row">
+          <div class="state-col">
+            <span class="st-lbl">Primary (orange)</span>
+            <div class="pair">
+              <button class="btn btn-primary">Get in touch <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8 4l5 4-5 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span class="tagm">Default</span>
+            </div>
+            <div class="pair">
+              <button class="btn btn-primary hov">Get in touch <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8 4l5 4-5 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span class="tagm">Hover — darken, lift 2px, orange glow, arrow shifts</span>
+            </div>
+          </div>
+          <div class="state-col">
+            <span class="st-lbl">Ghost</span>
+            <div class="pair">
+              <button class="btn btn-ghost">Explore services</button>
+              <span class="tagm">Default — hairline border</span>
+            </div>
+            <div class="pair">
+              <button class="btn btn-ghost hov">Explore services</button>
+              <span class="tagm">Hover — navy border, lift 2px</span>
+            </div>
+          </div>
+          <div class="state-col">
+            <span class="st-lbl">Small (nav)</span>
+            <div class="pair">
+              <button class="btn btn-primary btn-sm">Get in touch <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8 4l5 4-5 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span class="tagm">Default</span>
+            </div>
+            <div class="pair">
+              <button class="btn btn-primary btn-sm hov">Get in touch <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8 4l5 4-5 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span class="tagm">Hover</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CARDS ============ -->
+    <section class="sec">
+      <span class="sec-label">Service card — states</span>
+      <div class="grid cards-demo">
+        <div>
+          <p class="card-cap">Default</p>
+          <div class="svc-card">
+            <div class="num">01</div>
+            <h4>People &amp; Talent</h4>
+            <p class="desc">Build, support, and grow your workforce with a dedicated people function.</p>
+            <div class="chips"><span class="chip2">Talent Acquisition</span><span class="chip2">HR Shared Services</span><span class="chip2">Training and Development</span></div>
+          </div>
+        </div>
+        <div>
+          <p class="card-cap">Hover / active</p>
+          <div class="svc-card lift">
+            <div class="num">01</div>
+            <h4>People &amp; Talent</h4>
+            <p class="desc">Build, support, and grow your workforce with a dedicated people function.</p>
+            <div class="chips"><span class="chip2">Talent Acquisition</span><span class="chip2">HR Shared Services</span><span class="chip2">Training and Development</span></div>
+            <a class="learn">Learn more <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8 4l5 4-5 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <p class="tagm" style="margin-top:16px;">Hover lifts the card 6px, drops a soft shadow, reveals the orange top rule, and fades in the Learn more arrow.</p>
+    </section>
+
+    <!-- ============ SPACING + TOKENS ============ -->
+    <section class="sec">
+      <span class="sec-label">Spacing, radius &amp; elevation</span>
+      <div class="grid util">
+        <div class="card pad">
+          <p class="ttl" style="font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Spacing scale (4px base)</p>
+          <div class="space-row"><span class="lab"><b>4</b> · s-1</span><span class="bar" style="width:4px;"></span></div>
+          <div class="space-row"><span class="lab"><b>8</b> · s-2</span><span class="bar" style="width:8px;"></span></div>
+          <div class="space-row"><span class="lab"><b>12</b> · s-3</span><span class="bar" style="width:12px;"></span></div>
+          <div class="space-row"><span class="lab"><b>16</b> · s-4</span><span class="bar" style="width:16px;"></span></div>
+          <div class="space-row"><span class="lab"><b>24</b> · s-6</span><span class="bar" style="width:24px;"></span></div>
+          <div class="space-row"><span class="lab"><b>32</b> · s-8</span><span class="bar" style="width:32px;"></span></div>
+          <div class="space-row"><span class="lab"><b>48</b> · s-12</span><span class="bar" style="width:48px;"></span></div>
+          <div class="space-row"><span class="lab"><b>64</b> · s-16</span><span class="bar" style="width:64px;"></span></div>
+          <div class="space-row"><span class="lab"><b>96</b> · s-24</span><span class="bar" style="width:96px;"></span></div>
+          <div class="space-row"><span class="lab"><b>128</b> · s-32</span><span class="bar" style="width:128px;"></span></div>
+        </div>
+        <div class="card pad">
+          <p class="ttl" style="font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Radius</p>
+          <div class="tok-row"><div class="box" style="border-radius:8px;"></div><div class="info"><b>8px</b> <span class="d">— chips, small inputs (r-sm)</span></div></div>
+          <div class="tok-row"><div class="box" style="border-radius:14px;"></div><div class="info"><b>14px</b> <span class="d">— market tiles, swatches (r-md)</span></div></div>
+          <div class="tok-row"><div class="box" style="border-radius:22px;"></div><div class="info"><b>22px</b> <span class="d">— cards, panels (r-lg)</span></div></div>
+          <div class="tok-row"><div class="box" style="border-radius:999px;"></div><div class="info"><b>Full</b> <span class="d">— buttons, pills (r-pill)</span></div></div>
+          <p class="ttl" style="font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin:24px 0 8px;">Elevation</p>
+          <div class="tok-row"><div class="box" style="border-radius:14px;box-shadow:0 1px 2px rgba(15,30,61,0.04),0 14px 36px -22px rgba(15,30,61,0.28);"></div><div class="info"><b>Card</b> <span class="d">— resting card</span></div></div>
+          <div class="tok-row"><div class="box" style="border-radius:14px;box-shadow:0 18px 50px -22px rgba(15,30,61,0.40);"></div><div class="info"><b>Lift</b> <span class="d">— hover</span></div></div>
+          <div class="tok-row"><div class="box" style="border-radius:14px;box-shadow:0 12px 34px -12px rgba(255,106,43,0.55);"></div><div class="info"><b>Glow</b> <span class="d">— orange CTA hover</span></div></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
