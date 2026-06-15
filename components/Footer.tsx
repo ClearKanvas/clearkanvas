@@ -64,9 +64,22 @@ export default function Footer() {
           <div className="ft-col">
             <h4>Get in touch</h4>
             <ul>
-              <li>
+              <li className="ft-mail-row">
+                <span className="ft-loc-k">General enquiries</span>
                 <a className="ft-mail" href="mailto:hello@clearkanvas.com">
                   hello@clearkanvas.com
+                </a>
+              </li>
+              <li className="ft-mail-row">
+                <span className="ft-loc-k">New business and sales</span>
+                <a className="ft-mail" href="mailto:sales@clearkanvas.com">
+                  sales@clearkanvas.com
+                </a>
+              </li>
+              <li className="ft-mail-row">
+                <span className="ft-loc-k">Partnerships</span>
+                <a className="ft-mail" href="mailto:partnerships@clearkanvas.com">
+                  partnerships@clearkanvas.com
                 </a>
               </li>
               <li className="ft-loc">

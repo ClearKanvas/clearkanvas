@@ -257,9 +257,23 @@ export default function ContactMain() {
                   </svg>
                 </div>
                 <div>
-                  <div className="k">New business</div>
+                  <div className="k">New business and sales</div>
                   <a className="v v-link" href="mailto:sales@clearkanvas.com">
                     sales@clearkanvas.com
+                  </a>
+                </div>
+              </div>
+              <div className="contact-line">
+                <div className="ic">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <rect x="3" y="5" width="18" height="14" rx="2.5" stroke="#0F1E3D" strokeWidth="1.6" />
+                    <path d="M4.5 7l7.5 5.2L19.5 7" stroke="#FF6A2B" strokeWidth="1.6" strokeLinecap="round" />
+                  </svg>
+                </div>
+                <div>
+                  <div className="k">Partnerships</div>
+                  <a className="v v-link" href="mailto:partnerships@clearkanvas.com">
+                    partnerships@clearkanvas.com
                   </a>
                 </div>
               </div>
