@@ -81,6 +81,7 @@ export default function ContactMain() {
           name,
           email,
           company: get("company"),
+          phone: get("phone"),
           country: get("country"),
           message,
         }),
@@ -177,6 +178,19 @@ export default function ContactMain() {
                         <option key={c}>{c}</option>
                       ))}
                     </select>
+                    <span className="msg"></span>
+                  </div>
+                </div>
+                <div className="frow">
+                  <div className="field">
+                    <label htmlFor="phone">Phone</label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      placeholder="+1 555 123 4567"
+                      autoComplete="tel"
+                    />
                     <span className="msg"></span>
                   </div>
                 </div>

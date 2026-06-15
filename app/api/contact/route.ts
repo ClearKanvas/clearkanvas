@@ -6,6 +6,7 @@ type ContactPayload = {
   name?: string;
   email?: string;
   company?: string;
+  phone?: string;
   country?: string;
   message?: string;
 };
@@ -21,6 +22,7 @@ export async function POST(request: Request) {
   const name = body.name?.trim() ?? "";
   const email = body.email?.trim() ?? "";
   const company = body.company?.trim() ?? "";
+  const phone = body.phone?.trim() ?? "";
   const country = body.country?.trim() ?? "";
   const message = body.message?.trim() ?? "";
 
@@ -41,6 +43,7 @@ export async function POST(request: Request) {
   const text = [
     `Name: ${name}`,
     `Email: ${email}`,
+    phone ? `Phone: ${phone}` : null,
     company ? `Company: ${company}` : null,
     country ? `Country: ${country}` : null,
     "",
