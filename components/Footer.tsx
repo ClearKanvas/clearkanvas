@@ -24,7 +24,13 @@ export default function Footer() {
               operations functions growing companies struggle to staff well.
             </p>
             <div className="socials">
-              <a className="social" href="#" aria-label="LinkedIn">
+              <a
+                className="social"
+                href="https://www.linkedin.com/company/clearkanvas-global/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="ClearKanvas on LinkedIn"
+              >
                 <svg viewBox="0 0 24 24">
                   <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21H18.6v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H10z" />
                 </svg>
