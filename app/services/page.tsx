@@ -26,7 +26,7 @@ export default function ServicesPage() {
               </h1>
               <p>
                 ClearKanvas Global brings together the functions that keep a business running and
-                gives you a single, senior team to run them. Engage us for one service or
+                gives you a single, expert team to run them. Engage us for one service or
                 build an entire capability. Either way, we own the outcome.
               </p>
             </div>

@@ -9,7 +9,7 @@ import Arrow from "@/components/Arrow";
 export const metadata: Metadata = {
   title: "Our Story | ClearKanvas Global",
   description:
-    "ClearKanvas Global was founded to give growing companies a third option: senior operators who advise, build, and run.",
+    "ClearKanvas Global was founded to give growing companies a third option: expert operators who advise, build, and run.",
 };
 
 export default function StoryPage() {
@@ -35,7 +35,7 @@ export default function StoryPage() {
                 that.
               </p>
               <p>
-                We are a business services partner led by senior operators who have run finance,
+                We are a business services partner led by expert operators who have run finance,
                 HR, and operations at scale, paired with a delivery base that changes the
                 economics. We do not just advise. We build, and we run. That is how complexity
                 becomes clarity, and it is the standard we hold on every engagement.

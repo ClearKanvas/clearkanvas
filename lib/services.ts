@@ -69,7 +69,7 @@ export const SERVICES: Service[] = [
       "Clean books you can trust.",
       "A close that lands on time every month.",
       "Fewer surprises at tax and audit.",
-      "Senior financial perspective without a full-time hire.",
+      "Expert financial perspective without a full-time hire.",
     ],
     why: "Our finance practice is led by people who have sat in FP&A and controller seats, not just data-entry roles. You get judgment, not just throughput, which is why this is our anchor service.",
     orbs: navyOrange(0.4),
@@ -173,7 +173,7 @@ export const SERVICES: Service[] = [
       "An HR backbone that scales without internal headcount.",
       "Enterprise-grade HR thinking applied at your size.",
     ],
-    why: "Our HR practice is led by a senior people leader with experience across teams of tens of thousands of employees in many countries. You get enterprise-grade HR thinking applied to a company your size.",
+    why: "Our HR practice is led by a people leader with deep experience across teams of tens of thousands of employees in many countries. You get enterprise-grade HR thinking applied to a company your size.",
     orbs: navyOrange(2.2),
   },
   {

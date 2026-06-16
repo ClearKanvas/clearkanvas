@@ -9,13 +9,13 @@ import Arrow from "@/components/Arrow";
 export const metadata: Metadata = {
   title: "Why ClearKanvas Global | ClearKanvas Global",
   description:
-    "Senior by default, operators not just advisors, a real cost advantage, and a partner rather than a vendor.",
+    "Expertise by default, operators not just advisors, a real cost advantage, and a partner rather than a vendor.",
 };
 
 const PILLARS = [
   {
-    title: "Senior by default",
-    desc: "You work with people who have led finance and HR functions at scale, not a junior pool with a senior nameplate. The people who scope your engagement are the people accountable for it, so you get judgment from the first call, not just throughput once the contract is signed.",
+    title: "Expertise by default",
+    desc: "You work with people who have led finance and HR functions at scale, not a junior pool with an impressive title. The people who scope your engagement are the people accountable for it, so you get judgment from the first call, not just throughput once the contract is signed.",
   },
   {
     title: "Operators, not just advisors",

@@ -23,7 +23,7 @@ const MODELS = [
   },
   {
     name: "Fractional & Advisory",
-    desc: "Senior finance or HR leadership on demand, for companies that need the expertise without the full-time cost.",
+    desc: "Experienced finance or HR leadership on demand, for companies that need the expertise without the full-time cost.",
   },
   {
     name: "Projects & Transformation",

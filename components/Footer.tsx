@@ -20,7 +20,7 @@ export default function Footer() {
             />
             <p className="ft-tagline">Where complexity becomes clarity.</p>
             <p>
-              A senior team that builds and runs the finance, talent, technology, and
+              An expert team that builds and runs the finance, talent, technology, and
               operations functions growing companies struggle to staff well.
             </p>
             <div className="socials">

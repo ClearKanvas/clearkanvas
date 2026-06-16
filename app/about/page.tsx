@@ -28,7 +28,7 @@ export default function AboutPage() {
         <PageHero
           eyebrow="About"
           title="A partner built by operators"
-          tagline="Senior people who advise, build, and run, so complexity becomes clarity."
+          tagline="Experts who advise, build, and run, so complexity becomes clarity."
           intro="ClearKanvas Global clears the operational noise that holds great companies back. Get to know our story, our purpose, the people behind it, and where we work."
         />
         <section className="section">

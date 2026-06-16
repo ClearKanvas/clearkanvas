@@ -55,7 +55,7 @@ export default function LeadershipPage() {
         <section className="section cta-band cta-band-static">
           <div className="wrap cta-inner reveal">
             <h2>Talk to the people who will run it.</h2>
-            <p>With ClearKanvas Global, the senior team you meet is the team accountable for the work.</p>
+            <p>With ClearKanvas Global, the expert team you meet is the team accountable for the work.</p>
             <div className="hero-cta">
               <Link className="btn btn-primary" href="/contact">
                 Book a discovery call <Arrow size={15} />

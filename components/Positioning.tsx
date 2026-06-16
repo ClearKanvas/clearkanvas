@@ -1,6 +1,6 @@
 const PROOF = [
   "Clients in the USA, Pakistan & Bahrain, and growing",
-  "Senior-led delivery",
+  "Expert-led delivery",
   "Built in Pakistan, built for the world",
 ];
 
@@ -10,7 +10,7 @@ export default function Positioning() {
       <div className="wrap pos-inner reveal">
         <p className="pos-quote">
           Most providers rent you seats. We build you capability. ClearKanvas Global is run by
-          senior operators who advise, build, and run the functions other firms only
+          expert operators who advise, build, and run the functions other firms only
           consult on.
         </p>
         <div className="pos-proof" data-stagger>

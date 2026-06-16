@@ -8,8 +8,8 @@ const VALUES: { icon: ReactNode; title: string; desc: string }[] = [
         <rect x="9" y="9" width="6" height="6" rx="1" fill="#FF6A2B" />
       </svg>
     ),
-    title: "Senior by default",
-    desc: "You work with people who have led finance and HR functions at scale, not a junior pool with a senior nameplate.",
+    title: "Expertise by default",
+    desc: "You work with people who have led finance and HR functions at scale, not a junior pool with an impressive title.",
   },
   {
     icon: (
