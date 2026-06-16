@@ -15,25 +15,22 @@ export const metadata: Metadata = {
 const PMV = [
   {
     k: "Our purpose",
-    v: "To take the operational complexity off ambitious companies, so they can focus on what only they can do.",
+    v: "We clear the operational noise that holds great companies back.",
   },
   {
     k: "Our mission",
-    v: "To give growing businesses across North America, the UK, Europe, and the Gulf access to world-class finance, talent, technology, and operations, delivered by senior people at a cost that makes sense.",
+    v: "We give high-growth companies the operational backbone of a global enterprise, built to scale across borders.",
   },
   {
     k: "Our vision",
-    v: "To be the partner ambitious companies trust most, known for clarity, quality, and ownership.",
+    v: "To become the global standard for what a business services partner can be.",
   },
 ];
 
 const VALUES = [
-  { t: "Clarity over complexity", d: "We make the complicated simple, in our work and in how we communicate." },
-  { t: "We run what we recommend", d: "Advice without execution is just opinion. We own the outcome." },
-  { t: "Senior, always", d: "Real expertise at the table, not just on the proposal." },
-  { t: "Outcomes, not hours", d: "We measure ourselves by the results we create for you." },
-  { t: "Long-term by design", d: "Your success is the only sustainable version of ours." },
-  { t: "Integrity and discretion", d: "We handle your business, your data, and your people with care." },
+  { t: "Clarity", d: "We turn the complex into the simple, in every solution and every conversation." },
+  { t: "Excellence", d: "Good enough is never the standard. We deliver work we are proud to sign." },
+  { t: "Integrity", d: "We do what is right, especially when no one is watching." },
 ];
 
 export default function MvvPage() {
@@ -62,7 +59,7 @@ export default function MvvPage() {
           <div className="wrap">
             <div className="head reveal">
               <span className="eyebrow">Our values</span>
-              <h2>How we work, in six lines</h2>
+              <h2>What we stand for</h2>
             </div>
             <div className="vlist-grid" data-stagger>
               {VALUES.map((v) => (
