@@ -29,7 +29,7 @@ export default function AboutPage() {
           eyebrow="About"
           title="A partner built by operators"
           tagline="Senior people who advise, build, and run, so complexity becomes clarity."
-          intro="ClearKanvas Global exists to take the operational complexity off ambitious companies. Get to know our story, our purpose, the people behind it, and where we work."
+          intro="ClearKanvas Global clears the operational noise that holds great companies back. Get to know our story, our purpose, the people behind it, and where we work."
         />
         <section className="section">
           <div className="wrap">
