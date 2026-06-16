@@ -23,7 +23,7 @@ export default function Home() {
         <Services />
         {/* 4 Flagship spotlight (GCC) */}
         <Flagship />
-        {/* 5 Why ClearKanvas (4 pillars) */}
+        {/* 5 Why ClearKanvas Global (4 pillars) */}
         <Values />
         {/* 6 How we work teaser */}
         <Process />

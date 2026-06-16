@@ -5,7 +5,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import IndustriesMain from "@/components/IndustriesMain";
 
 export const metadata: Metadata = {
-  title: "Industries | ClearKanvas",
+  title: "Industries | ClearKanvas Global",
   description:
     "Sector context for the way we run your finance, support, and back office. From technology and professional services to healthcare, real estate, and logistics.",
 };

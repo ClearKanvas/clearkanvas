@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy | ClearKanvas",
-  description: "How ClearKanvas uses cookies and similar technologies on its website.",
+  title: "Cookie Policy | ClearKanvas Global",
+  description: "How ClearKanvas Global uses cookies and similar technologies on its website.",
 };
 
 export default function CookiePolicyPage() {
@@ -11,7 +11,7 @@ export default function CookiePolicyPage() {
     <LegalPage
       title="Cookie Policy"
       updated="June 2026"
-      intro="This policy explains how ClearKanvas uses cookies and similar technologies on our website."
+      intro="This policy explains how ClearKanvas Global uses cookies and similar technologies on our website."
       sections={[
         {
           h: "What cookies are",

@@ -112,7 +112,7 @@ export default function ServiceDetail({ service }: { service: Service }) {
       <section className="section">
         <div className="wrap">
           <div className="why-block reveal">
-            <span className="eyebrow">Why ClearKanvas</span>
+            <span className="eyebrow">Why ClearKanvas Global</span>
             <p className="why-lead">{service.why}</p>
           </div>
         </div>

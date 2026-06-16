@@ -21,7 +21,7 @@ export interface Service {
   how: ServiceStep[];
   /** "What you gain" , 3 to 4 outcome statements. */
   gains: string[];
-  /** "Why ClearKanvas" , short block. */
+  /** "Why ClearKanvas Global" , short block. */
   why: string;
   /** Flagship model gets extra emphasis. */
   flagship?: boolean;
@@ -400,7 +400,7 @@ export const INDUSTRIES: string[] = INDUSTRY_DETAILS.map((i) => i.name);
 export const HOW_WE_WORK_NAV = [
   { href: "/how-we-work/engagement-models", label: "Engagement Models" },
   { href: "/how-we-work/process", label: "Our Process" },
-  { href: "/how-we-work/why-clearkanvas", label: "Why ClearKanvas" },
+  { href: "/how-we-work/why-clearkanvas", label: "Why ClearKanvas Global" },
   { href: "/how-we-work/why-pakistan", label: "Why Pakistan" },
 ];
 

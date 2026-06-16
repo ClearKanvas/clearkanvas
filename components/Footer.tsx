@@ -14,7 +14,7 @@ export default function Footer() {
             <Image
               className="brand-logo ft-logo"
               src="/logo.png"
-              alt="ClearKanvas"
+              alt="ClearKanvas Global"
               width={160}
               height={60}
             />
@@ -29,7 +29,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/company/clearkanvas-global/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="ClearKanvas on LinkedIn"
+                aria-label="ClearKanvas Global on LinkedIn"
               >
                 <svg viewBox="0 0 24 24">
                   <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21H18.6v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H10z" />
@@ -101,7 +101,7 @@ export default function Footer() {
         </div>
 
         <div className="ft-bottom">
-          <span>Copyright {YEAR} ClearKanvas. All rights reserved.</span>
+          <span>Copyright {YEAR} ClearKanvas Global. All rights reserved.</span>
           <span className="ft-legal">
             <Link href="/privacy-policy">Privacy Policy</Link>
             <Link href="/terms-of-use">Terms of Use</Link>

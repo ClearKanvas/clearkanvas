@@ -6,10 +6,10 @@ const PROOF = [
 
 export default function Positioning() {
   return (
-    <section className="positioning" aria-label="What sets ClearKanvas apart">
+    <section className="positioning" aria-label="What sets ClearKanvas Global apart">
       <div className="wrap pos-inner reveal">
         <p className="pos-quote">
-          Most providers rent you seats. We build you capability. ClearKanvas is run by
+          Most providers rent you seats. We build you capability. ClearKanvas Global is run by
           senior operators who advise, build, and run the functions other firms only
           consult on.
         </p>

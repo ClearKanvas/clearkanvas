@@ -8,7 +8,7 @@ import ProcessFlow from "@/components/ProcessFlow";
 import Arrow from "@/components/Arrow";
 
 export const metadata: Metadata = {
-  title: "Our Process | ClearKanvas",
+  title: "Our Process | ClearKanvas Global",
   description:
     "A clear path from first call to a function that just runs: Discover, Design, Build, and Operate & optimize.",
 };

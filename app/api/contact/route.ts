@@ -37,7 +37,7 @@ export async function POST(request: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_TO_EMAIL ?? "hello@clearkanvas.com";
   // Resend requires a verified sender; falls back to their onboarding address.
-  const from = process.env.CONTACT_FROM_EMAIL ?? "ClearKanvas <onboarding@resend.dev>";
+  const from = process.env.CONTACT_FROM_EMAIL ?? "ClearKanvas Global <onboarding@resend.dev>";
 
   const subject = `New enquiry from ${name}${company ? ` (${company})` : ""}`;
   const text = [

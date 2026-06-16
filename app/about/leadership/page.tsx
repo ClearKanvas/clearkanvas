@@ -7,9 +7,9 @@ import PageHero from "@/components/PageHero";
 import Arrow from "@/components/Arrow";
 
 export const metadata: Metadata = {
-  title: "Leadership | ClearKanvas",
+  title: "Leadership | ClearKanvas Global",
   description:
-    "ClearKanvas is led by its founding partners, with leadership across global finance, HR, and operations.",
+    "ClearKanvas Global is led by its founding partners, with leadership across global finance, HR, and operations.",
 };
 
 // PLACEHOLDER leadership , names, titles, bios, and photos to be filled in by Taimur.
@@ -27,7 +27,7 @@ export default function LeadershipPage() {
         <PageHero
           eyebrow="Leadership"
           title="Leadership"
-          intro="ClearKanvas is led by its founding partners, who bring deep experience across global finance, HR, and operations leadership."
+          intro="ClearKanvas Global is led by its founding partners, who bring deep experience across global finance, HR, and operations leadership."
           crumbs={[{ href: "/about", label: "About" }, { label: "Leadership" }]}
         />
         <section className="section">
@@ -55,7 +55,7 @@ export default function LeadershipPage() {
         <section className="section cta-band cta-band-static">
           <div className="wrap cta-inner reveal">
             <h2>Talk to the people who will run it.</h2>
-            <p>With ClearKanvas, the senior team you meet is the team accountable for the work.</p>
+            <p>With ClearKanvas Global, the senior team you meet is the team accountable for the work.</p>
             <div className="hero-cta">
               <Link className="btn btn-primary" href="/contact">
                 Book a discovery call <Arrow size={15} />

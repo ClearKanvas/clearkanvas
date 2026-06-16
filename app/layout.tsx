@@ -19,9 +19,9 @@ const body = Inter_Tight({
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://clearkanvas.com";
-const TITLE = "ClearKanvas: Where complexity becomes clarity";
+const TITLE = "ClearKanvas Global: Where complexity becomes clarity";
 const DESCRIPTION =
-  "ClearKanvas is your partner for finance, talent, technology, and operations. Senior specialists and teams that run as an extension of yours, serving the US, Canada, UK, Europe, and the Gulf.";
+  "ClearKanvas Global is your partner for finance, talent, technology, and operations. Senior specialists and teams that run as an extension of yours, serving the US, Canada, UK, Europe, and the Gulf.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -30,10 +30,10 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description: DESCRIPTION,
-  applicationName: "ClearKanvas",
+  applicationName: "ClearKanvas Global",
   openGraph: {
     type: "website",
-    siteName: "ClearKanvas",
+    siteName: "ClearKanvas Global",
     title: TITLE,
     description: DESCRIPTION,
     url: SITE_URL,

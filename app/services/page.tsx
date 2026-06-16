@@ -7,9 +7,9 @@ import Arrow from "@/components/Arrow";
 import { SERVICES } from "@/lib/services";
 
 export const metadata: Metadata = {
-  title: "Services | ClearKanvas",
+  title: "Services | ClearKanvas Global",
   description:
-    "One partner for finance, people, technology, and operations. Engage ClearKanvas for one service or build an entire capability.",
+    "One partner for finance, people, technology, and operations. Engage ClearKanvas Global for one service or build an entire capability.",
 };
 
 export default function ServicesPage() {
@@ -25,7 +25,7 @@ export default function ServicesPage() {
                 One partner for finance, people, technology, and operations
               </h1>
               <p>
-                ClearKanvas brings together the functions that keep a business running and
+                ClearKanvas Global brings together the functions that keep a business running and
                 gives you a single, senior team to run them. Engage us for one service or
                 build an entire capability. Either way, we own the outcome.
               </p>

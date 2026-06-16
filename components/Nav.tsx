@@ -40,11 +40,11 @@ export default function Nav() {
       id="nav"
     >
       <div className="wrap nav-inner">
-        <Link className="brand" href="/" aria-label="ClearKanvas home" onClick={close}>
+        <Link className="brand" href="/" aria-label="ClearKanvas Global home" onClick={close}>
           <Image
             className="brand-logo"
             src="/logo.png"
-            alt="ClearKanvas"
+            alt="ClearKanvas Global"
             width={160}
             height={60}
             priority

@@ -8,15 +8,15 @@ import Arrow from "@/components/Arrow";
 import { ABOUT_NAV } from "@/lib/services";
 
 export const metadata: Metadata = {
-  title: "About | ClearKanvas",
+  title: "About | ClearKanvas Global",
   description:
-    "The story, purpose, people, and global presence behind ClearKanvas.",
+    "The story, purpose, people, and global presence behind ClearKanvas Global.",
 };
 
 const BLURB: Record<string, string> = {
   "Our Story": "Why we built a third option for growing companies.",
   "Mission, Vision & Values": "What we are here to do, and how we work.",
-  Leadership: "The founding partners behind ClearKanvas.",
+  Leadership: "The founding partners behind ClearKanvas Global.",
   "Global Presence": "Where we serve, and where we deliver.",
 };
 
@@ -29,7 +29,7 @@ export default function AboutPage() {
           eyebrow="About"
           title="A partner built by operators"
           tagline="Senior people who advise, build, and run, so complexity becomes clarity."
-          intro="ClearKanvas exists to take the operational complexity off ambitious companies. Get to know our story, our purpose, the people behind it, and where we work."
+          intro="ClearKanvas Global exists to take the operational complexity off ambitious companies. Get to know our story, our purpose, the people behind it, and where we work."
         />
         <section className="section">
           <div className="wrap">

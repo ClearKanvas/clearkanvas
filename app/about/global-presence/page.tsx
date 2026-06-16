@@ -7,7 +7,7 @@ import PageHero from "@/components/PageHero";
 import Arrow from "@/components/Arrow";
 
 export const metadata: Metadata = {
-  title: "Global Presence | ClearKanvas",
+  title: "Global Presence | ClearKanvas Global",
   description:
     "Where we serve, and where we deliver. Clients across North America, the UK, Europe, and the Gulf, delivered from Pakistan.",
 };

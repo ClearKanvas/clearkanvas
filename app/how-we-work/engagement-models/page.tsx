@@ -7,9 +7,9 @@ import PageHero from "@/components/PageHero";
 import Arrow from "@/components/Arrow";
 
 export const metadata: Metadata = {
-  title: "Engagement Models | ClearKanvas",
+  title: "Engagement Models | ClearKanvas Global",
   description:
-    "Four ways to engage ClearKanvas: Dedicated Offshore Team, Managed Services, Fractional & Advisory, and Projects & Transformation.",
+    "Four ways to engage ClearKanvas Global: Dedicated Offshore Team, Managed Services, Fractional & Advisory, and Projects & Transformation.",
 };
 
 const MODELS = [

@@ -7,9 +7,9 @@ import PageHero from "@/components/PageHero";
 import Arrow from "@/components/Arrow";
 
 export const metadata: Metadata = {
-  title: "Our Story | ClearKanvas",
+  title: "Our Story | ClearKanvas Global",
   description:
-    "ClearKanvas was founded to give growing companies a third option: senior operators who advise, build, and run.",
+    "ClearKanvas Global was founded to give growing companies a third option: senior operators who advise, build, and run.",
 };
 
 export default function StoryPage() {
@@ -26,18 +26,30 @@ export default function StoryPage() {
           <div className="wrap wrap-narrow">
             <div className="prose reveal">
               <p className="prose-lead">
-                ClearKanvas was founded on a simple frustration: growing companies are forced
-                to choose between operations they cannot afford to staff well and providers who
-                deliver thin work at arm&apos;s length.
+                Every business begins with a vision and a clear canvas to build it on. We make
+                sure the work of running it never slows that vision down.
               </p>
               <p>
-                We built a third option. A partner run by senior operators who have led finance
-                and people functions at scale, combined with a delivery base that changes the
-                economics.
+                ClearKanvas Global was founded on a simple belief: growing companies deserve
+                world-class operations, run by people who own the outcome. So we built exactly
+                that.
               </p>
               <p>
-                We advise, we build, and we run. That is what turns complexity into clarity, and
-                it is the standard we hold on every engagement.
+                We are a business services partner led by senior operators who have run finance,
+                HR, and operations at scale, paired with a delivery base that changes the
+                economics. We do not just advise. We build, and we run. That is how complexity
+                becomes clarity, and it is the standard we hold on every engagement.
+              </p>
+              <p>
+                We also believe great work should create opportunity. By connecting our clients
+                with Pakistan&apos;s exceptional talent, we deliver world-class results for
+                businesses and meaningful, lasting work for the people who power them. Investing
+                in people is how we build value that lasts.
+              </p>
+              <p>
+                That is what ClearKanvas Global is here to do: give companies stronger
+                foundations, unlock new possibilities, and help them build a future defined by
+                clarity, excellence, and growth.
               </p>
             </div>
           </div>

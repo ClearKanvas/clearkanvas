@@ -7,9 +7,9 @@ import PageHero from "@/components/PageHero";
 import Arrow from "@/components/Arrow";
 
 export const metadata: Metadata = {
-  title: "Mission, Vision & Values | ClearKanvas",
+  title: "Mission, Vision & Values | ClearKanvas Global",
   description:
-    "Our purpose, mission, vision, and the values that guide how ClearKanvas works.",
+    "Our purpose, mission, vision, and the values that guide how ClearKanvas Global works.",
 };
 
 const PMV = [

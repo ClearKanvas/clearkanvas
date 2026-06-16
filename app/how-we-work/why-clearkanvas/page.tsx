@@ -7,7 +7,7 @@ import PageHero from "@/components/PageHero";
 import Arrow from "@/components/Arrow";
 
 export const metadata: Metadata = {
-  title: "Why ClearKanvas | ClearKanvas",
+  title: "Why ClearKanvas Global | ClearKanvas Global",
   description:
     "Senior by default, operators not just advisors, a real cost advantage, and a partner rather than a vendor.",
 };
@@ -37,10 +37,10 @@ export default function WhyClearKanvasPage() {
       <Nav />
       <main id="top">
         <PageHero
-          eyebrow="Why ClearKanvas"
-          title="Why companies choose ClearKanvas"
+          eyebrow="Why ClearKanvas Global"
+          title="Why companies choose ClearKanvas Global"
           tagline="Real expertise at the table, and a partner who owns the result."
-          crumbs={[{ href: "/how-we-work", label: "How We Work" }, { label: "Why ClearKanvas" }]}
+          crumbs={[{ href: "/how-we-work", label: "How We Work" }, { label: "Why ClearKanvas Global" }]}
         />
         <section className="section">
           <div className="wrap wrap-narrow">

@@ -17,9 +17,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const service = getService(slug);
-  if (!service) return { title: "Service not found | ClearKanvas" };
+  if (!service) return { title: "Service not found | ClearKanvas Global" };
   return {
-    title: `${service.name} | ClearKanvas`,
+    title: `${service.name} | ClearKanvas Global`,
     description: service.summary,
   };
 }

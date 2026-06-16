@@ -1,5 +1,5 @@
 /* Animated gradient orb field , premium hero/CTA background.
-   Ported verbatim from the design bundle (ClearKanvas Homepage.html). */
+   Ported verbatim from the design bundle (ClearKanvas Global Homepage.html). */
 
 export interface Orb {
   bx: number; // base x (fraction of width)

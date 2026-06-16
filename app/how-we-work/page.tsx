@@ -8,15 +8,15 @@ import Arrow from "@/components/Arrow";
 import { HOW_WE_WORK_NAV } from "@/lib/services";
 
 export const metadata: Metadata = {
-  title: "How We Work | ClearKanvas",
+  title: "How We Work | ClearKanvas Global",
   description:
-    "Four ways to engage, one clear process, and the reasons companies choose ClearKanvas and our delivery base in Pakistan.",
+    "Four ways to engage, one clear process, and the reasons companies choose ClearKanvas Global and our delivery base in Pakistan.",
 };
 
 const BLURB: Record<string, string> = {
   "Engagement Models": "Four ways to engage, one standard of quality.",
   "Our Process": "A clear path from first call to a function that just runs.",
-  "Why ClearKanvas": "The reasons companies choose us over a vendor or a hire.",
+  "Why ClearKanvas Global": "The reasons companies choose us over a vendor or a hire.",
   "Why Pakistan": "A serious delivery advantage, not just a cheaper one.",
 };
 

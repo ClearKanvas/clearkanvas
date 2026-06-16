@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Terms of Use | ClearKanvas",
-  description: "The terms that govern your use of the ClearKanvas website.",
+  title: "Terms of Use | ClearKanvas Global",
+  description: "The terms that govern your use of the ClearKanvas Global website.",
 };
 
 export default function TermsOfUsePage() {
@@ -11,7 +11,7 @@ export default function TermsOfUsePage() {
     <LegalPage
       title="Terms of Use"
       updated="June 2026"
-      intro="These terms govern your use of the ClearKanvas website. By using the site, you agree to them."
+      intro="These terms govern your use of the ClearKanvas Global website. By using the site, you agree to them."
       sections={[
         {
           h: "Using this website",
@@ -22,7 +22,7 @@ export default function TermsOfUsePage() {
         {
           h: "Our content",
           body: [
-            "The content on this website, including text, graphics, logos, and design, belongs to ClearKanvas or its licensors and is protected by intellectual-property laws. You may view and share it for personal, non-commercial reference, but you may not copy, republish, or use it commercially without our permission.",
+            "The content on this website, including text, graphics, logos, and design, belongs to ClearKanvas Global or its licensors and is protected by intellectual-property laws. You may view and share it for personal, non-commercial reference, but you may not copy, republish, or use it commercially without our permission.",
           ],
         },
         {
@@ -40,7 +40,7 @@ export default function TermsOfUsePage() {
         {
           h: "Limitation of liability",
           body: [
-            "We aim to keep the site accurate and available, but we provide it on an \"as is\" basis without warranties of any kind. To the extent permitted by law, ClearKanvas is not liable for any loss arising from your use of, or inability to use, this website.",
+            "We aim to keep the site accurate and available, but we provide it on an \"as is\" basis without warranties of any kind. To the extent permitted by law, ClearKanvas Global is not liable for any loss arising from your use of, or inability to use, this website.",
           ],
         },
         {

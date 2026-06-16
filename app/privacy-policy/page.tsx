@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | ClearKanvas",
-  description: "How ClearKanvas collects, uses, and protects your personal information.",
+  title: "Privacy Policy | ClearKanvas Global",
+  description: "How ClearKanvas Global collects, uses, and protects your personal information.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -11,12 +11,12 @@ export default function PrivacyPolicyPage() {
     <LegalPage
       title="Privacy Policy"
       updated="June 2026"
-      intro="This policy explains what information ClearKanvas collects, how we use it, and the choices you have."
+      intro="This policy explains what information ClearKanvas Global collects, how we use it, and the choices you have."
       sections={[
         {
           h: "Who we are",
           body: [
-            "ClearKanvas provides finance, talent, technology, and operations services to clients across North America, the United Kingdom, Europe, and the Gulf, delivered from our operations base in Pakistan. In this policy, \"ClearKanvas\", \"we\", \"us\", and \"our\" refer to ClearKanvas.",
+            "ClearKanvas Global provides finance, talent, technology, and operations services to clients across North America, the United Kingdom, Europe, and the Gulf, delivered from our operations base in Pakistan. In this policy, \"ClearKanvas Global\", \"we\", \"us\", and \"our\" refer to ClearKanvas Global.",
           ],
         },
         {

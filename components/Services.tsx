@@ -10,7 +10,7 @@ export default function Services() {
           <span className="eyebrow">What we do</span>
           <h2>One partner for the functions that run your business</h2>
           <p>
-            From keeping your books clean to building an entire offshore team, ClearKanvas
+            From keeping your books clean to building an entire offshore team, ClearKanvas Global
             covers the operational backbone most companies struggle to staff well. Pick a
             single service or build a complete function with us.
           </p>

@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "ClearKanvas: Where complexity becomes clarity";
+export const alt = "ClearKanvas Global: Where complexity becomes clarity";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -26,7 +26,7 @@ export default function OgImage() {
             <circle cx="16" cy="16" r="11" stroke="#FFFFFF" strokeWidth="3" />
             <path d="M16 5 A11 11 0 0 1 27 16" stroke="#FF6A2B" strokeWidth="3" strokeLinecap="round" />
           </svg>
-          <div style={{ fontSize: 34, fontWeight: 700, letterSpacing: -0.5 }}>ClearKanvas</div>
+          <div style={{ fontSize: 34, fontWeight: 700, letterSpacing: -0.5 }}>ClearKanvas Global</div>
         </div>
 
         {/* Headline */}

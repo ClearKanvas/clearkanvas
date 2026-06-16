@@ -43,14 +43,14 @@ export default function Hero() {
         <div className="hero-grid-dots"></div>
       </div>
       <div className="wrap hero-inner">
-        <span className="eyebrow reveal">ClearKanvas</span>
+        <span className="eyebrow reveal">ClearKanvas Global</span>
         <h1 className="hero-h1 reveal">
           Build a <span className="rotor-accent">world-class</span> business function.
           <br />
           Without building it alone.
         </h1>
         <p className="hero-sub reveal">
-          ClearKanvas is your partner for finance, talent, technology, and operations.
+          ClearKanvas Global is your partner for finance, talent, technology, and operations.
           Senior specialists, a genuine cost advantage, and teams that run as an extension
           of yours. Serving clients across the US, Canada, UK, Europe, and the Gulf.
         </p>

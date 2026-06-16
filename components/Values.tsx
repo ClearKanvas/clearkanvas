@@ -49,8 +49,8 @@ export default function Values() {
     <section className="section values" id="about">
       <div className="wrap">
         <div className="head reveal">
-          <span className="eyebrow">Why ClearKanvas</span>
-          <h2>Why companies choose ClearKanvas</h2>
+          <span className="eyebrow">Why ClearKanvas Global</span>
+          <h2>Why companies choose ClearKanvas Global</h2>
         </div>
         <div className="val-grid" data-stagger>
           {VALUES.map((v) => (

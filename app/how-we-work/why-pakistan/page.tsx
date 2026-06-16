@@ -7,7 +7,7 @@ import PageHero from "@/components/PageHero";
 import Arrow from "@/components/Arrow";
 
 export const metadata: Metadata = {
-  title: "Why Pakistan | ClearKanvas",
+  title: "Why Pakistan | ClearKanvas Global",
   description:
     "A serious delivery advantage, not just a cheaper one. A large, English-speaking talent pool with strong skills and useful time-zone overlap.",
 };
