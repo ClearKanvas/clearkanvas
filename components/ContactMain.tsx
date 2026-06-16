@@ -111,7 +111,11 @@ export default function ContactMain() {
         </div>
         <div className="wrap c-hero-inner">
           <span className="eyebrow reveal">Contact</span>
-          <h1 className="reveal">Let us take the complexity off your plate.</h1>
+          <h1 className="reveal">
+            Let us take the complexity
+            <br />
+            off your plate.
+          </h1>
           <p className="reveal">
             Tell us what you are trying to build and we will get back to you within one business day.
           </p>
