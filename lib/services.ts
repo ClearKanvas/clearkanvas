@@ -77,7 +77,7 @@ export const SERVICES: Service[] = [
   {
     slug: "fpa-reporting-bi",
     num: "02",
-    name: "Financial Planning & Insight",
+    name: "Reporting & Business Intelligence",
     promise: "Turn financial data into decisions, not just statements.",
     summary: "Turn data into decisions.",
     intro:
@@ -335,7 +335,7 @@ export const SERVICE_GROUPS: ServiceGroup[] = [
 
 export const SERVICE_NAV: ServiceNav[] = [
   { slug: "finance-accounting", name: "Finance & Accounting", shortName: "Finance & Accounting", menuDesc: "Run your finance back office end to end", group: "Finance & Performance" },
-  { slug: "fpa-reporting-bi", name: "Financial Planning & Insight", shortName: "Planning & Insight", menuDesc: "Turn data into decisions", group: "Finance & Performance" },
+  { slug: "fpa-reporting-bi", name: "Reporting & Business Intelligence", shortName: "Reporting & BI", menuDesc: "Turn data into decisions", group: "Finance & Performance" },
   { slug: "global-capability-centers", name: "Global Capability Centers", shortName: "Global Capability Centers", menuDesc: "Build your own offshore team", group: "People & Operations", flagship: true },
   { slug: "hr-talent", name: "HR & Talent Solutions", shortName: "HR & Talent", menuDesc: "Find and manage talent globally", group: "People & Operations" },
   { slug: "customer-experience", name: "Customer Experience & BPO", shortName: "Customer Experience & BPO", menuDesc: "Support and back office that delivers", group: "People & Operations" },
