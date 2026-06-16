@@ -9,7 +9,7 @@ import Arrow from "@/components/Arrow";
 export const metadata: Metadata = {
   title: "Global Presence | ClearKanvas Global",
   description:
-    "Where we serve, and where we deliver. Clients across North America, the UK, Europe, and the Gulf, delivered from Pakistan.",
+    "Where we serve, and where we deliver. Clients in the USA, Pakistan, and Bahrain, and growing into new markets, delivered from Pakistan.",
 };
 
 const OPERATE = [
@@ -18,7 +18,7 @@ const OPERATE = [
   { name: "Dubai, UAE", note: "Regional presence" },
 ];
 
-const SERVE = ["United States", "Canada", "United Kingdom", "Europe", "United Arab Emirates", "Bahrain"];
+const SERVE = ["United States", "Pakistan", "Bahrain"];
 
 export default function GlobalPresencePage() {
   return (
@@ -29,7 +29,7 @@ export default function GlobalPresencePage() {
           eyebrow="Global Presence"
           title="Global presence"
           tagline="Where we serve, and where we deliver."
-          intro="We partner with companies across North America, the United Kingdom, Europe, and the Gulf, delivered from our operations base in Pakistan with a presence in key client markets. Our clients get the cost and scale advantages of offshore with the responsiveness of a partner who keeps your hours."
+          intro="We partner with companies in the USA, Pakistan, and Bahrain, and are growing into new markets, delivered from our operations base in Pakistan with a presence in key client markets. Our clients get the cost and scale advantages of offshore with the responsiveness of a partner who keeps your hours."
           crumbs={[{ href: "/about", label: "About" }, { label: "Global Presence" }]}
         />
         <section className="section">

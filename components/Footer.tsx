@@ -94,7 +94,7 @@ export default function Footer() {
               </li>
               <li className="ft-loc">
                 <span className="ft-loc-k">Serving</span>
-                US, Canada, UK, Europe
+                USA, Pakistan, Bahrain, and growing
               </li>
             </ul>
           </div>

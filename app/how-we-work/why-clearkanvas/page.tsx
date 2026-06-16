@@ -23,7 +23,7 @@ const PILLARS = [
   },
   {
     title: "A real cost advantage",
-    desc: "Pakistan gives you high-quality talent at a fraction of in-house cost, with strong English and useful time-zone overlap for the UK and the Gulf. We turn that structural advantage into a managed, reliable capability, not a race to the cheapest seat.",
+    desc: "Pakistan gives you high-quality talent at a fraction of in-house cost, with strong English and useful time-zone overlap with the Gulf, plus a working-day handoff to North America. We turn that structural advantage into a managed, reliable capability, not a race to the cheapest seat.",
   },
   {
     title: "A partner, not a vendor",

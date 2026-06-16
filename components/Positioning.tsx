@@ -1,5 +1,5 @@
 const PROOF = [
-  "Serving the US, Canada, UK, Europe & Gulf",
+  "Clients in the USA, Pakistan & Bahrain, and growing",
   "Senior-led delivery",
   "Built in Pakistan, built for the world",
 ];

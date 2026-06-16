@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 
 const POINTS = [
   { k: "A deep talent pool", v: "A large, young, English-speaking workforce with strong finance, technology, and operations skills." },
-  { k: "A real cost advantage", v: "High-quality delivery at a meaningful cost advantage to the US and UK." },
-  { k: "Time-zone overlap", v: "Real-time collaboration with the UK and the Gulf during your working day." },
+  { k: "A real cost advantage", v: "High-quality delivery at a meaningful cost advantage to Western markets." },
+  { k: "Time-zone overlap", v: "Real-time collaboration with the Gulf during your working day." },
   { k: "Follow-the-sun", v: "A full working-day handoff to North America when you need it." },
 ];
 
@@ -28,7 +28,7 @@ export default function WhyPakistanPage() {
           eyebrow="Why Pakistan"
           title="Why Pakistan"
           tagline="A serious delivery advantage, not just a cheaper one."
-          intro="Pakistan offers a large, young, English-speaking talent pool with strong finance, technology, and operations skills, at a meaningful cost advantage to the US and UK. Time-zone overlap supports real-time collaboration with the UK and the Gulf, and a full working-day handoff to North America. We turn that advantage into a managed, reliable capability for you."
+          intro="Pakistan offers a large, young, English-speaking talent pool with strong finance, technology, and operations skills, at a meaningful cost advantage to Western markets. Time-zone overlap supports real-time collaboration with the Gulf, and a full working-day handoff to North America. We turn that advantage into a managed, reliable capability for you."
           crumbs={[{ href: "/how-we-work", label: "How We Work" }, { label: "Why Pakistan" }]}
         />
         <section className="section">

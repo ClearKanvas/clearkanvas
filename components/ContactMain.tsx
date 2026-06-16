@@ -16,7 +16,7 @@ const COUNTRIES = [
 ];
 
 // Markets we serve (clients), shown in the info panel.
-const MARKETS = ["United States", "Canada", "United Kingdom", "Europe"];
+const MARKETS = ["United States", "Pakistan", "Bahrain"];
 
 // Where we operate (delivery + on-the-ground presence). City and email are
 // placeholders to be confirmed; a city plus contact email is acceptable for now.

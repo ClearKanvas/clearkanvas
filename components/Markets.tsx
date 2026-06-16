@@ -3,10 +3,7 @@ import Arrow from "./Arrow";
 
 const MARKETS = [
   { name: "United States", region: "North America" },
-  { name: "Canada", region: "North America" },
-  { name: "United Kingdom", region: "Europe" },
-  { name: "Europe", region: "Europe" },
-  { name: "United Arab Emirates", region: "Gulf" },
+  { name: "Pakistan", region: "South Asia" },
   { name: "Bahrain", region: "Gulf" },
 ];
 
@@ -18,8 +15,8 @@ export default function Markets() {
           <span className="eyebrow">Markets we serve</span>
           <h2>Local presence. Global reach.</h2>
           <p>
-            We serve clients across the United States, Canada, the United Kingdom, Europe,
-            and the Gulf, delivered from our base in Pakistan with a presence in Bahrain and
+            We serve clients in the United States, Pakistan, and Bahrain, and are growing into
+            new markets, delivered from our base in Pakistan with a presence in Bahrain and
             Dubai. Close enough in time zone to collaborate in real time, far enough in cost
             to change your economics.
           </p>

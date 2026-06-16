@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
         {
           h: "Who we are",
           body: [
-            "ClearKanvas Global provides finance, talent, technology, and operations services to clients across North America, the United Kingdom, Europe, and the Gulf, delivered from our operations base in Pakistan. In this policy, \"ClearKanvas Global\", \"we\", \"us\", and \"our\" refer to ClearKanvas Global.",
+            "ClearKanvas Global provides finance, talent, technology, and operations services to clients in the USA, Pakistan, and Bahrain, and is growing into new markets, delivered from our operations base in Pakistan. In this policy, \"ClearKanvas Global\", \"we\", \"us\", and \"our\" refer to ClearKanvas Global.",
           ],
         },
         {
