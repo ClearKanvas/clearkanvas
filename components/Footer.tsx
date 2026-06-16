@@ -90,7 +90,7 @@ export default function Footer() {
               </li>
               <li className="ft-loc">
                 <span className="ft-loc-k">Operating in</span>
-                Pakistan, Bahrain, Dubai
+                Pakistan, Bahrain
               </li>
               <li className="ft-loc">
                 <span className="ft-loc-k">Serving</span>

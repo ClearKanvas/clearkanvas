@@ -15,7 +15,6 @@ export const metadata: Metadata = {
 const OPERATE = [
   { name: "Pakistan", note: "Primary delivery center" },
   { name: "Bahrain", note: "Regional presence" },
-  { name: "Dubai, UAE", note: "Regional presence" },
 ];
 
 const SERVE = ["United States", "Pakistan", "Bahrain"];

@@ -23,7 +23,6 @@ const MARKETS = ["United States", "Pakistan", "Bahrain"];
 const OPERATE = [
   { country: "Pakistan", note: "Primary delivery center" },
   { country: "Bahrain", note: "Regional presence" },
-  { country: "Dubai, UAE", note: "Regional presence" },
 ];
 
 const NEXT_STEPS = [
