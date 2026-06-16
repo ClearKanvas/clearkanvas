@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 const OPERATE = [
+  { name: "United States", note: "Local presence" },
   { name: "Pakistan", note: "Primary delivery center" },
   { name: "Bahrain", note: "Regional presence" },
 ];

@@ -16,7 +16,7 @@ export default function Markets() {
           <h2>Local presence. Global reach.</h2>
           <p>
             We serve clients in the United States, Pakistan, and Bahrain, and are growing into
-            new markets, delivered from our base in Pakistan with a regional presence in
+            new markets, delivered from our base in Pakistan, with a presence in the USA and
             Bahrain. Close enough in time zone to collaborate in real time, far enough in cost
             to change your economics.
           </p>
@@ -35,7 +35,7 @@ export default function Markets() {
         <div className="markets-foot reveal">
           <p className="markets-operate">
             <span className="mo-k">Where we operate</span>
-            Pakistan (primary delivery center), Bahrain
+            USA, Pakistan (primary delivery center), Bahrain
           </p>
           <Link className="btn btn-ghost" href="/about/global-presence">
             Where we operate <Arrow size={15} />

@@ -21,6 +21,7 @@ const MARKETS = ["United States", "Pakistan", "Bahrain"];
 // Where we operate (delivery + on-the-ground presence). City and email are
 // placeholders to be confirmed; a city plus contact email is acceptable for now.
 const OPERATE = [
+  { country: "United States", note: "Local presence" },
   { country: "Pakistan", note: "Primary delivery center" },
   { country: "Bahrain", note: "Regional presence" },
 ];
