@@ -264,7 +264,8 @@ header.nav.scrolled { box-shadow: var(--shadow-nav); border-bottom-color: var(--
 @keyframes rollOut { from { transform: translateY(0); opacity: 1; } to { transform: translateY(-108%); opacity: 0; } }
 @keyframes rollIn { from { transform: translateY(108%); opacity: 0; } 60% { opacity: 1; } to { transform: translateY(0); opacity: 1; } }
 
-.hero-sub { max-width: 60ch; margin: 26px auto 0; font-size: clamp(17px, 1.7vw, 20px); color: var(--slate); text-wrap: pretty; }
+.hero-tagline { max-width: 32ch; margin: 18px auto 0; font-family: var(--display); font-weight: 600; font-size: clamp(20px, 2.6vw, 30px); letter-spacing: -0.02em; color: var(--navy); text-wrap: balance; }
+.hero-sub { max-width: 60ch; margin: 18px auto 0; font-size: clamp(17px, 1.7vw, 20px); color: var(--slate); text-wrap: pretty; }
 .hero-cta { display: flex; gap: 14px; justify-content: center; margin-top: 36px; flex-wrap: wrap; }
 
 /* Marquee */

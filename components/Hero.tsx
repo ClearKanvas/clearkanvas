@@ -49,8 +49,9 @@ export default function Hero() {
           <br />
           Without building it alone.
         </h1>
+        <p className="hero-tagline reveal">Where complexity becomes clarity.</p>
         <p className="hero-sub reveal">
-          Where complexity becomes clarity. ClearKanvas Global brings the right expertise to
+          ClearKanvas Global brings the right expertise to
           your finance, talent, technology, and operations, so your teams scale without the
           overhead. Trusted by clients in the USA, Pakistan, and Bahrain, and growing into new
           markets.
