@@ -50,9 +50,10 @@ export default function Hero() {
           Without building it alone.
         </h1>
         <p className="hero-sub reveal">
-          ClearKanvas Global is your partner for finance, talent, technology, and operations.
-          Senior specialists, a genuine cost advantage, and teams that run as an extension
-          of yours. Serving clients across the US, Canada, UK, Europe, and the Gulf.
+          Where complexity becomes clarity. ClearKanvas Global brings the right expertise to
+          your finance, talent, technology, and operations, so your teams scale without the
+          overhead. Trusted by clients in the USA, Pakistan, and Bahrain, and growing into new
+          markets.
         </p>
         <div className="hero-cta reveal">
           <Link className="btn btn-primary" href="/contact">
