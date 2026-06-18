@@ -463,7 +463,7 @@ footer.ft { background: var(--navy-deep); color: rgba(255,255,255,0.7); padding:
 .ft-mail:hover { color: var(--orange); }
 .ft-mail-row { display: flex; flex-direction: column; gap: 2px; }
 .ft-mail-row .ft-mail { font-size: 15px; word-break: break-word; }
-.socials { display: flex; gap: 10px; margin-top: 22px; }
+.socials { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
 .social { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--navy-line); display: grid; place-items: center; transition: border-color .2s var(--ease), background .2s var(--ease), transform .2s var(--ease); }
 .social:hover { border-color: var(--orange); background: rgba(255,106,43,0.1); transform: translateY(-2px); }
 .social svg { width: 16px; height: 16px; fill: rgba(255,255,255,0.7); }
