@@ -18,11 +18,16 @@ const COUNTRIES = [
 // Markets we serve (clients), shown in the info panel.
 const MARKETS = ["United States", "Pakistan", "Bahrain"];
 
-// Where we operate (delivery + on-the-ground presence). City and email are
-// placeholders to be confirmed; a city plus contact email is acceptable for now.
-const OPERATE = [
+// Where we operate (delivery + on-the-ground presence). USA and Bahrain notes are
+// generic until full addresses are confirmed.
+const OPERATE: { country: string; note: string; address?: string; phone?: string }[] = [
   { country: "United States", note: "Local presence" },
-  { country: "Pakistan", note: "Primary delivery center" },
+  {
+    country: "Pakistan",
+    note: "Primary delivery center",
+    address: "Plot 1-E, Lower Ground Floor, Ali Plaza, Blue Area, Islamabad, Pakistan",
+    phone: "+92 309 6661176",
+  },
   { country: "Bahrain", note: "Regional presence" },
 ];
 
@@ -298,6 +303,19 @@ export default function ContactMain() {
               <div className="contact-line">
                 <div className="ic">
                   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M6.6 3.5l2.2-.4 1.6 3.6-1.8 1.3a11.5 11.5 0 0 0 4.9 4.9l1.3-1.8 3.6 1.6-.4 2.2a1.7 1.7 0 0 1-1.9 1.4A14.5 14.5 0 0 1 5.2 5.4 1.7 1.7 0 0 1 6.6 3.5z" stroke="#0F1E3D" strokeWidth="1.5" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <div>
+                  <div className="k">Phone</div>
+                  <a className="v v-link" href="tel:+923096661176">
+                    +92 309 6661176
+                  </a>
+                </div>
+              </div>
+              <div className="contact-line">
+                <div className="ic">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <circle cx="12" cy="12" r="8" stroke="#0F1E3D" strokeWidth="1.6" />
                     <path d="M12 7v5l3.5 2" stroke="#FF6A2B" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -329,6 +347,12 @@ export default function ContactMain() {
                     <div>
                       <div className="k">{o.country}</div>
                       <div className="v muted">{o.note}</div>
+                      {o.address && <div className="v muted office-addr">{o.address}</div>}
+                      {o.phone && (
+                        <a className="v v-link" href={`tel:${o.phone.replace(/\s+/g, "")}`}>
+                          {o.phone}
+                        </a>
+                      )}
                     </div>
                   </div>
                 ))}

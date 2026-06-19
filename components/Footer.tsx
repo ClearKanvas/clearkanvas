@@ -132,9 +132,19 @@ export default function Footer() {
                   partnerships@clearkanvas.com
                 </a>
               </li>
+              <li className="ft-mail-row">
+                <span className="ft-loc-k">Phone</span>
+                <a className="ft-mail" href="tel:+923096661176">
+                  +92 309 6661176
+                </a>
+              </li>
               <li className="ft-loc">
                 <span className="ft-loc-k">Operating in</span>
                 USA, Pakistan, Bahrain
+              </li>
+              <li className="ft-loc">
+                <span className="ft-loc-k">Islamabad office</span>
+                Plot 1-E, Lower Ground Floor, Ali Plaza, Blue Area, Islamabad, Pakistan
               </li>
             </ul>
           </div>

@@ -836,10 +836,13 @@ a.v-link:hover { color: var(--orange-ink); }
 .presence-dot.operate { background: var(--orange); }
 .presence-dot.serve { background: var(--navy); }
 .presence-list { display: flex; flex-direction: column; gap: 14px; }
-.presence-item { display: flex; align-items: center; gap: 14px; }
+.presence-item { display: flex; align-items: flex-start; gap: 14px; }
 .presence-pin { flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 4px rgba(255,106,43,0.16); }
 .presence-name { font-family: var(--display); font-weight: 600; font-size: 18px; color: var(--navy); }
 .presence-note { display: block; font-size: 13px; color: var(--muted); margin-top: 2px; }
+.presence-phone { color: var(--navy); font-weight: 600; transition: color .2s var(--ease); }
+.presence-phone:hover { color: var(--orange-ink); }
+.office-addr { line-height: 1.4; }
 .presence-pills { display: flex; flex-wrap: wrap; gap: 10px; }
 .presence-pill { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 500; color: var(--slate); background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-pill); padding: 9px 16px; }
 .presence-pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--navy); }

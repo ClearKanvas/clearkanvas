@@ -12,9 +12,14 @@ export const metadata: Metadata = {
     "Where we serve, and where we deliver. Clients in the USA, Pakistan, and Bahrain, and growing into new markets, delivered from Pakistan.",
 };
 
-const OPERATE = [
+const OPERATE: { name: string; note: string; address?: string; phone?: string }[] = [
   { name: "United States", note: "Local presence" },
-  { name: "Pakistan", note: "Primary delivery center" },
+  {
+    name: "Pakistan",
+    note: "Primary delivery center",
+    address: "Plot 1-E, Lower Ground Floor, Ali Plaza, Blue Area, Islamabad, Pakistan",
+    phone: "+92 309 6661176",
+  },
   { name: "Bahrain", note: "Regional presence" },
 ];
 
@@ -47,6 +52,12 @@ export default function GlobalPresencePage() {
                       <span>
                         <span className="presence-name">{o.name}</span>
                         <span className="presence-note">{o.note}</span>
+                        {o.address && <span className="presence-note">{o.address}</span>}
+                        {o.phone && (
+                          <a className="presence-note presence-phone" href={`tel:${o.phone.replace(/\s+/g, "")}`}>
+                            {o.phone}
+                          </a>
+                        )}
                       </span>
                     </div>
                   ))}
