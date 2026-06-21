@@ -15,8 +15,8 @@ export default function Footer() {
               className="brand-logo ft-logo"
               src="/logo.png"
               alt="ClearKanvas Global"
-              width={160}
-              height={60}
+              width={2659}
+              height={513}
             />
             <p className="ft-tagline">Where complexity becomes clarity.</p>
             <p>

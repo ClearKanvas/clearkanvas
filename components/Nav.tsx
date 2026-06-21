@@ -45,8 +45,8 @@ export default function Nav() {
             className="brand-logo"
             src="/logo.png"
             alt="ClearKanvas Global"
-            width={160}
-            height={60}
+            width={2659}
+            height={513}
             priority
           />
         </Link>
