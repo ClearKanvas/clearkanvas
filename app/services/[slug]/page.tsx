@@ -21,6 +21,7 @@ export async function generateMetadata({
   return {
     title: `${service.name} | ClearKanvas Global`,
     description: service.summary,
+    alternates: { canonical: `/services/${service.slug}` },
   };
 }
 

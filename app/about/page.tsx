@@ -9,6 +9,7 @@ import { ABOUT_NAV } from "@/lib/services";
 
 export const metadata: Metadata = {
   title: "About | ClearKanvas Global",
+  alternates: { canonical: "/about" },
   description:
     "The story, purpose, people, and global presence behind ClearKanvas Global.",
 };

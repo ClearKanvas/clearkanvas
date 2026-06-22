@@ -8,6 +8,7 @@ import { SERVICES } from "@/lib/services";
 
 export const metadata: Metadata = {
   title: "Services | ClearKanvas Global",
+  alternates: { canonical: "/services" },
   description:
     "One partner for finance, people, technology, and operations. Engage ClearKanvas Global for one service or build an entire capability.",
 };

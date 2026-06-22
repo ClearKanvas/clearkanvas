@@ -6,6 +6,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "Contact ClearKanvas Global: Where complexity becomes clarity",
+  alternates: { canonical: "/contact" },
   description:
     "Tell us where the complexity is and we will show you how we can help. The right person on our team will get back to you within two business days.",
 };

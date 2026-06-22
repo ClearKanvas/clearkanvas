@@ -9,6 +9,7 @@ import { HOW_WE_WORK_NAV } from "@/lib/services";
 
 export const metadata: Metadata = {
   title: "How We Work | ClearKanvas Global",
+  alternates: { canonical: "/how-we-work" },
   description:
     "Four ways to engage, one clear process, and the reasons companies choose ClearKanvas Global and our delivery base in Pakistan.",
 };
