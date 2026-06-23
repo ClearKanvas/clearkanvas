@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Schibsted_Grotesk, Inter_Tight } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import ScrollProgress from "@/components/ScrollProgress";
 import Interactions from "@/components/Interactions";
 
@@ -19,6 +21,7 @@ const body = Inter_Tight({
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.clearkanvas.com";
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const TITLE = "ClearKanvas Global: Where complexity becomes clarity";
 const DESCRIPTION =
   "ClearKanvas Global is your partner for finance, talent, technology, and operations. Expert teams that run as an extension of yours, serving clients in the USA, Pakistan, and Bahrain, and growing into new markets.";
@@ -116,7 +119,10 @@ export default function RootLayout({
         <ScrollProgress />
         <Interactions />
         {children}
+        <Analytics />
       </body>
+      {/* Google Analytics 4 loads only once NEXT_PUBLIC_GA_ID is set in Vercel. */}
+      {GA_ID ? <GoogleAnalytics gaId={GA_ID} /> : null}
     </html>
   );
 }
