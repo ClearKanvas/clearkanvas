@@ -445,6 +445,24 @@ header.nav.scrolled { box-shadow: var(--shadow-nav); border-bottom-color: var(--
 .cta-inner .hero-cta { margin-top: 34px; }
 
 /* =========================================================
+   FAQ
+   ========================================================= */
+.faq-list { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+.faq-item { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--bg); overflow: hidden; }
+.faq-q {
+  list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 20px 24px; font-family: var(--display); font-weight: 600; font-size: 18px; color: var(--navy);
+}
+.faq-q::-webkit-details-marker { display: none; }
+.faq-mark { position: relative; flex: none; width: 18px; height: 18px; }
+.faq-mark::before, .faq-mark::after { content: ""; position: absolute; background: var(--orange); border-radius: 2px; transition: transform .25s var(--ease), opacity .25s var(--ease); }
+.faq-mark::before { top: 8px; left: 0; width: 18px; height: 2px; }
+.faq-mark::after { top: 0; left: 8px; width: 2px; height: 18px; }
+.faq-item[open] .faq-mark::after { transform: rotate(90deg); opacity: 0; }
+.faq-item[open] .faq-q { color: var(--orange-ink); }
+.faq-a { padding: 0 24px 22px; color: var(--slate); font-size: 16px; line-height: 1.6; max-width: 70ch; text-wrap: pretty; }
+
+/* =========================================================
    Footer
    ========================================================= */
 footer.ft { background: var(--navy-deep); color: rgba(255,255,255,0.7); padding: 80px 0 40px; }

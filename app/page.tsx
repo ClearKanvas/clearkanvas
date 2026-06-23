@@ -7,12 +7,24 @@ import Flagship from "@/components/Flagship";
 import Values from "@/components/Values";
 import Process from "@/components/Process";
 import Markets from "@/components/Markets";
+import Faq from "@/components/Faq";
 import ClosingCTA from "@/components/ClosingCTA";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import { FAQS } from "@/lib/faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
+};
+
+const FAQ_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
 };
 
 export default function Home() {
@@ -34,11 +46,17 @@ export default function Home() {
         <Process />
         {/* 7 Markets we serve */}
         <Markets />
-        {/* 8 Final CTA */}
+        {/* 8 FAQ */}
+        <Faq />
+        {/* 9 Final CTA */}
         <ClosingCTA />
       </main>
       <Footer />
       <ScrollReveal />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSON_LD) }}
+      />
     </>
   );
 }
