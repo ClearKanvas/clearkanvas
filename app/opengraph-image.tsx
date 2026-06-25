@@ -1,8 +1,16 @@
 import { ImageResponse } from "next/og";
+import { readFileSync } from "fs";
+import { join } from "path";
 
 export const alt = "ClearKanvas Global: Where complexity becomes clarity";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+// Embed the real CK monogram (same file as the favicon) so shared link
+// previews use the actual brand mark, not drawn text.
+const markSrc = `data:image/png;base64,${readFileSync(
+  join(process.cwd(), "app", "icon.png"),
+).toString("base64")}`;
 
 export default function OgImage() {
   return new ImageResponse(
@@ -20,25 +28,10 @@ export default function OgImage() {
           fontFamily: "sans-serif",
         }}
       >
-        {/* CK brand mark (matches the favicon) */}
+        {/* CK brand mark (the real favicon monogram) */}
         <div style={{ display: "flex" }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 96,
-              height: 96,
-              borderRadius: 22,
-              background: "#FF6A2B",
-              color: "#fff",
-              fontSize: 52,
-              fontWeight: 800,
-              letterSpacing: -2,
-            }}
-          >
-            CK
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={markSrc} width={104} height={104} alt="ClearKanvas Global" />
         </div>
 
         {/* Company name (large) + tagline (smaller) */}
