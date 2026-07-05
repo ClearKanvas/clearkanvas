@@ -35,6 +35,21 @@
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
+/* TEMPORARY , live font-preview presets driven by <FontSwitcher /> (?fonts=1).
+   Remove these blocks and the candidate fonts once a pairing is chosen. */
+:root[data-font="editorial"] {
+  --display: var(--font-fraunces), Georgia, serif;
+  --body:    var(--font-hanken), system-ui, sans-serif;
+}
+:root[data-font="sans"] {
+  --display: var(--font-bricolage), system-ui, sans-serif;
+  --body:    var(--font-hanken), system-ui, sans-serif;
+}
+:root[data-font="serifbody"] {
+  --display: var(--font-bricolage), system-ui, sans-serif;
+  --body:    var(--font-newsreader), Georgia, serif;
+}
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
