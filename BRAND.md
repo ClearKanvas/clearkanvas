@@ -36,13 +36,13 @@ Both are Google Fonts, loaded via `next/font` (self-hosted at build).
 
 | Role | Font | Notes |
 |---|---|---|
-| Display / headings | **Schibsted Grotesk** | Headlines, CK wordmark, eyebrows; weights up to 800 |
-| Body / UI | **Inter Tight** | Body copy, buttons, labels |
+| Display / headings | **Fraunces** | Editorial serif. Headlines, CK wordmark, eyebrows, lead paragraphs; weights up to 900. Optical sizing auto |
+| Body / UI | **Hanken Grotesk** | Warm humanist sans. Body copy, buttons, labels |
 
-Fallback stack: `system-ui, sans-serif`
+Fallback stack: display `Georgia, serif`; body `system-ui, sans-serif`
 
-- Display var: `--display: var(--font-display), "Schibsted Grotesk", system-ui, sans-serif`
-- Body var: `--body: var(--font-body), "Inter Tight", system-ui, sans-serif`
+- Display var: `--display: var(--font-display), Fraunces, Georgia, serif`
+- Body var: `--body: var(--font-body), "Hanken Grotesk", system-ui, sans-serif`
 
 ## Other design tokens
 

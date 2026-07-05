@@ -1,39 +1,25 @@
 import type { Metadata } from "next";
-import {
-  Schibsted_Grotesk,
-  Inter_Tight,
-  Fraunces,
-  Hanken_Grotesk,
-  Newsreader,
-  Bricolage_Grotesque,
-} from "next/font/google";
+import { Fraunces, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import ScrollProgress from "@/components/ScrollProgress";
 import Interactions from "@/components/Interactions";
-import FontSwitcher from "@/components/FontSwitcher";
 
 // Variable fonts , loading without an explicit `weight` exposes the full
-// axis range, matching the prototype's 400 to 900 / 400 to 700 usage.
-const display = Schibsted_Grotesk({
+// axis range. Fraunces (expressive editorial serif) for display, Hanken
+// Grotesk (warm humanist sans) for body.
+const display = Fraunces({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
 });
 
-const body = Inter_Tight({
+const body = Hanken_Grotesk({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
 });
-
-// Candidate fonts for the temporary live preview switcher (?fonts=1).
-// Removed once a pairing is chosen.
-const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces", display: "swap" });
-const hanken = Hanken_Grotesk({ subsets: ["latin"], variable: "--font-hanken", display: "swap" });
-const newsreader = Newsreader({ subsets: ["latin"], variable: "--font-newsreader", display: "swap" });
-const bricolage = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-bricolage", display: "swap" });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.clearkanvas.com";
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
@@ -126,17 +112,13 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body
-        className={`${display.variable} ${body.variable} ${fraunces.variable} ${hanken.variable} ${newsreader.variable} ${bricolage.variable}`}
-        suppressHydrationWarning
-      >
+      <body className={`${display.variable} ${body.variable}`} suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
         />
         <ScrollProgress />
         <Interactions />
-        <FontSwitcher />
         {children}
         <Analytics />
       </body>
