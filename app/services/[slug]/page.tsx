@@ -47,7 +47,7 @@ export default async function ServicePage({
         url,
         serviceType: service.name,
         provider: { "@type": "Organization", name: "ClearKanvas Global", url: SITE_URL },
-        areaServed: ["US", "PK", "BH"],
+        areaServed: ["GCC", "MENA", "Europe", "North America", "APAC", "LATAM", "Pakistan", "United States"],
       },
       {
         "@type": "BreadcrumbList",

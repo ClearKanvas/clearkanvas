@@ -1167,3 +1167,41 @@ a.v-link:hover { color: var(--orange-ink); }
   .partners-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* =========================================================
+   Service detail , richer sections (3-service pivot)
+   ========================================================= */
+.svc-hero-exp { display: inline-block; font-family: var(--display); font-weight: 800; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); }
+
+.cov-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; }
+.cov-chip { padding: 10px 18px; border: 1px solid var(--line); border-radius: var(--r-pill); background: var(--bg-warm); font-family: var(--display); font-weight: 600; font-size: 15px; color: var(--navy); }
+
+.cov-rows { margin-top: 34px; border-top: 1px solid var(--line); }
+.cov-row { display: grid; grid-template-columns: 220px 1fr; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.cov-row .cov-r { font-family: var(--display); font-weight: 700; font-size: 17px; color: var(--navy); }
+.cov-row .cov-m { color: var(--slate); font-size: 15px; line-height: 1.5; }
+
+.roles-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; margin-top: 36px; }
+.role-col h3 { font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
+.role-list { display: flex; flex-direction: column; gap: 11px; }
+
+.spec-block { margin-top: 56px; padding-top: 44px; border-top: 1px solid var(--line); }
+.spec-eyebrow { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange-ink); }
+.spec-head h3 { margin-top: 12px; font-size: clamp(24px, 3vw, 34px); font-weight: 700; letter-spacing: -0.02em; color: var(--navy); }
+.spec-head p { margin-top: 12px; color: var(--muted); font-size: 16px; max-width: 60ch; }
+.spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 28px; }
+.spec-card { border: 1px solid var(--line); border-radius: var(--r-md); padding: 20px; background: #fff; transition: box-shadow .25s var(--ease), transform .25s var(--ease); }
+.spec-card:hover { box-shadow: var(--shadow-card); transform: translateY(-2px); }
+.spec-card .spec-d { font-family: var(--display); font-weight: 800; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange-ink); }
+.spec-card p { margin-top: 9px; font-size: 13px; color: var(--slate); line-height: 1.55; }
+
+.incl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 34px; margin-top: 34px; }
+.incl-item { display: flex; gap: 12px; font-size: 15.5px; color: var(--slate); line-height: 1.55; }
+.incl-item svg { flex: none; margin-top: 3px; }
+
+@media (max-width: 860px) {
+  .roles-cols { grid-template-columns: 1fr; gap: 30px; }
+  .spec-grid { grid-template-columns: 1fr; }
+  .incl-grid { grid-template-columns: 1fr; }
+  .cov-row { grid-template-columns: 1fr; gap: 4px; }
+}
