@@ -104,8 +104,7 @@ export default function Hero() {
         </h1>
         <p className="hero-sub reveal">
           ClearKanvas Global finds your people, employs them compliantly, and runs the day to
-          day, so you can grow into any market without setting up in one. 25+ years in
-          recruitment, 5+ years in Employer of Record and offshore staffing.
+          day, so you can grow into any market without setting up in one.
         </p>
         <div className="hero-cta reveal">
           <Link className="btn btn-primary" href="/contact">
