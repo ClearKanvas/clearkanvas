@@ -38,11 +38,14 @@ export default function FlowSteps({ steps }: { steps: ServiceStep[] }) {
   }, []);
 
   const n = steps.length;
+  // Up to 4 steps lay out as a horizontal row on wider screens; longer flows
+  // stay as a vertical timeline so they always fit without sideways scrolling.
+  const layout = n <= 4 ? "flow flow-row" : "flow";
 
   return (
     <div
       ref={ref}
-      className="flow"
+      className={layout}
       style={{ ["--flow-n" as string]: String(n) } as CSSProperties}
     >
       <div className="flow-track" aria-hidden="true">

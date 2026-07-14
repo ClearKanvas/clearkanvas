@@ -47,6 +47,8 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* Safety net: nothing should ever push a horizontal scrollbar. */
+  overflow-x: clip;
 }
 h1,h2,h3,h4 { font-family: var(--display); color: var(--navy); margin: 0; line-height: 1.04; letter-spacing: -0.02em; font-weight: 700; }
 p { margin: 0; }
@@ -1208,27 +1210,32 @@ a.v-link:hover { color: var(--orange-ink); }
 
 /* =========================================================
    FlowSteps , animated "how it works" explainer
+   Vertical timeline by default (always fits, any step count).
+   Short flows (.flow-row) go horizontal when there is room.
    ========================================================= */
 .flow { position: relative; margin-top: 48px; }
+
+/* Vertical timeline (default) */
 .flow-track {
-  position: absolute; top: 30px; height: 2px; border-radius: 2px;
-  left: calc(50% / var(--flow-n)); right: calc(50% / var(--flow-n));
-  background: var(--line); overflow: hidden; z-index: 0;
+  position: absolute; top: 30px; bottom: 30px; left: 29px; width: 2px;
+  background: var(--line); border-radius: 2px; overflow: hidden; z-index: 0;
 }
 .flow-fill {
-  display: block; height: 100%; width: 0;
-  background: linear-gradient(90deg, var(--orange), var(--orange-ink));
-  transition: width 1.5s var(--ease);
+  display: block; width: 100%; height: 0;
+  background: linear-gradient(180deg, var(--orange), var(--orange-ink));
+  transition: height 1.5s var(--ease);
 }
-.flow.in .flow-fill { width: 100%; }
+.flow.in .flow-fill { height: 100%; }
 
-.flow-steps {
-  position: relative; z-index: 1; list-style: none; margin: 0; padding: 0;
-  display: grid; grid-template-columns: repeat(var(--flow-n), 1fr); gap: 18px;
+.flow-steps { position: relative; z-index: 1; list-style: none; margin: 0; padding: 0; }
+.flow-step {
+  display: grid; grid-template-columns: 60px 1fr; column-gap: 18px;
+  align-items: start; text-align: left; padding: 0 0 34px; min-width: 0;
 }
-.flow-step { text-align: center; padding: 0 12px; }
+.flow-step:last-child { padding-bottom: 0; }
 .flow-node {
-  width: 60px; height: 60px; border-radius: 50%; margin: 0 auto;
+  grid-column: 1; grid-row: 1 / span 2;
+  width: 60px; height: 60px; border-radius: 50%;
   display: grid; place-items: center; position: relative; z-index: 2;
   background: var(--bg); border: 2px solid var(--line);
   transition: border-color .45s var(--ease), background .45s var(--ease),
@@ -1240,33 +1247,36 @@ a.v-link:hover { color: var(--orange-ink); }
   transition: color .45s var(--ease); transition-delay: inherit;
 }
 .flow.in .flow-node {
-  border-color: var(--orange); background: #FFF4EE; transform: translateY(-2px);
+  border-color: var(--orange); background: #FFF4EE;
   box-shadow: 0 12px 28px -14px rgba(255,106,43,0.65);
 }
 .flow.in .flow-num { color: var(--orange-ink); }
-.flow-step h3 { font-size: 18px; margin-top: 18px; }
-.flow-step p { margin-top: 8px; color: var(--slate); font-size: 15px; }
+.flow-step h3 { grid-column: 2; grid-row: 1; font-size: 18px; margin-top: 14px; overflow-wrap: break-word; }
+.flow-step p { grid-column: 2; grid-row: 2; margin-top: 8px; color: var(--slate); font-size: 15px; overflow-wrap: break-word; }
 
 .flow.reduce .flow-fill,
 .flow.reduce .flow-node,
 .flow.reduce .flow-num { transition: none; }
 
-@media (max-width: 760px) {
-  .flow-steps { grid-template-columns: 1fr; gap: 0; }
-  .flow-step {
-    display: grid; grid-template-columns: 60px 1fr; column-gap: 18px;
-    align-items: start; text-align: left; padding: 0 0 34px;
+/* Horizontal row , only for short flows on wider screens */
+@media (min-width: 761px) {
+  .flow-row .flow-track {
+    top: 30px; bottom: auto; height: 2px; width: auto;
+    left: calc(50% / var(--flow-n)); right: calc(50% / var(--flow-n));
   }
-  .flow-step:last-child { padding-bottom: 0; }
-  .flow-node { grid-column: 1; grid-row: 1 / span 2; }
-  .flow-step h3 { grid-column: 2; grid-row: 1; margin-top: 14px; }
-  .flow-step p { grid-column: 2; grid-row: 2; }
-  .flow-track {
-    top: 30px; bottom: 30px; height: auto; width: 2px;
-    left: 29px; right: auto;
+  .flow-row .flow-fill {
+    width: 0; height: 100%;
+    background: linear-gradient(90deg, var(--orange), var(--orange-ink));
+    transition: width 1.5s var(--ease);
   }
-  .flow-fill { width: 100%; height: 0; transition: height 1.5s var(--ease); }
-  .flow.in .flow-fill { width: 100%; height: 100%; }
+  .flow-row.in .flow-fill { width: 100%; }
+  .flow-row .flow-steps {
+    display: grid; grid-template-columns: repeat(var(--flow-n), 1fr); gap: 18px;
+  }
+  .flow-row .flow-step { display: block; text-align: center; padding: 0 12px; }
+  .flow-row .flow-node { margin: 0 auto; }
+  .flow-row.in .flow-node { transform: translateY(-2px); }
+  .flow-row .flow-step h3 { margin-top: 18px; }
 }
 
 /* =========================================================
