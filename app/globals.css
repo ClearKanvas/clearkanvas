@@ -1102,6 +1102,31 @@ a.v-link:hover { color: var(--orange-ink); }
 .hero-trust li { display: flex; flex-direction: column; gap: 3px; }
 .ht-num { font-family: var(--display); font-weight: 800; font-size: clamp(22px, 2.4vw, 30px); line-height: 1; letter-spacing: -0.02em; color: var(--navy); }
 .ht-lbl { font-size: 13px; color: var(--muted); letter-spacing: 0.01em; }
+.ht-count { font-variant-numeric: tabular-nums; }
+
+/* Premium motion: cursor spotlight (follows pointer, behind the text) */
+.hero-spot {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(440px 440px at var(--mx, 72%) var(--my, 26%), rgba(255,106,43,0.16), transparent 68%);
+  transition: background .18s ease-out;
+}
+/* Premium motion: slow shimmer across the single accent word */
+.hero-h1 .rotor-accent {
+  background: linear-gradient(100deg, var(--orange) 0%, #ffb98f 45%, var(--orange) 82%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: heroShimmer 4.8s linear infinite;
+}
+@keyframes heroShimmer { to { background-position: -250% 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-spot { display: none; }
+  .hero-h1 .rotor-accent {
+    animation: none; background: none;
+    -webkit-text-fill-color: var(--orange); color: var(--orange);
+  }
+}
 
 /* Regions */
 .regions-split { display: grid; grid-template-columns: 0.9fr 1.4fr; gap: 40px; margin-top: 40px; align-items: start; }

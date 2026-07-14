@@ -66,16 +66,17 @@ const MARQUEE_ITEMS: { label: string; icon: ReactNode }[] = [
 ];
 
 const TRUST = [
-  { num: "25+ years", label: "in recruitment" },
-  { num: "5+ years", label: "in EOR and offshoring" },
-  { num: "2 offices", label: "Pakistan and USA" },
-  { num: "6 regions", label: "of talent" },
+  { n: 25, suf: "+", unit: "years", label: "in recruitment" },
+  { n: 5, suf: "+", unit: "years", label: "in EOR and offshoring" },
+  { n: 2, suf: "", unit: "offices", label: "Pakistan and USA" },
+  { n: 6, suf: "", unit: "regions", label: "of talent" },
 ];
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const heroRef = useRef<HTMLElement>(null);
 
-  // Animated gradient orb field , airy navy + orange drift.
+  // Animated gradient orb field , airy navy + orange drift (the aurora).
   useEffect(() => {
     return orbField(
       canvasRef.current,
@@ -90,12 +91,58 @@ export default function Hero() {
     );
   }, []);
 
+  // Cursor spotlight (follows the pointer) + count-up stats on view.
+  useEffect(() => {
+    const hero = heroRef.current;
+    if (!hero) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const onMove = (e: PointerEvent) => {
+      const r = hero.getBoundingClientRect();
+      hero.style.setProperty("--mx", `${((e.clientX - r.left) / r.width) * 100}%`);
+      hero.style.setProperty("--my", `${((e.clientY - r.top) / r.height) * 100}%`);
+    };
+    if (!reduce) hero.addEventListener("pointermove", onMove);
+
+    const nums = Array.from(hero.querySelectorAll<HTMLElement>(".ht-count"));
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (!en.isIntersecting) return;
+          const el = en.target as HTMLElement;
+          const to = Number(el.dataset.to || "0");
+          if (reduce) {
+            el.textContent = String(to);
+          } else {
+            const start = performance.now();
+            const step = (now: number) => {
+              const p = Math.min(1, (now - start) / 1100);
+              const e = 1 - Math.pow(1 - p, 3);
+              el.textContent = String(Math.round(to * e));
+              if (p < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+          }
+          io.unobserve(el);
+        });
+      },
+      { threshold: 0.6 },
+    );
+    nums.forEach((n) => io.observe(n));
+
+    return () => {
+      hero.removeEventListener("pointermove", onMove);
+      io.disconnect();
+    };
+  }, []);
+
   return (
-    <section className="hero">
+    <section className="hero" ref={heroRef}>
       <div className="hero-bg" aria-hidden="true">
         <div className="hero-aurora"></div>
         <canvas className="orb-canvas" id="heroCanvas" ref={canvasRef}></canvas>
         <div className="hero-grid-dots"></div>
+        <div className="hero-spot"></div>
       </div>
       <div className="wrap hero-inner">
         <span className="eyebrow reveal">ClearKanvas Global</span>
@@ -116,8 +163,11 @@ export default function Hero() {
         </div>
         <ul className="hero-trust reveal" aria-label="Key facts">
           {TRUST.map((t) => (
-            <li key={t.num}>
-              <span className="ht-num">{t.num}</span>
+            <li key={t.label}>
+              <span className="ht-num">
+                <span className="ht-count" data-to={t.n}>{t.n}</span>
+                {t.suf} {t.unit}
+              </span>
               <span className="ht-lbl">{t.label}</span>
             </li>
           ))}
