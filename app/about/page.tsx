@@ -19,6 +19,20 @@ const BLURB: Record<string, string> = {
   "Team & Offices": "The people behind ClearKanvas, and where we operate from.",
 };
 
+// Evergreen brand statements, kept broad so they hold as the business grows.
+const PMV = [
+  { k: "Our purpose", v: "To turn complexity into clarity, so businesses can grow without limits." },
+  { k: "Our mission", v: "We give companies what they need to grow across borders: the right people, the right capabilities, and a partner who owns the outcome." },
+  { k: "Our vision", v: "A world where no company is held back by borders, distance, or complexity." },
+];
+
+const VALUES = [
+  { t: "Clarity", d: "We turn the complex into the simple, in everything we build and every conversation we have." },
+  { t: "Excellence", d: "Good enough is never the standard. We deliver work we are proud to put our name to." },
+  { t: "Integrity", d: "We do what is right, especially when no one is watching." },
+  { t: "Partnership", d: "We own what we promise. Our clients' success is the only measure that matters." },
+];
+
 export default function AboutPage() {
   return (
     <>
@@ -45,6 +59,42 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+        {/* Purpose, Mission, Vision */}
+        <section className="section">
+          <div className="wrap">
+            <div className="head reveal">
+              <span className="eyebrow">What we stand for</span>
+              <h2>What we stand for, whatever we build</h2>
+            </div>
+            <div className="pmv-grid" data-stagger>
+              {PMV.map((x) => (
+                <div className="pmv-card" key={x.k}>
+                  <span className="pmv-k">{x.k}</span>
+                  <p>{x.v}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Values */}
+        <section className="section values">
+          <div className="wrap">
+            <div className="head reveal">
+              <span className="eyebrow">Our values</span>
+              <h2>The principles behind every engagement</h2>
+            </div>
+            <div className="vlist-grid" data-stagger>
+              {VALUES.map((v) => (
+                <div className="vlist-card" key={v.t}>
+                  <h3>{v.t}</h3>
+                  <p>{v.d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="section cta-band cta-band-static">
           <div className="wrap cta-inner reveal">
             <h2>Tell us who you need.</h2>
