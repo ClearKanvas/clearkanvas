@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
+import BrandFilm from "@/components/BrandFilm";
 import Regions from "@/components/Regions";
 import Partners from "@/components/Partners";
 import Team from "@/components/Team";
@@ -34,7 +35,9 @@ export default function Home() {
         <Hero />
         {/* 2 Core services (3 cards) */}
         <Services />
-        {/* 3 Regions we cover (offices vs markets served) */}
+        {/* 3 Brand film (video-ready band) */}
+        <BrandFilm />
+        {/* 4 Regions we cover (offices vs markets served) */}
         <Regions />
         {/* 4 Industry partners */}
         <Partners />

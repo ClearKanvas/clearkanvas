@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import Arrow from "./Arrow";
+import FlowSteps from "./FlowSteps";
 import { orbField } from "@/lib/orbField";
 import { SERVICES, type Service } from "@/lib/services";
 
@@ -162,15 +163,7 @@ export default function ServiceDetail({ service }: { service: Service }) {
             <span className="eyebrow">How it works</span>
             <h2>A clear, repeatable process</h2>
           </div>
-          <div className="engage-grid" data-stagger>
-            {service.how.map((step, i) => (
-              <div className="engage-step" key={step.title}>
-                <span className="engage-num">{String(i + 1).padStart(2, "0")}</span>
-                <h3>{step.title}</h3>
-                <p>{step.desc}</p>
-              </div>
-            ))}
-          </div>
+          <FlowSteps steps={service.how} />
         </div>
       </section>
 
