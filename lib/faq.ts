@@ -7,30 +7,30 @@ export interface Faq {
 export const FAQS: Faq[] = [
   {
     q: "What does ClearKanvas Global do?",
-    a: "ClearKanvas Global builds and runs the finance, talent, technology, and operations functions that growing companies struggle to staff well. We do not just advise. We design the solution, then run it as an extension of your team. Engage us for one service or an entire offshore capability.",
+    a: "We help companies hire the right people anywhere in the world, through three services: Recruitment, Employer of Record (EOR), and Staff Offshoring. We find your talent, employ them compliantly, and can run the day to day for you. Start with one service or use all three.",
   },
   {
-    q: "Where is ClearKanvas Global based, and where do you operate?",
-    a: "We operate in the USA, Pakistan, and Bahrain, with our primary delivery center in Islamabad, Pakistan. We serve clients across these markets and are growing into new ones.",
+    q: "Which regions do you cover?",
+    a: "Our offices are in Pakistan and the United States, and we recruit, employ, and deploy talent across the GCC, MENA, Europe, North America, APAC, and LATAM.",
   },
   {
-    q: "What services do you offer?",
-    a: "Eight, across three areas. Finance and performance: Finance & Accounting, and Reporting & Business Intelligence. People and operations: Global Capability Centers & Offshore Teams, HR & Talent, and Customer Experience & BPO. Technology and change: AI & Intelligent Automation, Technology & Digital, and Advisory & Transformation.",
+    q: "What is the difference between Recruitment, EOR, and Offshoring?",
+    a: "Recruitment places a permanent hire on your payroll. EOR lets you employ someone in a country where you have no legal entity, with us as the compliant legal employer. Offshoring gives you a dedicated full time team member who works only for you while we handle their employment.",
   },
   {
-    q: "Can I hire just one service, or build a full team?",
-    a: "Both. You can engage us for a single function, such as bookkeeping or customer support, or use our flagship model to stand up a dedicated offshore team in Pakistan that works to your standards, in your tools, on your hours. Either way, we own the outcome.",
+    q: "What roles do you recruit for?",
+    a: "Technical roles (engineering, DevOps, data, AI/ML, QA, design, prompt engineering), non-technical roles (sales, marketing, operations, finance, HR), and specialized fintech and compliance roles (SaaS, Payments, IDV, AML, KYC).",
   },
   {
-    q: "How is ClearKanvas Global different from a typical outsourcing provider?",
-    a: "Most providers hand you a deck or rent you seats. We advise, build, and run. The people who scope your engagement are the people accountable for it, so you get judgment from the first call, not just throughput once the contract is signed.",
+    q: "How does your recruitment fee work?",
+    a: "We work on a no placement, no fee basis: you pay only when you successfully hire a candidate we introduce, and every placement is backed by a replacement guarantee window. We will share the specifics on a short discovery call.",
   },
   {
-    q: "Why deliver from Pakistan?",
-    a: "Pakistan offers a large, skilled, English-speaking talent pool at a meaningful cost advantage to Western markets, with time-zone overlap with the Gulf and a full working-day handoff to North America. We turn that into a managed, reliable capability, not a race to the cheapest seat.",
+    q: "Can you employ someone for us in a country where we have no entity?",
+    a: "Yes. That is exactly what our EOR service does. We become the legal employer of record and handle contracts, payroll, tax, and compliance under local law.",
   },
   {
     q: "How do we get started?",
-    a: "Tell us what you are trying to build through our contact form, or email hello@clearkanvas.com or call +92 309 6661176. A real person replies within one business day, usually starting with a short discovery call.",
+    a: "Tell us who you need through our contact form, email hello@clearkanvas.com, or call +92 309 6661176. A real person replies within one business day, usually with a short discovery call.",
   },
 ];

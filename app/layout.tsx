@@ -1,31 +1,24 @@
 import type { Metadata } from "next";
-import { Fraunces, Hanken_Grotesk } from "next/font/google";
+import { Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import ScrollProgress from "@/components/ScrollProgress";
 import Interactions from "@/components/Interactions";
 
-// Variable fonts , loading without an explicit `weight` exposes the full
-// axis range. Fraunces (expressive editorial serif) for display, Hanken
-// Grotesk (warm humanist sans) for body.
-const display = Fraunces({
+// Single typeface site-wide: Hanken Grotesk (warm humanist sans). Loaded as a
+// variable font, hierarchy comes from size + weight, not from mixing families.
+const sans = Hanken_Grotesk({
   subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const body = Hanken_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-body",
+  variable: "--font-sans",
   display: "swap",
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.clearkanvas.com";
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
-const TITLE = "ClearKanvas Global: Where complexity becomes clarity";
+const TITLE = "ClearKanvas Global: Global Recruitment, EOR & Staff Offshoring";
 const DESCRIPTION =
-  "ClearKanvas Global is your partner for finance, talent, technology, and operations. Expert teams that run as an extension of yours, serving clients in the USA, Pakistan, and Bahrain, and growing into new markets.";
+  "ClearKanvas Global helps companies hire the right people anywhere in the world: recruitment, Employer of Record (EOR), and staff offshoring. 25+ years in recruitment, 5+ years in EOR and offshore staffing, across the GCC, MENA, Europe, North America, and beyond.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -79,14 +72,14 @@ const JSON_LD = {
       description: DESCRIPTION,
       email: "hello@clearkanvas.com",
       telephone: "+92 309 6661176",
-      slogan: "Where complexity becomes clarity.",
+      slogan: "The right people, anywhere in the world.",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Plot 1-E, Lower Ground Floor, Ali Plaza, Blue Area",
         addressLocality: "Islamabad",
         addressCountry: "PK",
       },
-      areaServed: ["US", "PK", "BH"],
+      areaServed: ["GCC", "MENA", "Europe", "North America", "APAC", "LATAM", "Pakistan", "United States"],
       sameAs: [
         "https://www.linkedin.com/company/clearkanvas-global/",
         "https://www.facebook.com/share/1BGMJ9UgF2/?mibextid=wwXIfr",
@@ -112,7 +105,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${display.variable} ${body.variable}`} suppressHydrationWarning>
+      <body className={sans.variable} suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}

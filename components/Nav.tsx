@@ -8,9 +8,6 @@ import {
   SERVICE_GROUPS,
   servicesByGroup,
   FLAGSHIP_SERVICE,
-  INDUSTRIES,
-  industrySlug,
-  HOW_WE_WORK_NAV,
   ABOUT_NAV,
 } from "@/lib/services";
 
@@ -95,16 +92,16 @@ export default function Nav() {
               </div>
               <div className="mega-feature">
                 <p className="mega-feature-title">
-                  Build your offshore team in weeks, not months.
+                  25+ years placing the right people, in any region.
                 </p>
-                <p className="mega-feature-sub">Dedicated teams, fully managed.</p>
+                <p className="mega-feature-sub">Recruitment is our flagship.</p>
                 <div className="mega-feature-cta">
                   <Link
                     className="btn btn-primary btn-sm"
                     href={`/services/${FLAGSHIP_SERVICE.slug}`}
                     onClick={close}
                   >
-                    Explore GCC <Arrow />
+                    Explore recruitment <Arrow />
                   </Link>
                   <Link className="mega-feature-link" href="/contact" onClick={close}>
                     Book a discovery call
@@ -114,28 +111,10 @@ export default function Nav() {
             </div>
           </div>
 
-          {/* INDUSTRIES , dropdown */}
-          <Dropdown
-            label="Industries"
-            href="/industries"
-            open={openItem === "Industries"}
-            onToggle={() => toggleItem("Industries")}
-            onNavigate={close}
-            items={INDUSTRIES.map((name) => ({
-              href: `/industries#${industrySlug(name)}`,
-              label: name,
-            }))}
-          />
-
-          {/* HOW WE WORK , dropdown */}
-          <Dropdown
-            label="How We Work"
-            href="/how-we-work"
-            open={openItem === "How We Work"}
-            onToggle={() => toggleItem("How We Work")}
-            onNavigate={close}
-            items={HOW_WE_WORK_NAV}
-          />
+          {/* REGIONS , plain link */}
+          <Link className="nav-item-link" href="/#regions" onClick={close}>
+            Regions
+          </Link>
 
           {/* ABOUT , dropdown */}
           <Dropdown
@@ -155,7 +134,7 @@ export default function Nav() {
 
         <div className="nav-right">
           <Link className="btn btn-primary btn-sm" href="/contact" onClick={close}>
-            Book a discovery call <Arrow />
+            Request Talent <Arrow />
           </Link>
           <button
             className="btn btn-ghost btn-sm nav-toggle"

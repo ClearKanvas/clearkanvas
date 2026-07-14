@@ -6,15 +6,14 @@ import Arrow from "./Arrow";
 import { orbField } from "@/lib/orbField";
 
 const MARQUEE_ITEMS = [
-  "Talent Acquisition",
-  "HR Shared Services",
-  "Training & Development",
-  "Bookkeeping & Reporting",
-  "Accounts Payable",
-  "Payroll Coordination",
-  "Customer Support",
-  "Back Office Administration",
+  "Recruitment",
+  "Employer of Record",
+  "Staff Offshoring",
+  "Tech & Non-Tech Roles",
+  "Fintech & Compliance Hiring",
+  "Global Payroll",
   "Dedicated Teams",
+  "Every Region, Every Role",
 ];
 
 export default function Hero() {
@@ -45,27 +44,29 @@ export default function Hero() {
       <div className="wrap hero-inner">
         <span className="eyebrow reveal">ClearKanvas Global</span>
         <h1 className="hero-h1 reveal">
-          Build a <span className="rotor-accent">world-class</span> business function.
+          The right people,
           <br />
-          Without building it alone.
+          <span className="rotor-accent">anywhere</span> in the world.
         </h1>
-        <p className="hero-tagline reveal">
-          Where complexity becomes <span className="rotor-accent">clarity</span>.
-        </p>
         <p className="hero-sub reveal">
-          ClearKanvas Global brings the right expertise to
-          your finance, talent, technology, and operations, so your teams scale without the
-          overhead. Trusted by clients in the USA, Pakistan, and Bahrain, and growing into new
-          markets.
+          ClearKanvas Global finds your people, employs them compliantly, and runs the day to
+          day, so you can grow into any market without setting up in one. 25+ years in
+          recruitment, 5+ years in Employer of Record and offshore staffing.
         </p>
         <div className="hero-cta reveal">
           <Link className="btn btn-primary" href="/contact">
-            Book a discovery call <Arrow size={15} />
+            Book a Discovery Call <Arrow size={15} />
           </Link>
-          <Link className="btn btn-ghost" href="/services">
-            Explore our services
+          <Link className="btn btn-ghost" href="/#regions">
+            See regions we cover
           </Link>
         </div>
+        <ul className="hero-trust reveal" aria-label="Key facts">
+          <li><strong>25+ years</strong> in recruitment</li>
+          <li><strong>5+ years</strong> in EOR and offshoring</li>
+          <li><strong>2 offices</strong> (Pakistan, USA)</li>
+          <li><strong>6 regions</strong> of talent</li>
+        </ul>
       </div>
       {/* Marquee of functions , items doubled for a seamless loop */}
       <div className="marquee" aria-hidden="true">

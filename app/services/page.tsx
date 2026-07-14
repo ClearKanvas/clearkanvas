@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Services | ClearKanvas Global",
   alternates: { canonical: "/services" },
   description:
-    "One partner for finance, people, technology, and operations. Engage ClearKanvas Global for one service or build an entire capability.",
+    "Global Recruitment, Employer of Record (EOR), and Staff Offshoring. Engage ClearKanvas Global for one service or all three.",
 };
 
 export default function ServicesPage() {
@@ -23,12 +23,12 @@ export default function ServicesPage() {
             <div className="head reveal">
               <span className="eyebrow">Services</span>
               <h1 className="svc-index-title">
-                One partner for finance, people, technology, and operations
+                Recruitment, Employer of Record, and Staff Offshoring
               </h1>
               <p>
-                ClearKanvas Global brings together the functions that keep a business running and
-                gives you a single, expert team to run them. Engage us for one service or
-                build an entire capability. Either way, we own the outcome.
+                Three ways to put the right people in your business: find them, employ them
+                compliantly, and run them long term. Start with one service or use all three.
+                Either way, we own the outcome.
               </p>
             </div>
           </div>
@@ -61,8 +61,8 @@ export default function ServicesPage() {
 
         <section className="section cta-band cta-band-static">
           <div className="wrap cta-inner reveal">
-            <h2>Not sure which function to start with?</h2>
-            <p>Tell us where the complexity is and we will point you to the right team.</p>
+            <h2>Not sure which service to start with?</h2>
+            <p>Tell us who you need and we will point you to the right team.</p>
             <div className="hero-cta">
               <Link className="btn btn-primary" href="/contact">
                 Book a discovery call <Arrow size={15} />

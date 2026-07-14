@@ -18,10 +18,10 @@ export default function Footer() {
               width={2659}
               height={513}
             />
-            <p className="ft-tagline">Where complexity becomes clarity.</p>
+            <p className="ft-tagline">The right people, anywhere in the world.</p>
             <p>
-              An expert team that builds and runs the finance, talent, technology, and
-              operations functions growing companies struggle to staff well.
+              Global Recruitment, Employer of Record, and Staff Offshoring. We find your talent,
+              employ it compliantly, and run the day to day, so you can hire in any market.
             </p>
             <div className="socials">
               <a
@@ -104,8 +104,8 @@ export default function Footer() {
             <h4>Company</h4>
             <ul>
               <li><Link href="/about">About</Link></li>
-              <li><Link href="/how-we-work">How We Work</Link></li>
-              <li><Link href="/industries">Industries</Link></li>
+              <li><Link href="/#regions">Regions</Link></li>
+              <li><Link href="/#team">Team &amp; Offices</Link></li>
               <li><Link href="/contact">Contact</Link></li>
             </ul>
           </div>
@@ -139,8 +139,8 @@ export default function Footer() {
                 </a>
               </li>
               <li className="ft-loc">
-                <span className="ft-loc-k">Operating in</span>
-                USA, Pakistan, Bahrain
+                <span className="ft-loc-k">Offices</span>
+                Pakistan (delivery hub) and United States (Virginia)
               </li>
               <li className="ft-loc">
                 <span className="ft-loc-k">Islamabad office</span>

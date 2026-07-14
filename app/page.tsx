@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import Positioning from "@/components/Positioning";
 import Services from "@/components/Services";
-import Flagship from "@/components/Flagship";
-import Values from "@/components/Values";
-import Process from "@/components/Process";
-import Markets from "@/components/Markets";
+import Regions from "@/components/Regions";
+import Partners from "@/components/Partners";
+import Team from "@/components/Team";
 import Faq from "@/components/Faq";
 import ClosingCTA from "@/components/ClosingCTA";
 import Footer from "@/components/Footer";
@@ -32,23 +30,19 @@ export default function Home() {
     <>
       <Nav />
       <main id="top">
-        {/* 1 Hero */}
+        {/* 1 Hero , global positioning across the 3 core services */}
         <Hero />
-        {/* 2 Positioning strip */}
-        <Positioning />
-        {/* 3 What we do (8 services) */}
+        {/* 2 Core services (3 cards) */}
         <Services />
-        {/* 4 Flagship spotlight (GCC) */}
-        <Flagship />
-        {/* 5 Why ClearKanvas Global (4 pillars) */}
-        <Values />
-        {/* 6 How we work teaser */}
-        <Process />
-        {/* 7 Markets we serve */}
-        <Markets />
-        {/* 8 FAQ */}
+        {/* 3 Regions we cover (offices vs markets served) */}
+        <Regions />
+        {/* 4 Industry partners */}
+        <Partners />
+        {/* 5 Team + offices */}
+        <Team />
+        {/* 6 FAQ */}
         <Faq />
-        {/* 9 Final CTA */}
+        {/* 7 Final CTA */}
         <ClosingCTA />
       </main>
       <Footer />

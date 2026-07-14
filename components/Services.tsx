@@ -8,11 +8,10 @@ export default function Services() {
       <div className="wrap">
         <div className="head reveal">
           <span className="eyebrow">What we do</span>
-          <h2>One partner for the functions that run your business</h2>
+          <h2>Three ways we put the right people in your business</h2>
           <p>
-            From keeping your books clean to building an entire offshore team, ClearKanvas Global
-            covers the operational backbone most companies struggle to staff well. Pick a
-            single service or build a complete function with us.
+            One partner for finding talent, employing it compliantly, and running it long term.
+            Start with one service or use all three.
           </p>
         </div>
         <div className="svc-grid svc-grid-3" data-stagger>

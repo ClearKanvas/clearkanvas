@@ -15,10 +15,8 @@ export const metadata: Metadata = {
 };
 
 const BLURB: Record<string, string> = {
-  "Our Story": "Why we built a third option for growing companies.",
-  "Mission, Vision & Values": "What we are here to do, and how we work.",
-  Leadership: "The founding partners behind ClearKanvas Global.",
-  "Global Presence": "Where we serve, and where we deliver.",
+  "Our Story": "Why we built ClearKanvas Global, and who we serve.",
+  "Team & Offices": "The people behind ClearKanvas, and where we operate from.",
 };
 
 export default function AboutPage() {
@@ -28,9 +26,9 @@ export default function AboutPage() {
       <main id="top">
         <PageHero
           eyebrow="About"
-          title="A partner built by operators"
-          tagline="Experts who advise, build, and run, so complexity becomes clarity."
-          intro="ClearKanvas Global clears the operational noise that holds great companies back. Get to know our story, our purpose, the people behind it, and where we work."
+          title="Global talent, delivered by people you can name"
+          tagline="Recruitment, EOR, and offshoring, backed by real entities in Pakistan and the USA."
+          intro="ClearKanvas Global helps companies hire the right people anywhere in the world. Get to know our story and the team behind it."
         />
         <section className="section">
           <div className="wrap">
@@ -49,8 +47,8 @@ export default function AboutPage() {
         </section>
         <section className="section cta-band cta-band-static">
           <div className="wrap cta-inner reveal">
-            <h2>Let us take the complexity off your plate.</h2>
-            <p>Tell us what you are trying to build and we will show you how we can help.</p>
+            <h2>Tell us who you need.</h2>
+            <p>We will find them, employ them, and run it for you.</p>
             <div className="hero-cta">
               <Link className="btn btn-primary" href="/contact">
                 Book a discovery call <Arrow size={15} />

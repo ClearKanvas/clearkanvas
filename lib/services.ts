@@ -5,25 +5,53 @@ export interface ServiceStep {
   desc: string;
 }
 
+/** Region + delivery model row (used by EOR coverage). */
+export interface CoverageRow {
+  region: string;
+  note: string;
+}
+
+/** A specialized recruitment domain (fintech & compliance). */
+export interface SpecializedDomain {
+  domain: string;
+  desc: string;
+}
+
 export interface Service {
   slug: string;
   num: string;
   name: string;
+  /** Headline experience stat, e.g. "25+ years". */
+  experience: string;
   /** Italic one-line promise shown under the title. */
   promise: string;
-  /** Short label used on grids and the "other services" cards. */
+  /** Short label used on grids and the homepage service cards. */
   summary: string;
+  /** Hero subheadline on the detail page. */
+  heroTag: string;
   /** Opening paragraph on the detail page. */
   intro: string;
-  /** "What we do" , the sub-services, shown as a clean grid. */
+  /** "What we do" , the sub-services / roles, shown as a clean grid. */
   subServices: string[];
-  /** "How we do it" , 3 to 4 steps. */
+  /** "How we do it" , the process steps. */
   how: ServiceStep[];
-  /** "What you gain" , 3 to 4 outcome statements. */
+  /** "What you gain" , outcome statements. */
   gains: string[];
+  /** "What's included" , concrete deliverables. */
+  whatsIncluded: string[];
   /** "Why ClearKanvas Global" , short block. */
   why: string;
-  /** Flagship model gets extra emphasis. */
+  /** Simple region coverage list (recruitment, offshoring). */
+  regions?: string[];
+  /** Region + delivery model coverage (EOR). */
+  coverage?: CoverageRow[];
+  /** Technical roles (recruitment). */
+  rolesTech?: string[];
+  /** Non-technical roles (recruitment). */
+  rolesNonTech?: string[];
+  /** Fintech & compliance domains (recruitment). */
+  specialized?: SpecializedDomain[];
+  /** Flagship service gets extra emphasis. */
   flagship?: boolean;
   /** Per-service orb palette for the animated hero background. */
   orbs: Orb[];
@@ -39,267 +67,169 @@ const navyOrange = (shift = 0): Orb[] => [
 
 export const SERVICES: Service[] = [
   {
-    slug: "finance-accounting",
+    slug: "recruitment",
     num: "01",
-    name: "Finance & Accounting",
-    promise: "Build a finance function that is accurate, compliant, and ready to scale.",
-    summary: "Run your finance back office end to end.",
+    name: "Recruitment",
+    experience: "25+ years",
+    promise: "Hire the person, not the paperwork.",
+    summary:
+      "We source, screen, and place the right people for any role, tech or non-tech, in any region. You only meet candidates who genuinely fit.",
+    heroTag:
+      "For over 25 years our founding team has sourced, screened, and placed the right people across tech and non-tech roles, in every region we serve. You meet only genuine contenders, and you pay only when you hire.",
     intro:
-      "When your finances are accurate and up to date, every decision gets easier. We run the full finance back office for you, with the discipline of a dedicated team, so your books are always current, your obligations are always met, and you always know where you stand.",
+      "Great hiring is not about volume, it is about fit. We work your requirement hard before you ever see a CV, so the shortlist that lands on your desk is short for a reason: every name on it can actually do the job. From a single critical hire to an entire team, we place people who stay.",
+    regions: ["GCC", "MENA", "Europe", "North America", "APAC", "LATAM"],
+    rolesTech: [
+      "Software Engineering (frontend, backend, full-stack, mobile)",
+      "DevOps & Cloud Engineering",
+      "Data Engineering, Data Science & AI/ML",
+      "QA & Test Engineering",
+      "Product & UI/UX Design",
+      "Prompt Engineering",
+    ],
+    rolesNonTech: [
+      "Sales & Business Development",
+      "Marketing & Growth",
+      "Operations & Customer Support",
+      "Finance & Accounting",
+      "HR & People Operations",
+    ],
+    specialized: [
+      { domain: "SaaS", desc: "Sales, customer success, and engineering talent for SaaS businesses." },
+      { domain: "IT", desc: "Infrastructure, support, and technical staffing across industries." },
+      { domain: "Payments", desc: "Talent for payment processors, fintechs, and payment infrastructure providers." },
+      { domain: "IDV", desc: "People who know identity verification systems and operations." },
+      { domain: "AML", desc: "Compliance analysts and anti-money-laundering operations talent." },
+      { domain: "KYC", desc: "Know Your Customer analysts and onboarding compliance talent." },
+    ],
     subServices: [
-      "Bookkeeping & General Ledger",
-      "Accounts Payable",
-      "Accounts Receivable",
-      "Bank & Credit Card Reconciliations",
-      "Payroll Processing",
-      "Month-End & Year-End Close",
-      "Financial & Management Reporting",
-      "Budgeting & Forecasting Support",
-      "Tax Preparation Support",
-      "Audit Support",
-      "CFO Support",
-      "Finance Process Automation",
+      "Software Engineering",
+      "DevOps & Cloud",
+      "Data, AI & ML",
+      "QA & Test",
+      "Product & UI/UX",
+      "Prompt Engineering",
+      "Sales & Business Development",
+      "Marketing & Growth",
+      "Finance & Accounting",
+      "HR & People Operations",
+      "SaaS & Payments",
+      "IDV, AML & KYC",
     ],
     how: [
-      { title: "Diagnose", desc: "We start with a short diagnostic of your current books, tools, and pain points." },
-      { title: "Standardize", desc: "We standardize your chart of accounts and close calendar, and document every recurring process." },
-      { title: "Run & report", desc: "We run your books on a fixed cadence with built-in review and sign-off, and keep you visible through a shared reporting rhythm." },
+      { title: "Requirement scoping", desc: "We learn the role, the must-have skills, the timeline, and what good looks like for you." },
+      { title: "Sourcing & screening", desc: "We source from our global network and screen candidates before anyone reaches your inbox." },
+      { title: "Shortlisting", desc: "You get a curated shortlist within an agreed turnaround." },
+      { title: "Interviews", desc: "We coordinate interviews and gather structured feedback." },
+      { title: "Offer & onboarding", desc: "We support the offer, negotiation, acceptance, and first weeks." },
+      { title: "Post-placement support", desc: "A replacement guarantee window and ongoing check-ins." },
     ],
     gains: [
-      "Clean books you can trust.",
-      "A close that lands on time every month.",
-      "Fewer surprises at tax and audit.",
-      "Expert financial perspective without a full-time hire.",
+      "A shortlist that is short for a reason.",
+      "A strong hit rate: most shortlists we present go on to a hire.",
+      "No placement, no fee, our interests stay aligned with yours.",
+      "A replacement guarantee window if a hire does not work out.",
     ],
-    why: "Our finance practice is led by people who have sat in FP&A and controller seats, not just data-entry roles. You get judgment, not just throughput, which is why this is our anchor service.",
+    whatsIncluded: [
+      "Precision screening against your must-have skills and experience.",
+      "A focused shortlist, typically 3 to 5 fully assessed candidates per role.",
+      "A strong submission-to-hire success rate, because we screen hard before we submit.",
+      "Post-placement support, onboarding help, and a replacement guarantee window.",
+    ],
+    why: "25+ years of combined experience, a specialist edge in fintech and compliance hiring, and a no placement, no fee model that keeps our interests aligned with yours: we only win when you hire someone who stays.",
+    flagship: true,
     orbs: navyOrange(0.4),
   },
   {
-    slug: "fpa-reporting-bi",
+    slug: "employer-of-record",
     num: "02",
-    name: "Reporting & Business Intelligence",
-    promise: "Turn financial data into decisions, not just statements.",
-    summary: "Turn data into decisions.",
+    name: "Employer of Record",
+    experience: "5+ years",
+    promise: "Employ anyone, anywhere, compliantly.",
+    summary:
+      "Hire talent in markets where you have no legal entity. We become the compliant legal employer and handle contracts, payroll, and HR.",
+    heroTag:
+      "Hire the person you want in a country where you have no legal entity. ClearKanvas becomes their legal employer of record and takes on the contracts, payroll, tax, and compliance, so the hire is legitimate from day one and the risk never lands on you.",
     intro:
-      "Numbers only matter when they change what you do next. We turn your financial and operational data into a single, trusted view of performance, so faster and better-informed decisions become the norm rather than a monthly scramble.",
+      "Opening a legal entity in a new country is slow, expensive, and hard to unwind. EOR removes that barrier entirely. You choose the talent, we employ them properly under local law, and you get a fully compliant team member without the cost or commitment of setting up abroad. 5+ years of combined EOR and compliant-employment experience stands behind every engagement.",
+    coverage: [
+      { region: "Pakistan", note: "Direct EOR, ClearKanvas is the legal employer." },
+      { region: "GCC", note: "Direct and partner-supported EOR." },
+      { region: "MENA & Europe", note: "Partner-supported EOR." },
+      { region: "North America", note: "Partner-supported EOR via PlayRoll and Deel." },
+      { region: "APAC & LATAM", note: "Partner-supported EOR reaching well over 180 countries through our PlayRoll network." },
+    ],
     subServices: [
-      "Management Reporting Packs",
-      "KPI Dashboards & Reporting",
-      "Executive & Board Reporting",
-      "Budget vs Actual & Variance Analysis",
-      "Cash Flow Forecasting",
-      "Financial Modelling",
-      "Power BI Dashboard Development",
-      "Excel Automation",
-      "Data Visualization",
-      "Self-Service BI",
-      "Data Cleaning & Transformation",
+      "Local-law employment contracts",
+      "Payroll processing",
+      "Statutory tax filing",
+      "Benefits & leave administration",
+      "Onboarding & termination",
+      "Ongoing compliance monitoring",
     ],
     how: [
-      { title: "Agree the metrics", desc: "We agree the handful of metrics that actually move your business." },
-      { title: "Connect & automate", desc: "We connect them to your source systems and automate the pull, so reporting stops being a monthly fire drill." },
-      { title: "Design for decisions", desc: "We design dashboards a busy founder or board can read in sixty seconds, and pair every number with the so-what." },
+      { title: "You choose the talent", desc: "You pick the person you want to hire, in any market we cover." },
+      { title: "We become the legal employer", desc: "We put them on a locally compliant contract, correctly and quickly." },
+      { title: "We run payroll, compliance & HR", desc: "You manage the work. We manage everything else." },
     ],
     gains: [
-      "A single, trusted view of performance.",
-      "Faster, better-informed decisions.",
-      "Board and investor reporting that looks like a company twice your size.",
-      "Analysis with a point of view, not just charts.",
+      "Hire without opening a local entity.",
+      "Fully compliant from day one.",
+      "One accountable partner, not a vendor patchwork.",
+      "Payroll, tax, and HR handled for you.",
     ],
-    why: "This is where our background shows. We do not just visualize data, we interpret it. You get analysis with a point of view, built by people who understand what the numbers mean for strategy.",
-    orbs: navyOrange(1.0),
-  },
-  {
-    slug: "global-capability-centers",
-    num: "03",
-    name: "Global Capability Centers & Offshore Teams",
-    promise:
-      "Build your own offshore team in Pakistan without the cost, risk, or complexity of setting up an entity.",
-    summary: "Build your own offshore team.",
-    intro:
-      "Sometimes you do not want help with tasks, you want a team. Our flagship model lets you stand up a dedicated team in Pakistan that works as an extension of yours: to your standards, in your tools, on your hours. Most providers rent you seats. We build you a capability.",
-    subServices: [
-      "Dedicated Offshore Teams",
-      "Shared Service Centers",
-      "Virtual Captive Centers",
-      "Build-Operate-Transfer (BOT)",
-      "Managed Operations",
-      "Back Office Operations",
+    whatsIncluded: [
+      "Locally compliant employment contracts drafted for the hire's country.",
+      "Monthly payroll processing and statutory tax filing.",
+      "Benefits and leave administration.",
+      "A dedicated point of contact for onboarding, HR queries, and offboarding.",
+      "Ongoing compliance monitoring as local labor regulations change.",
     ],
-    how: [
-      { title: "Scope", desc: "We scope the roles and skills you need and hire to your standards." },
-      { title: "Embed", desc: "We embed the team into your tools, processes, and working hours. You direct the work; we handle recruitment, infrastructure, compliance, HR, and day-to-day management." },
-      { title: "Transfer (optional)", desc: "When you are ready, our Build-Operate-Transfer path lets you take full ownership of the team." },
-    ],
-    gains: [
-      "A high-quality team at a meaningful cost advantage.",
-      "Live in weeks rather than months.",
-      "None of the legal, payroll, or office overhead of an entity abroad.",
-      "Retention, quality, and culture managed in, not bolted on.",
-    ],
-    why: "Most providers rent you seats. We build you a capability. Our model is designed by HR and operations leaders who have run large teams across multiple countries, so retention, quality, and culture are managed in, not bolted on.",
-    flagship: true,
+    why: "Direct employment where we operate, and a trusted partner network everywhere else, so you get one accountable partner instead of a patchwork of vendors. We keep your hires compliant while you focus on the work.",
     orbs: navyOrange(1.6),
   },
   {
-    slug: "hr-talent",
-    num: "04",
-    name: "HR & Talent Solutions",
-    promise: "Find, manage, and scale exceptional talent globally.",
-    summary: "Find and manage talent globally.",
+    slug: "staff-offshoring",
+    num: "03",
+    name: "Staff Offshoring",
+    experience: "5+ years",
+    promise: "Your dedicated team, without the overhead.",
+    summary:
+      "A dedicated, full time team member who works only for you, inside your tools and hours, while we handle HR, payroll, and retention.",
+    heroTag:
+      "A full time professional who works exclusively for you, inside your tools and on your hours, as part of your team. We handle sourcing, employment, payroll, and retention, so you get the person and none of the admin.",
     intro:
-      "Great companies are built by great people. We plug into your hiring and people processes at whatever depth you need, from filling a single role to running your entire talent engine, so quality stays high as volume grows. This is also home for HR compliance and startup HR setup.",
+      "Offshoring is not a freelancer and it is not a placement. It is a dedicated team member, embedded in your workflows for the long term, who happens to be employed and supported by us. You get continuity, focus, and a genuine extension of your team, at a fraction of the cost and effort of hiring locally. 5+ years of combined offshoring and staff augmentation experience sits behind every engagement.",
+    regions: ["North America", "Europe", "GCC", "MENA", "APAC"],
     subServices: [
-      "Recruitment Process Outsourcing (RPO)",
-      "Staff Augmentation",
-      "Payroll Administration",
-      "HR Administration & Shared Services",
-      "Employee Onboarding Support",
-      "Talent Acquisition Support",
-      "Employer Branding Support",
-      "Performance Management Support",
-      "HR Compliance & Setup",
-      "Startup HR Setup",
-      "Fractional HR Leadership",
+      "Software Developers",
+      "DevOps & Cloud Engineers",
+      "QA Engineers",
+      "UI/UX & Product Designers",
+      "Customer Support",
+      "Operations",
     ],
     how: [
-      { title: "Plug in", desc: "We plug into your hiring and people processes at whatever depth you need, from a single role to your entire talent engine." },
-      { title: "Standardize", desc: "We use structured sourcing, clear scorecards, and a consistent candidate experience so quality stays high as volume grows." },
-      { title: "Scale", desc: "We scale the people backbone with you, without you adding internal headcount." },
+      { title: "Role & team-fit scoping", desc: "We learn your stack, the seniority you need, and your working hours." },
+      { title: "Candidate selection", desc: "You interview and approve the dedicated team member." },
+      { title: "Deployment", desc: "They are onboarded directly into your tools and workflows." },
+      { title: "Ongoing management", desc: "We handle HR, payroll, and retention. You manage the daily work." },
     ],
     gains: [
-      "Faster hiring and lower cost per hire.",
-      "Smoother onboarding.",
-      "An HR backbone that scales without internal headcount.",
-      "Enterprise-grade HR thinking applied at your size.",
+      "A dedicated hire, fully managed.",
+      "The continuity of a full-time team member.",
+      "HR, payroll, and retention handled for you.",
+      "A replacement guarantee window if the fit is not right.",
     ],
-    why: "Our HR practice is led by a people leader with deep experience across teams of tens of thousands of employees in many countries. You get enterprise-grade HR thinking applied to a company your size.",
-    orbs: navyOrange(2.2),
-  },
-  {
-    slug: "customer-experience",
-    num: "05",
-    name: "Customer Experience & BPO",
-    promise: "Reliable support and back-office execution that keeps your operation moving.",
-    summary: "Support and back office that delivers.",
-    intro:
-      "Every customer interaction is a chance to build trust or lose it. We become an extension of your brand, responsive and consistent across every channel, and we treat support and back office as a brand experience, not a cost center.",
-    subServices: [
-      "Email, Live Chat & Voice Support",
-      "Customer Success Support",
-      "Order & Transaction Processing",
-      "CRM Administration",
-      "Ticket Management",
-      "Data Entry",
-      "Document Processing",
-      "Virtual Assistants",
-      "Administrative Support",
+    whatsIncluded: [
+      "A dedicated, full time resource working only for you, inside your tools and workflows.",
+      "Candidate screening and technical vetting before deployment.",
+      "HR management, local payroll, and retention handled on our side.",
+      "A replacement guarantee window if the fit is not right.",
+      "Ongoing performance check-ins between you, us, and the deployed team member.",
     ],
-    how: [
-      { title: "Learn", desc: "We learn your product, tone, and standards, and document them into playbooks." },
-      { title: "Staff", desc: "We staff trained agents who work inside your systems." },
-      { title: "Measure", desc: "We track quality and response times against agreed targets and report on them openly, so service stays consistent as you grow." },
-    ],
-    gains: [
-      "Happier customers and faster response times.",
-      "Consistent service quality as you scale.",
-      "Your internal team freed from repetitive work.",
-      "Support that represents your brand well.",
-    ],
-    why: "We treat support and back office as a brand experience, not a cost center. Our people are trained to represent you well, and our managed model means quality is our responsibility, not yours.",
+    why: "You get the continuity of a full time hire and the ease of a managed service. We keep the person supported, paid, and retained, so you keep the output without the employment burden.",
     orbs: navyOrange(2.8),
-  },
-  {
-    slug: "ai-automation",
-    num: "06",
-    name: "AI & Intelligent Automation",
-    promise: "Automate repetitive work and put your data to work with AI.",
-    summary: "Automate the repetitive work.",
-    intro:
-      "The best automation is grounded in real work. We map the manual, repetitive steps in your workflows, find where automation pays off fastest, and build practical solutions that fit your existing tools, starting small and proving the return before we expand.",
-    subServices: [
-      "AI Workflow Automation",
-      "AI Chatbots",
-      "Document Automation & Data Extraction",
-      "AI Reporting & Financial Analysis",
-      "AI Process Optimization",
-      "Generative AI Consulting",
-      "AI Integration Support",
-    ],
-    how: [
-      { title: "Map", desc: "We map the manual, repetitive steps in your workflows and identify where automation pays off fastest." },
-      { title: "Prove", desc: "We start small with a clear use case and prove the return." },
-      { title: "Expand", desc: "Once it works, we expand automation across the processes that benefit most." },
-    ],
-    gains: [
-      "Lower processing cost and fewer errors.",
-      "Faster turnaround.",
-      "A team that spends time on judgment, not data shuffling.",
-      "Automation grounded in real processes, not hype.",
-    ],
-    why: "We apply AI to real business processes we already run, in finance, support, and operations, so our automation is grounded in what actually works, not hype.",
-    orbs: navyOrange(3.4),
-  },
-  {
-    slug: "technology-digital",
-    num: "07",
-    name: "Technology & Digital Services",
-    promise: "Technology that supports growth and operational excellence.",
-    summary: "Engineers and build teams.",
-    intro:
-      "You should not have to choose between speed and quality on technology. We provide vetted engineers and technical teams who integrate into your workflow, or deliver projects end to end against a clear scope, with regular checkpoints and full transparency.",
-    subServices: [
-      "IT Staff Augmentation",
-      "Software Development",
-      "Web & Mobile Development",
-      "Cloud Support",
-      "QA Testing",
-      "DevOps Support",
-      "Helpdesk & Managed IT",
-    ],
-    how: [
-      { title: "Match or scope", desc: "We provide vetted engineers who integrate into your workflow, or scope a project to deliver end to end." },
-      { title: "Deliver", desc: "We deliver against clear milestones with regular checkpoints and full transparency." },
-      { title: "Flex", desc: "We flex capacity up or down as your roadmap shifts." },
-    ],
-    gains: [
-      "Strong technical talent without local hiring cost and lead time.",
-      "Capacity that flexes with your roadmap.",
-      "Regular delivery checkpoints and transparency.",
-      "Solutions that fit the whole business, not just IT.",
-    ],
-    why: "Technology sits alongside our finance, HR, and operations capabilities, so we can deliver solutions that work for the whole business, not just the IT corner of it.",
-    orbs: navyOrange(4.0),
-  },
-  {
-    slug: "advisory-transformation",
-    num: "08",
-    name: "Advisory & Transformation",
-    promise: "Reshape how your business runs, then make the change stick.",
-    summary: "Reshape how you run.",
-    intro:
-      "A strategy you cannot execute is just a slide deck. We assess how work flows through your organization today, design a leaner operating model, and, because we also run finance, HR, and operations, we can stand up the new model and operate it.",
-    subServices: [
-      "Process Improvement",
-      "Shared Services Consulting",
-      "Finance Transformation",
-      "Operating Model Design",
-      "Digital Transformation",
-      "Outsourcing Advisory",
-    ],
-    how: [
-      { title: "Assess", desc: "We assess how work flows through your organization today and find where time and money leak." },
-      { title: "Design", desc: "We design a leaner operating model and a credible path from current state to target." },
-      { title: "Run", desc: "Because we also run finance, HR, and operations, we can stand up the new model and operate it." },
-    ],
-    gains: [
-      "A clearer operating model.",
-      "Lower running cost.",
-      "A credible path from current state to target.",
-      "A partner who can execute as well as advise.",
-    ],
-    why: "Most consultants advise and leave. We advise, build, and run. That continuity is where the value actually lands.",
-    orbs: navyOrange(4.6),
   },
 ];
 
@@ -308,18 +238,15 @@ export function getService(slug: string): Service | undefined {
 }
 
 // =========================================================
-// Navigation model (drives the Services mega menu + footer).
+// Navigation model (drives the Services menu + footer).
 // Derived from SERVICES so the list stays in one place.
 // =========================================================
-export type ServiceGroup =
-  | "Finance & Performance"
-  | "People & Operations"
-  | "Technology & Change";
+export type ServiceGroup = "Our Services";
 
 export interface ServiceNav {
   slug: string;
   name: string;
-  /** One-line descriptor shown under the link in the mega menu. */
+  /** One-line descriptor shown under the link in the menu. */
   menuDesc: string;
   /** Shorter label for the footer column. */
   shortName: string;
@@ -327,21 +254,12 @@ export interface ServiceNav {
   flagship?: boolean;
 }
 
-export const SERVICE_GROUPS: ServiceGroup[] = [
-  "Finance & Performance",
-  "People & Operations",
-  "Technology & Change",
-];
+export const SERVICE_GROUPS: ServiceGroup[] = ["Our Services"];
 
 export const SERVICE_NAV: ServiceNav[] = [
-  { slug: "finance-accounting", name: "Finance & Accounting", shortName: "Finance & Accounting", menuDesc: "Run your finance back office end to end", group: "Finance & Performance" },
-  { slug: "fpa-reporting-bi", name: "Reporting & Business Intelligence", shortName: "Reporting & BI", menuDesc: "Turn data into decisions", group: "Finance & Performance" },
-  { slug: "global-capability-centers", name: "Global Capability Centers", shortName: "Global Capability Centers", menuDesc: "Build your own offshore team", group: "People & Operations", flagship: true },
-  { slug: "hr-talent", name: "HR & Talent Solutions", shortName: "HR & Talent", menuDesc: "Find and manage talent globally", group: "People & Operations" },
-  { slug: "customer-experience", name: "Customer Experience & BPO", shortName: "Customer Experience & BPO", menuDesc: "Support and back office that delivers", group: "People & Operations" },
-  { slug: "ai-automation", name: "AI & Intelligent Automation", shortName: "AI & Automation", menuDesc: "Automate the repetitive work", group: "Technology & Change" },
-  { slug: "technology-digital", name: "Technology & Digital Services", shortName: "Technology", menuDesc: "Engineers and build teams", group: "Technology & Change" },
-  { slug: "advisory-transformation", name: "Advisory & Transformation", shortName: "Advisory", menuDesc: "Reshape how you run", group: "Technology & Change" },
+  { slug: "recruitment", name: "Recruitment", shortName: "Recruitment", menuDesc: "Source, screen, and place the right people", group: "Our Services", flagship: true },
+  { slug: "employer-of-record", name: "Employer of Record", shortName: "Employer of Record", menuDesc: "Employ talent compliantly, anywhere", group: "Our Services" },
+  { slug: "staff-offshoring", name: "Staff Offshoring", shortName: "Staff Offshoring", menuDesc: "A dedicated team, fully managed", group: "Our Services" },
 ];
 
 export const FLAGSHIP_SERVICE = SERVICE_NAV.find((s) => s.flagship)!;
@@ -349,64 +267,57 @@ export const FLAGSHIP_SERVICE = SERVICE_NAV.find((s) => s.flagship)!;
 export const servicesByGroup = (group: ServiceGroup): ServiceNav[] =>
   SERVICE_NAV.filter((s) => s.group === group);
 
-// Industries. `slug` anchors are shared by the nav dropdown and the landing page.
-export const industrySlug = (name: string) =>
-  name
-    .toLowerCase()
-    .replace(/&/g, "and")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
-
-export interface Industry {
-  name: string;
-  desc: string;
+// =========================================================
+// Regions we serve (coverage, not offices). Used by the
+// homepage Regions section and the footer.
+// =========================================================
+export interface RegionRow {
+  region: string;
+  coverage: string;
 }
 
-export const INDUSTRY_DETAILS: Industry[] = [
-  {
-    name: "Technology & SaaS",
-    desc: "Fast-growing software companies that need finance, support, and engineering capacity without slowing down. We help you scale operations as fast as you scale the product.",
-  },
-  {
-    name: "Professional Services",
-    desc: "Agencies, consultancies, law firms, and accounting practices that run on billable time. We take the back office (bookkeeping, payroll, admin, reporting) off your team so they can focus on clients.",
-  },
-  {
-    name: "Financial Services & Fintech",
-    desc: "Firms that live and die by accuracy and compliance. We bring disciplined bookkeeping, reconciliations, reporting, and process control to a sector where mistakes are expensive.",
-  },
-  {
-    name: "E-commerce & Retail",
-    desc: "High-volume, always-on businesses. We handle order processing, customer support, finance operations, and data work so your team can focus on growth and margin.",
-  },
-  {
-    name: "Healthcare & Life Sciences",
-    desc: "A sector with heavy administrative and back-office demand. We support finance, HR, and operations with the care and confidentiality the field requires.",
-  },
-  {
-    name: "Real Estate & Property",
-    desc: "Owners, managers, and developers with complex bookkeeping and reporting needs. We keep the numbers clean across entities, properties, and portfolios.",
-  },
-  {
-    name: "Manufacturing & Logistics",
-    desc: "Operations-heavy businesses where back-office efficiency drives the bottom line. We support finance, reporting, and process work that keeps the engine running.",
-  },
+export const REGIONS: RegionRow[] = [
+  { region: "GCC", coverage: "UAE, Saudi Arabia, Bahrain, Qatar, Kuwait, Oman" },
+  { region: "MENA", coverage: "Middle East and North Africa" },
+  { region: "Europe", coverage: "United Kingdom, Western and Eastern Europe" },
+  { region: "North America", coverage: "United States, Canada" },
+  { region: "APAC", coverage: "Asia-Pacific markets" },
+  { region: "LATAM", coverage: "Latin America" },
 ];
 
-// Names only, for the nav dropdown + footer.
-export const INDUSTRIES: string[] = INDUSTRY_DETAILS.map((i) => i.name);
+// =========================================================
+// Offices (real legal entities). Pakistan + USA only.
+// =========================================================
+export interface Office {
+  country: string;
+  entity: string;
+  role: string;
+}
 
-// How We Work + About sub-navigation (pages built in Phases 5 and 6).
-export const HOW_WE_WORK_NAV = [
-  { href: "/how-we-work/engagement-models", label: "Engagement Models" },
-  { href: "/how-we-work/process", label: "Our Process" },
-  { href: "/how-we-work/why-clearkanvas", label: "Why ClearKanvas Global" },
-  { href: "/how-we-work/why-pakistan", label: "Why Pakistan" },
+export const OFFICES: Office[] = [
+  { country: "Pakistan", entity: "ClearKanvas Global (Pakistan)", role: "Delivery hub: recruitment, offshoring, and training operations" },
+  { country: "United States", entity: "ClearKanvas Global LLC (Virginia)", role: "Commercial entity for client contracting and billing" },
 ];
 
+// =========================================================
+// Industry partners, grouped by category. Logos supplied later.
+// =========================================================
+export interface PartnerGroup {
+  category: string;
+  partners: string;
+  enables: string;
+}
+
+export const PARTNER_GROUPS: PartnerGroup[] = [
+  { category: "EOR & Payroll", partners: "PlayRoll, Deel", enables: "Compliant global payroll and employment reaching well over 180 countries." },
+  { category: "Workspace & Infrastructure", partners: "CalmKaaj", enables: "Workspace and operational infrastructure for our teams." },
+  { category: "Sourcing & ATS", partners: "Workable, Greenhouse, LinkedIn Recruiter", enables: "Sourcing and applicant tracking at scale." },
+  { category: "Academic", partners: "NUST", enables: "University training and internship pipeline." },
+  { category: "Compliance & Verification", partners: "Background check and identity verification providers", enables: "Vetted, compliant onboarding for regulated roles." },
+];
+
+// About sub-navigation.
 export const ABOUT_NAV = [
   { href: "/about/story", label: "Our Story" },
-  { href: "/about/mission-vision-values", label: "Mission, Vision & Values" },
-  { href: "/about/leadership", label: "Leadership" },
-  { href: "/about/global-presence", label: "Global Presence" },
+  { href: "/#team", label: "Team & Offices" },
 ];
