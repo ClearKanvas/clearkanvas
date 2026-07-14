@@ -255,7 +255,7 @@ header.nav.scrolled { box-shadow: var(--shadow-nav); border-bottom-color: var(--
   max-width: 16ch; margin: 26px 0 0; text-wrap: balance;
 }
 /* Static two-line homepage headline needs more room than the old rotor. */
-.hero h1.hero-h1 { font-size: clamp(38px, 5.6vw, 74px); max-width: 18ch; }
+.hero h1.hero-h1 { font-size: clamp(38px, 5.8vw, 78px); max-width: 900px; }
 /* Rotating headline: the whole line rolls as one unit (tower carousel). */
 .rotor { display: inline-block; position: relative; overflow: hidden; max-width: 100%; }
 .rotor-line { display: block; text-wrap: balance; will-change: transform, opacity; }
@@ -266,7 +266,7 @@ header.nav.scrolled { box-shadow: var(--shadow-nav); border-bottom-color: var(--
 @keyframes rollIn { from { transform: translateY(108%); opacity: 0; } 60% { opacity: 1; } to { transform: translateY(0); opacity: 1; } }
 
 .hero-tagline { max-width: 32ch; margin: 18px auto 0; font-family: var(--display); font-weight: 600; font-size: clamp(20px, 2.6vw, 30px); letter-spacing: -0.02em; color: var(--navy); text-wrap: balance; }
-.hero-sub { max-width: 56ch; margin: 18px 0 0; font-size: clamp(17px, 1.7vw, 20px); color: var(--slate); text-wrap: pretty; }
+.hero-sub { max-width: 64ch; margin: 20px 0 0; font-size: clamp(17px, 1.7vw, 20px); color: var(--slate); text-wrap: pretty; }
 .hero-cta { display: flex; gap: 14px; justify-content: flex-start; margin-top: 36px; flex-wrap: wrap; }
 
 /* Marquee */
@@ -280,7 +280,7 @@ header.nav.scrolled { box-shadow: var(--shadow-nav); border-bottom-color: var(--
 .marquee-track { display: flex; gap: 0; width: max-content; animation: scrollx 38s linear infinite; }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 .marquee-item { display: inline-flex; align-items: center; gap: 11px; padding: 0 26px; font-family: var(--display); font-weight: 600; font-size: 16px; color: var(--navy); letter-spacing: -0.01em; }
-.marquee-ico { font-size: 19px; line-height: 1; filter: saturate(1.05); }
+.marquee-ico { width: 20px; height: 20px; color: var(--orange); flex: none; }
 .marquee-item::after { content: ""; width: 6px; height: 6px; margin-left: 15px; border-radius: 2px; background: var(--orange); opacity: .9; transform: rotate(45deg); }
 @keyframes scrollx { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
@@ -1096,11 +1096,12 @@ a.v-link:hover { color: var(--orange-ink); }
    ========================================================= */
 /* Hero trust bar */
 .hero-trust {
-  display: flex; flex-wrap: wrap; gap: 14px 30px; margin-top: 30px;
-  padding-top: 22px; border-top: 1px solid var(--line);
+  display: flex; flex-wrap: wrap; gap: 20px 46px; margin-top: 36px;
+  padding-top: 26px; border-top: 1px solid var(--line);
 }
-.hero-trust li { font-size: 14px; color: var(--muted); letter-spacing: 0.01em; }
-.hero-trust strong { color: var(--navy); font-weight: 700; }
+.hero-trust li { display: flex; flex-direction: column; gap: 3px; }
+.ht-num { font-family: var(--display); font-weight: 800; font-size: clamp(22px, 2.4vw, 30px); line-height: 1; letter-spacing: -0.02em; color: var(--orange-ink); }
+.ht-lbl { font-size: 13px; color: var(--muted); letter-spacing: 0.01em; }
 
 /* Regions */
 .regions-split { display: grid; grid-template-columns: 0.9fr 1.4fr; gap: 40px; margin-top: 40px; align-items: start; }
