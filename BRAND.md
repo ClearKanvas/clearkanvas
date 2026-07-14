@@ -1,6 +1,6 @@
 # ClearKanvas Global: Brand Reference
 
-Tagline: "Where complexity becomes clarity."
+Tagline: "The right people, anywhere in the world."
 
 The single source of truth for these tokens is [app/globals.css](app/globals.css) (`:root`)
 and the font setup in [app/layout.tsx](app/layout.tsx). If you change a value, change it there;
@@ -18,7 +18,7 @@ this file is documentation.
 
 | Token (CSS var) | Hex / value | Used for |
 |---|---|---|
-| `--orange` | `#FF6A2B` | Buttons, accent words ("clarity", "world-class"), CK mark, link hover |
+| `--orange` | `#FF6A2B` | Buttons, accent words (e.g. "anywhere"), CK mark, link hover |
 | `--orange-ink` | `#E4561B` | Button and link hover (darker orange) |
 | `--navy` | `#0F1E3D` | Headings, primary dark text, dark UI |
 | `--navy-deep` | `#0A1124` | Footer background, darkest sections |
@@ -32,17 +32,20 @@ this file is documentation.
 
 ## Typography
 
-Both are Google Fonts, loaded via `next/font` (self-hosted at build).
+**One typeface across the whole site: Hanken Grotesk.** A warm humanist sans loaded via
+`next/font/google` (self-hosted at build) as a single variable, `--font-sans`. Hierarchy comes
+from size and weight, not from a second family. There is no serif display face.
 
 | Role | Font | Notes |
 |---|---|---|
-| Display / headings | **Fraunces** | Editorial serif. Headlines, CK wordmark, eyebrows, lead paragraphs; weights up to 900. Optical sizing auto |
-| Body / UI | **Hanken Grotesk** | Warm humanist sans. Body copy, buttons, labels |
+| Display / headings | **Hanken Grotesk** | Headlines, CK wordmark, eyebrows, lead paragraphs; heavier weights for display |
+| Body / UI | **Hanken Grotesk** | Body copy, buttons, labels |
 
-Fallback stack: display `Georgia, serif`; body `system-ui, sans-serif`
+Fallback stack: `"Hanken Grotesk", system-ui, sans-serif`
 
-- Display var: `--display: var(--font-display), Fraunces, Georgia, serif`
-- Body var: `--body: var(--font-body), "Hanken Grotesk", system-ui, sans-serif`
+Both tokens resolve to the same font:
+- Display var: `--display: var(--font-sans), "Hanken Grotesk", system-ui, sans-serif`
+- Body var: `--body: var(--font-sans), "Hanken Grotesk", system-ui, sans-serif`
 
 ## Other design tokens
 

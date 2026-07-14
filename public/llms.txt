@@ -1,29 +1,24 @@
 # ClearKanvas Global
 
-> ClearKanvas Global is a business services partner that builds and runs finance, talent, technology, and operations functions for growing companies. Expert teams operate as an extension of the client's own team, delivered primarily from Pakistan, serving clients in the USA, Pakistan, and Bahrain and growing into new markets. Tagline: "Where complexity becomes clarity."
+> ClearKanvas Global helps companies hire the right people anywhere in the world, through three services: Recruitment (flagship), Employer of Record (EOR), and Staff Offshoring. We find talent, employ it compliantly, and can run the day to day, so companies grow into any market without setting up in one. Tagline: "The right people, anywhere in the world."
 
 ## About
 - Company: ClearKanvas Global
-- What we do: finance & accounting, reporting & business intelligence, global capability centers / offshore teams, HR & talent, customer experience & BPO, AI & automation, technology & digital, advisory & transformation.
-- Model: we advise, build, and run. Clients engage us for a single service or an entire offshore capability.
-- Locations: USA, Pakistan (primary delivery center, Islamabad), Bahrain.
-- Office: Plot 1-E, Lower Ground Floor, Ali Plaza, Blue Area, Islamabad, Pakistan.
+- What we do: Recruitment (technical, non-technical, and specialized fintech & compliance hiring: SaaS, Payments, IDV, AML, KYC), Employer of Record (EOR), and Staff Offshoring.
+- Model: start with one service or use all three. We find your talent, employ them compliantly, and can manage the day to day for you.
+- Experience: 25+ years in recruitment across our founding team, 5+ years delivering EOR and offshore staffing.
+- Offices: Pakistan (delivery hub) and the United States (ClearKanvas Global LLC, Virginia). These are our only two offices.
+- Markets served (not offices): GCC, MENA, Europe, North America, APAC, and LATAM. We recruit, employ, and deploy talent across these six regions.
 - Contact: hello@clearkanvas.com, sales@clearkanvas.com, partnerships@clearkanvas.com, +92 309 6661176.
 
 ## Key pages
 - Home: https://www.clearkanvas.com/
 - Services overview: https://www.clearkanvas.com/services
-- Finance & Accounting: https://www.clearkanvas.com/services/finance-accounting
-- Reporting & Business Intelligence: https://www.clearkanvas.com/services/fpa-reporting-bi
-- Global Capability Centers & Offshore Teams: https://www.clearkanvas.com/services/global-capability-centers
-- HR & Talent Solutions: https://www.clearkanvas.com/services/hr-talent
-- Customer Experience & BPO: https://www.clearkanvas.com/services/customer-experience
-- AI & Intelligent Automation: https://www.clearkanvas.com/services/ai-automation
-- Technology & Digital Services: https://www.clearkanvas.com/services/technology-digital
-- Advisory & Transformation: https://www.clearkanvas.com/services/advisory-transformation
-- Industries: https://www.clearkanvas.com/industries
-- How We Work: https://www.clearkanvas.com/how-we-work
+- Recruitment: https://www.clearkanvas.com/services/recruitment
+- Employer of Record (EOR): https://www.clearkanvas.com/services/employer-of-record
+- Staff Offshoring: https://www.clearkanvas.com/services/staff-offshoring
 - About: https://www.clearkanvas.com/about
+- Our Story: https://www.clearkanvas.com/about/story
 - Contact: https://www.clearkanvas.com/contact
 
 ## Social

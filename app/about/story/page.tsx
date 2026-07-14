@@ -9,7 +9,7 @@ import Arrow from "@/components/Arrow";
 export const metadata: Metadata = {
   title: "Our Story | ClearKanvas Global",
   description:
-    "ClearKanvas Global was founded to give growing companies a third option: expert operators who advise, build, and run.",
+    "ClearKanvas Global helps companies hire the right people anywhere in the world, through recruitment, Employer of Record, and staff offshoring.",
 };
 
 export default function StoryPage() {
@@ -26,38 +26,41 @@ export default function StoryPage() {
           <div className="wrap wrap-narrow">
             <div className="prose reveal">
               <p className="prose-lead">
-                Every business begins with a vision and a clear canvas to build it on. We make
-                sure the work of running it never slows that vision down.
+                Every company grows on the strength of its people. We exist to make sure the
+                right ones are never out of reach, wherever in the world they happen to be.
               </p>
               <p>
-                ClearKanvas Global was founded on a simple belief: growing companies deserve
-                world-class operations, run by people who own the outcome. So we built exactly
-                that.
+                ClearKanvas Global was founded on a simple belief: hiring the right person should
+                not depend on where you are registered or where they live. So we built a firm
+                that finds talent, employs it compliantly, and runs the day to day, so companies
+                can grow into any market without setting up in one.
               </p>
               <p>
-                We are a business services partner led by expert operators who have run finance,
-                HR, and operations at scale, paired with a delivery base that changes the
-                economics. We do not just advise. We build, and we run. That is how complexity
-                becomes clarity, and it is the standard we hold on every engagement.
+                Recruitment is where we started and where our deepest experience lives: over 25
+                years, across our founding team, placing technical and non-technical people, with
+                a sharp edge in fintech and compliance hiring that most agencies cannot match. As
+                clients asked us to do more, we added Employer of Record and staff offshoring, so
+                a company can hire, employ, and scale a team through one accountable partner.
               </p>
               <p>
-                We also believe great work should create opportunity. By connecting our clients
-                with Pakistan&apos;s exceptional talent, we deliver world-class results for
-                businesses and meaningful, lasting work for the people who power them. Investing
-                in people is how we build value that lasts.
+                We are deliberately honest about our footprint. Our offices are in Pakistan, our
+                delivery hub, and the United States, our commercial entity in Virginia. Our reach
+                is far wider: we recruit, employ, and deploy talent across the GCC, MENA, Europe,
+                North America, APAC, and LATAM. Real entities, a named team, and a defined process
+                behind every engagement.
               </p>
               <p>
-                That is what ClearKanvas Global is here to do: give companies stronger
-                foundations, unlock new possibilities, and help them build a future defined by
-                clarity, excellence, and growth.
+                That is what ClearKanvas Global is here to do: connect companies to the people who
+                will move them forward, and give those people meaningful, lasting work. The right
+                people, anywhere in the world.
               </p>
             </div>
           </div>
         </section>
         <section className="section cta-band cta-band-static">
           <div className="wrap cta-inner reveal">
-            <h2>Build with a partner that owns the outcome.</h2>
-            <p>Tell us what you are trying to build and we will show you how we can help.</p>
+            <h2>Tell us who you need.</h2>
+            <p>We will find them, employ them, and run it for you. A real person replies within one business day.</p>
             <div className="hero-cta">
               <Link className="btn btn-primary" href="/contact">
                 Book a discovery call <Arrow size={15} />
