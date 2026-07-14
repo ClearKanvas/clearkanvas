@@ -126,6 +126,11 @@ export default function Nav() {
             items={ABOUT_NAV}
           />
 
+          {/* CAREERS , plain link */}
+          <Link className="nav-item-link" href="/careers" onClick={close}>
+            Careers
+          </Link>
+
           {/* CONTACT , plain link (button lives in nav-right) */}
           <Link className="nav-item-link nav-contact-link" href="/contact" onClick={close}>
             Contact

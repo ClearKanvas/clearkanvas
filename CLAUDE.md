@@ -55,8 +55,8 @@ site: Hanken Grotesk, loaded via `next/font/google` as `--font-sans`. See `BRAND
 
 ## Navigation
 Services (dropdown: Recruitment, Employer of Record, Staff Offshoring), Regions, About (Our
-Story, Team & Offices), Contact, and a "Request Talent" button (top right, accent color).
-No Insights or Careers yet.
+Story, Team & Offices), Careers, Contact, and a "Request Talent" button (top right, accent
+color). No Insights section yet.
 
 ## Site structure
 - Homepage sections: Hero + trust bar, three service cards, Regions we cover, Recruitment
@@ -65,6 +65,7 @@ No Insights or Careers yet.
   `lib/services.ts`, generating `/services/recruitment`, `/services/employer-of-record`,
   `/services/staff-offshoring`.
 - About: `/about` (Story blurb, Purpose/Mission/Vision, Values) and `/about/story`.
+- Careers: `/careers` (copy in `lib/careers.ts`, rendered by `components/CareersMain.tsx`).
 - Contact: `/contact`.
 
 ## Animation

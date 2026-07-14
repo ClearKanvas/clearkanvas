@@ -1321,3 +1321,79 @@ a.v-link:hover { color: var(--orange-ink); }
 .film-play-sub { font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,0.62); }
 @keyframes filmPulse { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(1.5); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .film-play-ring::before { animation: none; } }
+
+/* =========================================================
+   Careers page
+   ========================================================= */
+/* Hero stats */
+.cr-stats {
+  display: flex; flex-wrap: wrap; gap: 40px; margin-top: 40px;
+  padding-top: 30px; border-top: 1px solid var(--line);
+}
+.cr-stat { display: flex; flex-direction: column; gap: 6px; }
+.cr-stat-num {
+  font-family: var(--display); font-weight: 800; font-size: clamp(22px, 2.4vw, 30px);
+  color: var(--navy); letter-spacing: -0.02em; line-height: 1;
+}
+.cr-count { font-variant-numeric: tabular-nums; }
+.cr-stat-lbl { font-size: 14.5px; color: var(--muted); }
+
+/* Value cards */
+.cr-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 48px; }
+.cr-value {
+  background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 30px 28px;
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+}
+.cr-value:hover { transform: translateY(-5px); box-shadow: var(--shadow-lift); border-color: transparent; }
+.cr-value-ico {
+  display: inline-grid; place-items: center; width: 48px; height: 48px; border-radius: 14px;
+  background: rgba(255,106,43,0.1); color: var(--orange-ink);
+}
+.cr-value-ico svg { width: 24px; height: 24px; }
+.cr-value h3 { font-size: 19px; margin-top: 20px; }
+.cr-value p { margin-top: 10px; color: var(--slate); font-size: 15.5px; }
+
+/* Gallery */
+.cr-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+.cr-tile {
+  position: relative; margin: 0; overflow: hidden; border-radius: var(--r-lg);
+  aspect-ratio: 4 / 3; border: 1px solid var(--line);
+  background: linear-gradient(150deg, var(--navy), var(--navy-deep));
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.cr-tile:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+.cr-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cr-tile-ph {
+  position: absolute; inset: 0; display: grid; place-items: center; color: rgba(255,255,255,0.35);
+}
+.cr-tile-ph svg { width: 34px; height: 34px; }
+.cr-tile figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 1;
+  padding: 26px 18px 16px; color: #fff; font-size: 14px; font-weight: 600;
+  background: linear-gradient(180deg, transparent, rgba(6,11,22,0.72));
+}
+.cr-note { margin-top: 22px; text-align: center; color: var(--muted); font-size: 14.5px; }
+
+/* Teams */
+.cr-teams { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+.cr-team {
+  background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 26px 24px;
+  border-left: 3px solid var(--orange);
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.cr-team:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+.cr-team h3 { font-size: 18px; }
+.cr-team p { margin-top: 8px; color: var(--slate); font-size: 15px; }
+
+/* Open roles / talent network band */
+.cr-roles { max-width: 720px; margin: 44px auto 0; text-align: center; }
+.cr-roles p { color: rgba(255,255,255,0.78); font-size: 17px; text-wrap: pretty; }
+.cr-roles .hero-cta { justify-content: center; margin-top: 28px; }
+
+@media (max-width: 980px) {
+  .cr-values, .cr-teams, .cr-gallery { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 620px) {
+  .cr-values, .cr-teams, .cr-gallery { grid-template-columns: 1fr; }
+  .cr-stats { gap: 26px; }
+}

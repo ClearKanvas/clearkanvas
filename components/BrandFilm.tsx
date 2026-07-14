@@ -4,24 +4,34 @@ import { useEffect, useRef, useState } from "react";
 import { orbField } from "@/lib/orbField";
 
 /**
- * Homepage brand-film band.
+ * Reusable film band (homepage brand film, careers "life at" film, etc).
  *
- * TO GO LIVE WITH A REAL FILM:
- *   1. Drop the file in /public (e.g. /public/brand-film.mp4, plus .webm if you have one).
- *   2. Optionally add a poster still (e.g. /public/brand-film-poster.jpg).
- *   3. Set the two constants below. The placeholder state disappears automatically.
+ * TO GO LIVE WITH A REAL FILM: drop the file in /public (e.g. /public/brand-film.mp4,
+ * plus .webm if you have one) and an optional poster still, then pass `src` and
+ * `poster`. The placeholder state disappears automatically.
  *
  * The film plays on click only. It never autoplays and never plays sound unprompted,
  * which is what keeps a video section feeling professional rather than intrusive.
  */
-const BRAND_FILM_SRC = ""; // e.g. "/brand-film.mp4"
-const BRAND_FILM_POSTER = ""; // e.g. "/brand-film-poster.jpg"
-
-export default function BrandFilm() {
+export default function BrandFilm({
+  eyebrow = "See how we work",
+  heading = "One partner, from first brief to a working team.",
+  label = "Brand film",
+  sub = "About 60 seconds",
+  src = "",
+  poster = "",
+}: {
+  eyebrow?: string;
+  heading?: string;
+  label?: string;
+  sub?: string;
+  src?: string;
+  poster?: string;
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
-  const hasFilm = BRAND_FILM_SRC !== "";
+  const hasFilm = src !== "";
 
   // Ambient aurora behind the placeholder / poster.
   useEffect(() => {
@@ -49,8 +59,8 @@ export default function BrandFilm() {
     <section className="section film-section">
       <div className="wrap">
         <div className="head center reveal">
-          <span className="eyebrow">See how we work</span>
-          <h2>One partner, from first brief to a working team.</h2>
+          <span className="eyebrow">{eyebrow}</span>
+          <h2>{heading}</h2>
         </div>
         <div className={`film-frame reveal${playing ? " playing" : ""}`}>
           <div className="film-bg" aria-hidden="true">
@@ -61,8 +71,8 @@ export default function BrandFilm() {
             <video
               ref={videoRef}
               className="film-video"
-              src={BRAND_FILM_SRC}
-              poster={BRAND_FILM_POSTER || undefined}
+              src={src}
+              poster={poster || undefined}
               controls={playing}
               playsInline
               preload="none"
@@ -74,15 +84,15 @@ export default function BrandFilm() {
               type="button"
               className="film-play"
               onClick={onPlay}
-              aria-label={hasFilm ? "Play brand film" : "Brand film coming soon"}
+              aria-label={hasFilm ? `Play ${label}` : `${label} coming soon`}
             >
               <span className="film-play-ring">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </span>
-              <span className="film-play-label">{hasFilm ? "Play the film" : "Brand film"}</span>
-              <span className="film-play-sub">{hasFilm ? "About 60 seconds" : "Coming soon"}</span>
+              <span className="film-play-label">{hasFilm ? "Play the film" : label}</span>
+              <span className="film-play-sub">{hasFilm ? sub : "Coming soon"}</span>
             </button>
           )}
         </div>
