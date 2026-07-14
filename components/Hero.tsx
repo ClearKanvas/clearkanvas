@@ -6,14 +6,13 @@ import Arrow from "./Arrow";
 import { orbField } from "@/lib/orbField";
 
 const MARQUEE_ITEMS = [
-  "Recruitment",
-  "Employer of Record",
-  "Staff Offshoring",
-  "Tech & Non-Tech Roles",
-  "Fintech & Compliance Hiring",
-  "Global Payroll",
-  "Dedicated Teams",
-  "Every Region, Every Role",
+  { icon: "🎯", label: "Recruitment" },
+  { icon: "🛡️", label: "Employer of Record" },
+  { icon: "🌐", label: "Staff Offshoring" },
+  { icon: "💻", label: "Tech & Non-Tech Roles" },
+  { icon: "🔐", label: "Fintech & Compliance Hiring" },
+  { icon: "👥", label: "Dedicated Teams" },
+  { icon: "🌍", label: "Every Region, Every Role" },
 ];
 
 export default function Hero() {
@@ -73,7 +72,8 @@ export default function Hero() {
         <div className="marquee-track" id="marquee">
           {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, idx) => (
             <div className="marquee-item" key={idx}>
-              {item}
+              <span className="marquee-ico" aria-hidden="true">{item.icon}</span>
+              <span>{item.label}</span>
             </div>
           ))}
         </div>
