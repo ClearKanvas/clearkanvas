@@ -309,6 +309,13 @@ header.nav.scrolled { box-shadow: var(--shadow-nav); border-bottom-color: var(--
 }
 .svc-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); border-color: transparent; }
 .svc-card:hover::before { transform: scaleX(1); }
+/* Full-bleed banner image at the top of the card (cancels the card padding). */
+.svc-media {
+  position: relative; margin: -34px -34px 22px; height: 170px; overflow: hidden;
+  background: var(--bg-warm); border-bottom: 1px solid var(--line);
+}
+.svc-media img { object-fit: cover; transition: transform .5s var(--ease); }
+.svc-card:hover .svc-media img { transform: scale(1.04); }
 .svc-head { display: flex; align-items: center; gap: 14px; }
 .svc-num { font-family: var(--display); font-weight: 700; font-size: 13px; color: var(--orange); letter-spacing: 0.1em; }
 .svc-card h3 { font-size: 24px; font-weight: 700; margin-top: 16px; }

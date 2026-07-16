@@ -1,6 +1,14 @@
 import Link from "next/link";
+import Image from "next/image";
 import Arrow from "./Arrow";
 import { SERVICE_NAV } from "@/lib/services";
+
+// Card banner image per service (files live in /public).
+const SERVICE_IMG: Record<string, string> = {
+  recruitment: "/recruitment.jpg",
+  "employer-of-record": "/EOR.jpg",
+  "staff-offshoring": "/Offshoring.jpg",
+};
 
 export default function Services() {
   return (
@@ -22,6 +30,16 @@ export default function Services() {
               key={s.slug}
               data-tilt
             >
+              {SERVICE_IMG[s.slug] && (
+                <div className="svc-media">
+                  <Image
+                    src={SERVICE_IMG[s.slug]}
+                    alt=""
+                    fill
+                    sizes="(max-width: 620px) 100vw, (max-width: 980px) 50vw, 33vw"
+                  />
+                </div>
+              )}
               <div className="svc-head">
                 <span className="svc-num">{String(i + 1).padStart(2, "0")}</span>
                 {s.flagship && <span className="svc-flag">Flagship</span>}
