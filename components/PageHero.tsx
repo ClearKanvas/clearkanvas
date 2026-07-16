@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { orbField } from "@/lib/orbField";
 import type { Orb } from "@/lib/orbField";
@@ -21,6 +22,7 @@ export default function PageHero({
   intro,
   crumbs,
   orbs = DEFAULT_ORBS,
+  bgImg,
 }: {
   eyebrow: string;
   title: string;
@@ -28,6 +30,7 @@ export default function PageHero({
   intro?: string;
   crumbs?: Crumb[];
   orbs?: Orb[];
+  bgImg?: string;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -38,6 +41,11 @@ export default function PageHero({
   return (
     <section className="svc-hero">
       <div className="svc-hero-bg" aria-hidden="true">
+        {bgImg && (
+          <div className="svc-hero-photo">
+            <Image src={bgImg} alt="" fill sizes="100vw" priority />
+          </div>
+        )}
         <div className="hero-aurora"></div>
         <canvas className="orb-canvas" ref={canvasRef}></canvas>
       </div>

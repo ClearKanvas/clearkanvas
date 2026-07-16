@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import Arrow from "./Arrow";
 import { orbField } from "@/lib/orbField";
@@ -23,6 +24,9 @@ export default function ClosingCTA() {
 
   return (
     <section className="section cta-band" id="contact">
+      <div className="cta-bg" aria-hidden="true">
+        <Image src="/cta-momentum.jpg" alt="" fill sizes="100vw" />
+      </div>
       <canvas className="orb-canvas" id="ctaCanvas" aria-hidden="true" ref={canvasRef}></canvas>
       <div className="wrap cta-inner reveal">
         <h2>Let us take the complexity off your plate.</h2>

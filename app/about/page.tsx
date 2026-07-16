@@ -43,6 +43,7 @@ export default function AboutPage() {
           title="Global talent, delivered by people you can name"
           tagline="Recruitment, EOR, and offshoring, backed by real entities in Pakistan and the USA."
           intro="ClearKanvas Global helps companies hire the right people anywhere in the world. Get to know our story and the team behind it."
+          bgImg="/about-clarity.jpg"
         />
         <section className="section">
           <div className="wrap">

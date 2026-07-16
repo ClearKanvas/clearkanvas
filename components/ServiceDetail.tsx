@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import Arrow from "./Arrow";
 import FlowSteps from "./FlowSteps";
@@ -187,6 +188,11 @@ export default function ServiceDetail({ service }: { service: Service }) {
 
       {/* WHAT YOU GAIN , outcomes navy band */}
       <section className="section svc-outcomes">
+        {service.bandImg && (
+          <div className="svc-outcomes-bg" aria-hidden="true">
+            <Image src={service.bandImg} alt="" fill sizes="100vw" />
+          </div>
+        )}
         <div className="wrap">
           <div className="head center reveal">
             <span className="eyebrow on-navy">What you gain</span>

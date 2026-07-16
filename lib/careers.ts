@@ -79,12 +79,12 @@ export const CAREER_TEAMS: CareerTeam[] = [
   { name: "Internships (NUST)", desc: "Early-career programs and pipelines with our university partners." },
 ];
 
-// Illustrative workplace imagery (Pexels, free for commercial use). These convey
+// Symbolic, people-free imagery (Pexels, free for commercial use). These convey
 // how we work, they are not photos of our actual office or team.
 export const CAREER_GALLERY: GalleryItem[] = [
-  { label: "Collaboration", img: "/careers-collab.jpg" },
-  { label: "Welcoming new people", img: "/careers-welcome.jpg" },
-  { label: "Focused, modern work", img: "/careers-workspace.jpg" },
+  { label: "Modern workspace", img: "/careers-workspace.jpg" },
+  { label: "Room to grow", img: "/careers-grow.jpg" },
+  { label: "Focused craft", img: "/careers-craft.jpg" },
 ];
 
 export const HIRING_PROCESS: HiringStep[] = [

@@ -41,6 +41,8 @@ export interface Service {
   whatsIncluded: string[];
   /** "Why ClearKanvas Global" , short block. */
   why: string;
+  /** Symbolic background image (no people) for the "What you gain" band. */
+  bandImg?: string;
   /** Simple region coverage list (recruitment, offshoring). */
   regions?: string[];
   /** Region + delivery model coverage (EOR). */
@@ -137,6 +139,7 @@ export const SERVICES: Service[] = [
       "Post-placement support, onboarding help, and a replacement guarantee window.",
     ],
     why: "25+ years of combined experience, a specialist edge in fintech and compliance hiring, and a no placement, no fee model that keeps our interests aligned with yours: we only win when you hire someone who stays.",
+    bandImg: "/bands/recruitment.jpg",
     flagship: true,
     orbs: navyOrange(0.4),
   },
@@ -186,6 +189,7 @@ export const SERVICES: Service[] = [
       "Ongoing compliance monitoring as local labor regulations change.",
     ],
     why: "Direct employment where we operate, and a trusted partner network everywhere else, so you get one accountable partner instead of a patchwork of vendors. We keep your hires compliant while you focus on the work.",
+    bandImg: "/bands/eor.jpg",
     orbs: navyOrange(1.6),
   },
   {
@@ -229,6 +233,7 @@ export const SERVICES: Service[] = [
       "Ongoing performance check-ins between you, us, and the deployed team member.",
     ],
     why: "You get the continuity of a full time hire and the ease of a managed service. We keep the person supported, paid, and retained, so you keep the output without the employment burden.",
+    bandImg: "/bands/offshoring.jpg",
     orbs: navyOrange(2.8),
   },
 ];
