@@ -7,7 +7,7 @@ import { SERVICE_NAV } from "@/lib/services";
 const SERVICE_IMG: Record<string, string> = {
   recruitment: "/recruitment.jpg",
   "employer-of-record": "/EOR.jpg",
-  "staff-offshoring": "/Offshoring.jpg",
+  "staff-offshoring": "/staff-offshoring.jpg",
 };
 
 export default function Services() {
