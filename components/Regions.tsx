@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 import { REGIONS, OFFICES } from "@/lib/services";
 
 export default function Regions() {
@@ -14,30 +16,54 @@ export default function Regions() {
           </p>
         </div>
 
-        <div className="regions-split">
-          <div className="regions-offices reveal">
-            <span className="regions-k">Our offices</span>
-            <ul>
-              {OFFICES.map((o) => (
-                <li key={o.country}>
-                  <strong>{o.country}</strong>
-                  <span>{o.role}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="regions-markets">
-            <span className="regions-k">Markets we serve</span>
-            <div className="regions-grid" data-stagger>
-              {REGIONS.map((r) => (
-                <div className="region-card" key={r.region}>
-                  <h3>{r.region}</h3>
-                  <p>{r.coverage}</p>
-                </div>
-              ))}
+        <span className="regions-k reveal">Our offices</span>
+        <div className="geo-offices reveal">
+          {OFFICES.map((o) => (
+            <div className="geo-office" key={o.country}>
+              <img
+                className="geo-flag geo-flag-lg"
+                src={`/flags/${o.flag}.svg`}
+                alt={`${o.country} flag`}
+                width={40}
+                height={28}
+              />
+              <div>
+                <strong>{o.country}</strong>
+                <span>{o.role}</span>
+              </div>
             </div>
-          </div>
+          ))}
+        </div>
+
+        <span className="regions-k reveal regions-k-markets">Markets we serve</span>
+        <div className="geo-grid" data-stagger>
+          {REGIONS.map((r) => (
+            <article className="geo-card" key={r.region}>
+              <Image
+                className="geo-img"
+                src={r.img}
+                alt=""
+                fill
+                sizes="(max-width: 620px) 100vw, (max-width: 980px) 50vw, 33vw"
+              />
+              <div className="geo-body">
+                <h3>{r.region}</h3>
+                <p>{r.coverage}</p>
+                <div className="geo-flags">
+                  {r.flags.map((f) => (
+                    <img
+                      className="geo-flag"
+                      key={f}
+                      src={`/flags/${f}.svg`}
+                      alt=""
+                      width={27}
+                      height={18}
+                    />
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>

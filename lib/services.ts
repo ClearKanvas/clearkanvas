@@ -274,15 +274,19 @@ export const servicesByGroup = (group: ServiceGroup): ServiceNav[] =>
 export interface RegionRow {
   region: string;
   coverage: string;
+  /** Background image (no people) in /public/regions. */
+  img: string;
+  /** Representative country flag codes (files in /public/flags). */
+  flags: string[];
 }
 
 export const REGIONS: RegionRow[] = [
-  { region: "GCC", coverage: "UAE, Saudi Arabia, Bahrain, Qatar, Kuwait, Oman" },
-  { region: "MENA", coverage: "Middle East and North Africa" },
-  { region: "Europe", coverage: "United Kingdom, Western and Eastern Europe" },
-  { region: "North America", coverage: "United States, Canada" },
-  { region: "APAC", coverage: "Asia-Pacific markets" },
-  { region: "LATAM", coverage: "Latin America" },
+  { region: "GCC", coverage: "UAE, Saudi Arabia, Bahrain, Qatar, Kuwait, Oman", img: "/regions/gcc.jpg", flags: ["ae", "sa", "bh", "qa", "kw", "om"] },
+  { region: "MENA", coverage: "Middle East and North Africa", img: "/regions/mena.jpg", flags: ["eg", "ma", "jo", "tn", "lb"] },
+  { region: "Europe", coverage: "United Kingdom, Western and Eastern Europe", img: "/regions/europe.jpg", flags: ["gb", "de", "fr", "nl", "es", "pl"] },
+  { region: "North America", coverage: "United States, Canada", img: "/regions/north-america.jpg", flags: ["us", "ca"] },
+  { region: "APAC", coverage: "Asia-Pacific markets", img: "/regions/apac.jpg", flags: ["sg", "au", "in", "jp", "ph"] },
+  { region: "LATAM", coverage: "Latin America", img: "/regions/latam.jpg", flags: ["br", "mx", "ar", "co", "cl"] },
 ];
 
 // =========================================================
@@ -292,11 +296,13 @@ export interface Office {
   country: string;
   entity: string;
   role: string;
+  /** Country flag code (file in /public/flags). */
+  flag: string;
 }
 
 export const OFFICES: Office[] = [
-  { country: "Pakistan", entity: "ClearKanvas Global (Pakistan)", role: "Delivery hub: recruitment, offshoring, and training operations" },
-  { country: "United States", entity: "ClearKanvas Global LLC (Virginia)", role: "Commercial entity for client contracting and billing" },
+  { country: "Pakistan", entity: "ClearKanvas Global (Pakistan)", role: "Delivery hub: recruitment, offshoring, and training operations", flag: "pk" },
+  { country: "United States", entity: "ClearKanvas Global LLC (Virginia)", role: "Commercial entity for client contracting and billing", flag: "us" },
 ];
 
 // =========================================================
