@@ -57,6 +57,14 @@ const ICONS: Record<CareerValue["icon"], ReactNode> = {
   ),
 };
 
+// Background video for the "Teams you can join" band.
+// TO GO LIVE: drop a short, silent, compressed MP4 loop (ideally under ~5MB) in
+// /public, then set the path here. An optional poster still shows before it plays
+// and for reduced-motion viewers. Until a path is set, the band falls back to a
+// clean navy gradient, so it never looks broken.
+const TEAMS_BG_VIDEO = ""; // e.g. "/careers-teams-bg.mp4"
+const TEAMS_BG_POSTER = ""; // e.g. "/careers-teams-bg.jpg"
+
 const CAREERS_ORBS = [
   { bx: 0.18, by: 0.28, r: 400, ax: 76, ay: 50, sx: 0.12, sy: 0.1, ph: 0.5, c: "255,106,43", a: 0.16 },
   { bx: 0.85, by: 0.22, r: 340, ax: 62, ay: 52, sx: 0.11, sy: 0.14, ph: 2.1, c: "15,30,61", a: 0.18 },
@@ -67,10 +75,21 @@ const CAREERS_ORBS = [
 export default function CareersMain() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
+  const teamsVideoRef = useRef<HTMLVideoElement>(null);
+  const hasTeamsBg = TEAMS_BG_VIDEO !== "";
 
   // Aurora hero background.
   useEffect(() => {
     return orbField(canvasRef.current, CAREERS_ORBS, "source-over");
+  }, []);
+
+  // Play the teams background video, unless the viewer prefers reduced motion
+  // (then the poster / navy gradient shows instead).
+  useEffect(() => {
+    const v = teamsVideoRef.current;
+    if (!v) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    void v.play().catch(() => {});
   }, []);
 
   // Count-up on the hero stats when they scroll into view.
@@ -215,10 +234,23 @@ export default function CareersMain() {
       </section>
 
       {/* TEAMS YOU CAN JOIN */}
-      <section className="section engage">
+      <section className="section cr-teams-section">
+        <div className="cr-teams-bg" aria-hidden="true">
+          {hasTeamsBg && (
+            <video
+              ref={teamsVideoRef}
+              src={TEAMS_BG_VIDEO}
+              poster={TEAMS_BG_POSTER || undefined}
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            />
+          )}
+        </div>
         <div className="wrap">
           <div className="head reveal">
-            <span className="eyebrow">Where you fit</span>
+            <span className="eyebrow on-navy">Where you fit</span>
             <h2>Teams you can join.</h2>
           </div>
           <div className="cr-teams" data-stagger>
