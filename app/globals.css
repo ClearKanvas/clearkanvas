@@ -1161,7 +1161,8 @@ a.v-link:hover { color: var(--orange-ink); }
 .hero-has-video .hero-trust { border-top-color: rgba(255,255,255,0.16); }
 .hero-has-video .btn-ghost { color: #fff; border-color: rgba(255,255,255,0.3); }
 .hero-has-video .btn-ghost:hover { color: #fff; border-color: var(--orange); background: rgba(255,106,43,0.14); }
-.hero-has-video .marquee { background: rgba(6,11,22,0.55); border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85); }
+.hero-has-video .marquee { background: rgba(6,11,22,0.55); border-color: rgba(255,255,255,0.12); }
+.hero-has-video .marquee-item { color: rgba(255,255,255,0.9); }
 
 /* Regions */
 .regions-split { display: grid; grid-template-columns: 0.9fr 1.4fr; gap: 40px; margin-top: 40px; align-items: start; }
