@@ -5,6 +5,11 @@ import { useEffect, useRef, type ReactNode } from "react";
 import Arrow from "./Arrow";
 import { orbField } from "@/lib/orbField";
 
+// Optional background video behind the hero. Set to "" to go back to the plain
+// aurora hero. Plays muted / looping; reduced-motion viewers see the poster.
+const HERO_BG_VIDEO: string = "/teams_you_can_join.mp4";
+const HERO_BG_POSTER: string = ""; // optional poster still, e.g. "/hero-poster.jpg"
+
 // Crisp vector icons (scale sharp at any DPI), one per marquee item.
 const I = {
   target: (
@@ -75,6 +80,16 @@ const TRUST = [
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const heroRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const hasVideo = HERO_BG_VIDEO !== "";
+
+  // Play the hero background video unless the viewer prefers reduced motion.
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    void v.play().catch(() => {});
+  }, []);
 
   // Animated gradient orb field , airy navy + orange drift (the aurora).
   useEffect(() => {
@@ -137,8 +152,23 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="hero" ref={heroRef}>
+    <section className={`hero${hasVideo ? " hero-has-video" : ""}`} ref={heroRef}>
       <div className="hero-bg" aria-hidden="true">
+        {hasVideo && (
+          <>
+            <video
+              className="hero-video"
+              ref={videoRef}
+              src={HERO_BG_VIDEO}
+              poster={HERO_BG_POSTER || undefined}
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            />
+            <div className="hero-video-veil"></div>
+          </>
+        )}
         <div className="hero-aurora"></div>
         <canvas className="orb-canvas" id="heroCanvas" ref={canvasRef}></canvas>
         <div className="hero-grid-dots"></div>
