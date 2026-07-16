@@ -62,8 +62,8 @@ const ICONS: Record<CareerValue["icon"], ReactNode> = {
 // /public, then set the path here. An optional poster still shows before it plays
 // and for reduced-motion viewers. Until a path is set, the band falls back to a
 // clean navy gradient, so it never looks broken.
-const TEAMS_BG_VIDEO = ""; // e.g. "/careers-teams-bg.mp4"
-const TEAMS_BG_POSTER = ""; // e.g. "/careers-teams-bg.jpg"
+const TEAMS_BG_VIDEO: string = "/teams_you_can_join.mp4";
+const TEAMS_BG_POSTER: string = ""; // optional poster still, e.g. "/teams_you_can_join.jpg"
 
 const CAREERS_ORBS = [
   { bx: 0.18, by: 0.28, r: 400, ax: 76, ay: 50, sx: 0.12, sy: 0.1, ph: 0.5, c: "255,106,43", a: 0.16 },
