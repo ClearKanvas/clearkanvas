@@ -4,14 +4,11 @@ import Link from "next/link";
 import { useEffect, useRef, type ReactNode } from "react";
 import Arrow from "./Arrow";
 import FlowSteps from "./FlowSteps";
-import BrandFilm from "./BrandFilm";
 import { orbField } from "@/lib/orbField";
 import {
   CAREER_STATS,
   CAREER_VALUES,
   CAREER_TEAMS,
-  CAREER_GALLERY,
-  CAREER_BENEFITS,
   HIRING_PROCESS,
   type CareerValue,
 } from "@/lib/careers";
@@ -195,44 +192,6 @@ export default function CareersMain() {
         </div>
       </section>
 
-      {/* LIFE AT CLEARKANVAS , film band */}
-      <BrandFilm
-        eyebrow="Life at ClearKanvas"
-        heading="A look inside the team."
-        label="Life at ClearKanvas"
-        sub="Coming soon"
-      />
-
-      {/* GALLERY */}
-      <section className="section">
-        <div className="wrap">
-          <div className="head reveal">
-            <span className="eyebrow">Inside ClearKanvas</span>
-            <h2>Where the work happens.</h2>
-          </div>
-          <div className="cr-gallery" data-stagger>
-            {CAREER_GALLERY.map((g) => (
-              <figure className="cr-tile" key={g.label}>
-                {g.img ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={g.img} alt={g.label} loading="lazy" />
-                ) : (
-                  <span className="cr-tile-ph" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="3" y="5" width="18" height="14" rx="2" />
-                      <circle cx="9" cy="10" r="1.6" />
-                      <path d="M4 17l5-4 4 3 3-2 4 3" />
-                    </svg>
-                  </span>
-                )}
-                <figcaption>{g.label}</figcaption>
-              </figure>
-            ))}
-          </div>
-          <p className="cr-note reveal">Photos of our offices and team are on the way.</p>
-        </div>
-      </section>
-
       {/* TEAMS YOU CAN JOIN */}
       <section className="section cr-teams-section">
         <div className="cr-teams-bg" aria-hidden="true">
@@ -276,27 +235,7 @@ export default function CareersMain() {
         </div>
       </section>
 
-      {/* WHAT WE OFFER */}
-      <section className="section">
-        <div className="wrap">
-          <div className="head reveal">
-            <span className="eyebrow">What we offer</span>
-            <h2>The support behind the work.</h2>
-          </div>
-          <div className="incl-grid reveal" data-stagger>
-            {CAREER_BENEFITS.map((b) => (
-              <div className="incl-item" key={b}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M5 12.5l4 4 10-10" stroke="#FF6A2B" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span>{b}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* OPEN ROLES / TALENT NETWORK */}
+      {/* OPEN ROLES / TALENT NETWORK , closing band */}
       <section className="section svc-outcomes">
         <div className="wrap">
           <div className="head center reveal">
@@ -305,28 +244,16 @@ export default function CareersMain() {
           </div>
           <div className="cr-roles reveal">
             <p>
-              We do not have public listings live just yet. When we do, they will appear here.
-              In the meantime, we would still love to hear from you. Tell us what you do and where
-              you want to grow, and we will keep you in mind as roles open.
+              We do not have public listings live just yet, but we would still love to hear from
+              you. Send your CV to hello@clearkanvas.com or introduce yourself through our contact
+              form, and we will keep you in mind as roles open. A real person replies within one
+              business day.
             </p>
             <div className="hero-cta">
               <Link className="btn btn-primary" href="/contact">
                 Introduce yourself <Arrow size={15} />
               </Link>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="section cta-band cta-band-static">
-        <div className="wrap cta-inner reveal">
-          <h2>Do not see your role? Reach out anyway.</h2>
-          <p>Send your CV to hello@clearkanvas.com or introduce yourself through our contact form. A real person replies within one business day.</p>
-          <div className="hero-cta">
-            <Link className="btn btn-primary" href="/contact">
-              Get in touch <Arrow size={15} />
-            </Link>
           </div>
         </div>
       </section>
