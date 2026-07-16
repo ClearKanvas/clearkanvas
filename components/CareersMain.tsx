@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useRef, type ReactNode } from "react";
 import Arrow from "./Arrow";
 import { orbField } from "@/lib/orbField";
@@ -8,6 +9,7 @@ import {
   CAREER_STATS,
   CAREER_VALUES,
   CAREER_TEAMS,
+  CAREER_GALLERY,
   type CareerValue,
 } from "@/lib/careers";
 
@@ -185,6 +187,31 @@ export default function CareersMain() {
                 <h3>{v.title}</h3>
                 <p>{v.desc}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WAYS OF WORKING , illustrative image strip */}
+      <section className="section">
+        <div className="wrap">
+          <div className="head reveal">
+            <span className="eyebrow">How we work</span>
+            <h2>Collaborative, hands-on, and global.</h2>
+          </div>
+          <div className="cr-gallery" data-stagger>
+            {CAREER_GALLERY.map((g) => (
+              <figure className="cr-tile" key={g.label}>
+                {g.img && (
+                  <Image
+                    src={g.img}
+                    alt={g.label}
+                    fill
+                    sizes="(max-width: 620px) 100vw, (max-width: 980px) 50vw, 33vw"
+                  />
+                )}
+                <figcaption>{g.label}</figcaption>
+              </figure>
             ))}
           </div>
         </div>
