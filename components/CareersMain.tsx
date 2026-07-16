@@ -3,13 +3,11 @@
 import Link from "next/link";
 import { useEffect, useRef, type ReactNode } from "react";
 import Arrow from "./Arrow";
-import FlowSteps from "./FlowSteps";
 import { orbField } from "@/lib/orbField";
 import {
   CAREER_STATS,
   CAREER_VALUES,
   CAREER_TEAMS,
-  HIRING_PROCESS,
   type CareerValue,
 } from "@/lib/careers";
 
@@ -147,8 +145,8 @@ export default function CareersMain() {
             <Link className="btn btn-primary" href="/contact">
               Join our talent network <Arrow size={15} />
             </Link>
-            <a className="btn btn-ghost" href="#how-we-hire">
-              See how we hire
+            <a className="btn btn-ghost" href="#teams">
+              See where you fit
             </a>
           </div>
           <div className="cr-stats reveal" ref={statsRef}>
@@ -177,7 +175,7 @@ export default function CareersMain() {
             </p>
           </div>
           <div className="cr-values" data-stagger>
-            {CAREER_VALUES.map((v) => (
+            {CAREER_VALUES.slice(0, 3).map((v) => (
               <div className="cr-value" key={v.title}>
                 <span className="cr-value-ico">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -193,7 +191,7 @@ export default function CareersMain() {
       </section>
 
       {/* TEAMS YOU CAN JOIN */}
-      <section className="section cr-teams-section">
+      <section className="section cr-teams-section" id="teams">
         <div className="cr-teams-bg" aria-hidden="true">
           {hasTeamsBg && (
             <video
@@ -220,18 +218,6 @@ export default function CareersMain() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* HOW WE HIRE */}
-      <section className="section" id="how-we-hire">
-        <div className="wrap">
-          <div className="head reveal">
-            <span className="eyebrow">How we hire</span>
-            <h2>A clear, respectful process.</h2>
-            <p>You always know where you stand and what happens next.</p>
-          </div>
-          <FlowSteps steps={HIRING_PROCESS} />
         </div>
       </section>
 
