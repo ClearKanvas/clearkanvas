@@ -26,24 +26,35 @@ export default function ServiceDetail({ service }: { service: Service }) {
   return (
     <>
       {/* HERO */}
-      <section className="svc-hero">
+      <section className="svc-hero svc-hero-split">
         <div className="svc-hero-bg" aria-hidden="true">
           <div className="hero-aurora"></div>
           <canvas className="orb-canvas" ref={canvasRef}></canvas>
         </div>
         <div className="wrap svc-hero-inner">
-          <nav className="crumb reveal" aria-label="Breadcrumb">
-            <Link href="/services">Services</Link>
-            <span aria-hidden="true"> / </span>
-            <span>{service.name}</span>
-          </nav>
-          {service.flagship && <span className="svc-flag reveal">Flagship</span>}
-          <h1 className="reveal">{service.hero.headline}</h1>
-          <p className="svc-hero-tag reveal">{service.hero.subline}</p>
-          <div className="hero-cta reveal">
-            <Link className="btn btn-primary" href="/contact">
-              {service.hero.cta} <Arrow size={15} />
-            </Link>
+          <div className="svc-hero-copy">
+            <nav className="crumb reveal" aria-label="Breadcrumb">
+              <Link href="/services">Services</Link>
+              <span aria-hidden="true"> / </span>
+              <span>{service.name}</span>
+            </nav>
+            {service.flagship && <span className="svc-flag reveal">Flagship</span>}
+            <h1 className="reveal">{service.hero.headline}</h1>
+            <p className="svc-hero-tag reveal">{service.hero.subline}</p>
+            <div className="hero-cta reveal">
+              <Link className="btn btn-primary" href="/contact">
+                {service.hero.cta} <Arrow size={15} />
+              </Link>
+            </div>
+          </div>
+          <div className="svc-hero-media reveal">
+            <Image
+              src={service.heroImg}
+              alt=""
+              fill
+              sizes="(max-width: 860px) 92vw, 44vw"
+              priority
+            />
           </div>
         </div>
       </section>

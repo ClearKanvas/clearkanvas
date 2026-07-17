@@ -34,6 +34,8 @@ export interface Service {
   closing: { heading: string; supporting?: string; cta: string };
   /** Symbolic background image (no people) for the closing CTA band. */
   bandImg: string;
+  /** Warm, people-free hero image shown beside the headline (landing section). */
+  heroImg: string;
   /** Per-service orb palette for the animated hero background. */
   orbs: Orb[];
 }
@@ -110,6 +112,7 @@ export const SERVICES: Service[] = [
       cta: "Book a Discovery Call",
     },
     bandImg: "/bands/recruitment.jpg",
+    heroImg: "/heroes/recruitment.jpg",
     orbs: navyOrange(0.4),
   },
   {
@@ -158,6 +161,7 @@ export const SERVICES: Service[] = [
       cta: "Get a Compliance Check",
     },
     bandImg: "/bands/eor.jpg",
+    heroImg: "/heroes/eor.jpg",
     orbs: navyOrange(1.6),
   },
   {
@@ -206,6 +210,7 @@ export const SERVICES: Service[] = [
       cta: "Plan Your Team",
     },
     bandImg: "/bands/offshoring.jpg",
+    heroImg: "/heroes/offshoring.jpg",
     orbs: navyOrange(2.8),
   },
   {
@@ -253,6 +258,7 @@ export const SERVICES: Service[] = [
       cta: "Design Your Program",
     },
     bandImg: "/bands/training.jpg",
+    heroImg: "/heroes/training.jpg",
     orbs: navyOrange(4.0),
   },
 ];

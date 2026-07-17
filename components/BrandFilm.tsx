@@ -58,7 +58,7 @@ export default function BrandFilm({
   return (
     <section className="section film-section">
       <div className="wrap">
-        <div className="head center reveal">
+        <div className="head reveal">
           <span className="eyebrow">{eyebrow}</span>
           <h2>{heading}</h2>
         </div>

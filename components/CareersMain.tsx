@@ -251,7 +251,7 @@ export default function CareersMain() {
       {/* OPEN ROLES / TALENT NETWORK , closing band */}
       <section className="section svc-outcomes">
         <div className="wrap">
-          <div className="head center reveal">
+          <div className="head reveal">
             <span className="eyebrow on-navy">Open roles</span>
             <h2>We are always meeting good people.</h2>
           </div>
