@@ -20,6 +20,14 @@ export default function Partners() {
               <p className="partner-enables">{g.enables}</p>
             </div>
           ))}
+          <div className="partner-card partner-card-placeholder">
+            <span className="partner-cat">More partners</span>
+            <p className="partner-names">Coming soon</p>
+            <p className="partner-enables">
+              We are finalizing our payroll, sourcing, and verification partners, and will add
+              them here shortly.
+            </p>
+          </div>
         </div>
       </div>
     </section>

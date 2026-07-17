@@ -351,12 +351,9 @@ export interface PartnerGroup {
   enables: string;
 }
 
+// Only confirmed partners are shown for now; more will be added later.
 export const PARTNER_GROUPS: PartnerGroup[] = [
-  { category: "EOR & Payroll", partners: "PlayRoll, Deel", enables: "Compliant global payroll and employment reaching well over 180 countries." },
   { category: "Workspace & Infrastructure", partners: "CalmKaaj", enables: "Workspace and operational infrastructure for our teams." },
-  { category: "Sourcing & ATS", partners: "Workable, Greenhouse, LinkedIn Recruiter", enables: "Sourcing and applicant tracking at scale." },
-  { category: "Academic", partners: "NUST", enables: "University training and internship pipeline." },
-  { category: "Compliance & Verification", partners: "Background check and identity verification providers", enables: "Vetted, compliant onboarding for regulated roles." },
 ];
 
 // About sub-navigation.
