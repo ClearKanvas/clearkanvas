@@ -52,17 +52,17 @@ export const SERVICES: Service[] = [
     num: "01",
     name: "Recruitment",
     summary:
-      "End-to-end recruitment for companies building offshore teams in Pakistan and beyond. We find, vet, and deliver people you can trust.",
+      "End-to-end recruitment for companies building teams anywhere in the world. We find, vet, and deliver people you can trust.",
     flagship: true,
     hero: {
-      headline: "Hire proven offshore talent. Without the guesswork.",
+      headline: "Hire proven talent. Wherever you need it.",
       subline:
-        "End-to-end recruitment for companies building teams in Pakistan and beyond. We find, vet, and deliver people you can trust with your business.",
+        "End-to-end recruitment for companies building teams anywhere in the world. We find, vet, and deliver people you can trust with your business.",
       cta: "Book a Discovery Call",
     },
     problem: {
       heading: "The Hiring Problem",
-      intro: "Six things go wrong when companies hire offshore. We built our practice to fix all of them.",
+      intro: "Six things go wrong when companies hire across borders. We built our practice to fix all of them.",
       cards: [
         { title: "Hiring takes too long", desc: "Open roles sit empty for weeks, stalling projects and burning out teams." },
         { title: "Wrong hires are expensive", desc: "A bad match means restarting the search and absorbing the sunk cost." },
@@ -99,7 +99,7 @@ export const SERVICES: Service[] = [
       heading: "Why companies choose us.",
       items: [
         { title: "Operators, not resellers", desc: "Led by HR leaders with 15+ years across 15+ countries." },
-        { title: "Local depth, global standards", desc: "We know the Pakistan market and deliver to board-level standards." },
+        { title: "Local depth, global standards", desc: "We know the markets you hire in, and deliver to board-level standards." },
         { title: "Compliance built in", desc: "Entity, payroll, and contract risks flagged before they become penalties." },
         { title: "Fixed pricing", desc: "One fee, agreed upfront. No surprises." },
       ],
@@ -121,7 +121,7 @@ export const SERVICES: Service[] = [
     hero: {
       headline: "Hire in Pakistan. Without an entity.",
       subline:
-        "We employ your people legally on your behalf. Payroll, contracts, benefits, and compliance handled. You manage the work, we manage the risk.",
+        "We employ your people in Pakistan legally on your behalf, so global companies can build a team here without setting one up. Payroll, contracts, benefits, and compliance handled. You manage the work, we manage the risk.",
       cta: "Get a Compliance Check",
     },
     problem: {
@@ -202,6 +202,7 @@ export const SERVICES: Service[] = [
     },
     closing: {
       heading: "Same team quality. A fraction of the cost.",
+      supporting: "Pakistan offers a deep pool of skilled, university-educated professionals, so you get senior-level work at a fraction of onshore cost.",
       cta: "Plan Your Team",
     },
     bandImg: "/bands/offshoring.jpg",
@@ -281,8 +282,8 @@ export const SERVICE_GROUPS: ServiceGroup[] = ["Our Services"];
 
 export const SERVICE_NAV: ServiceNav[] = [
   { slug: "recruitment", name: "Recruitment", shortName: "Recruitment", menuDesc: "Find, vet, and deliver proven talent", group: "Our Services", flagship: true },
-  { slug: "employer-of-record", name: "Employer of Record", shortName: "Employer of Record", menuDesc: "Employ your people compliantly, no entity", group: "Our Services" },
-  { slug: "staff-offshoring", name: "Talent Offshoring", shortName: "Talent Offshoring", menuDesc: "A dedicated offshore team, fully run", group: "Our Services" },
+  { slug: "employer-of-record", name: "Employer of Record", shortName: "Employer of Record", menuDesc: "Employ talent in Pakistan, no entity needed", group: "Our Services" },
+  { slug: "staff-offshoring", name: "Talent Offshoring", shortName: "Talent Offshoring", menuDesc: "A dedicated Pakistan team, fully run", group: "Our Services" },
   { slug: "training-leadership-retreats", name: "Training & Leadership Retreats", shortName: "Training & Retreats", menuDesc: "Develop the leaders your growth needs", group: "Our Services" },
 ];
 
