@@ -36,6 +36,8 @@ export interface Service {
   bandImg: string;
   /** Warm, people-free hero image shown beside the headline (landing section). */
   heroImg: string;
+  /** Three lively/symbolic images for the "What's Included" background slideshow. */
+  slides: string[];
   /** Per-service orb palette for the animated hero background. */
   orbs: Orb[];
 }
@@ -113,6 +115,7 @@ export const SERVICES: Service[] = [
     },
     bandImg: "/bands/recruitment.jpg",
     heroImg: "/heroes/recruitment.jpg",
+    slides: ["/regions/north-america.jpg", "/regions/gcc.jpg", "/regions/apac.jpg"],
     orbs: navyOrange(0.4),
   },
   {
@@ -162,6 +165,7 @@ export const SERVICES: Service[] = [
     },
     bandImg: "/bands/eor.jpg",
     heroImg: "/heroes/eor.jpg",
+    slides: ["/regions/gcc.jpg", "/regions/europe.jpg", "/regions/apac.jpg"],
     orbs: navyOrange(1.6),
   },
   {
@@ -211,6 +215,7 @@ export const SERVICES: Service[] = [
     },
     bandImg: "/bands/offshoring.jpg",
     heroImg: "/heroes/offshoring.jpg",
+    slides: ["/regions/apac.jpg", "/regions/latam.jpg", "/regions/north-america.jpg"],
     orbs: navyOrange(2.8),
   },
   {
@@ -259,6 +264,7 @@ export const SERVICES: Service[] = [
     },
     bandImg: "/bands/training.jpg",
     heroImg: "/heroes/training.jpg",
+    slides: ["/heroes/training.jpg", "/about-clarity.jpg", "/bands/training.jpg"],
     orbs: navyOrange(4.0),
   },
 ];
