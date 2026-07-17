@@ -16,9 +16,9 @@ const sans = Hanken_Grotesk({
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.clearkanvas.com";
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
-const TITLE = "ClearKanvas Global: Global Recruitment, EOR & Staff Offshoring";
+const TITLE = "ClearKanvas Global: Recruitment, EOR, Talent Offshoring & Leadership Training";
 const DESCRIPTION =
-  "ClearKanvas Global helps companies hire the right people anywhere in the world: recruitment, Employer of Record (EOR), and staff offshoring. 25+ years in recruitment, 5+ years in EOR and offshore staffing, across the GCC, MENA, Europe, North America, and beyond.";
+  "ClearKanvas Global helps companies build and lead great teams: recruitment, Employer of Record (EOR), talent offshoring, and training and leadership retreats. We find your talent, employ it compliantly, run the day to day, and develop your leaders.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

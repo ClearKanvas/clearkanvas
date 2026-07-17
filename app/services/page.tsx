@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Services | ClearKanvas Global",
   alternates: { canonical: "/services" },
   description:
-    "Global Recruitment, Employer of Record (EOR), and Staff Offshoring. Engage ClearKanvas Global for one service or all three.",
+    "Recruitment, Employer of Record (EOR), Talent Offshoring, and Training & Leadership Retreats. Engage ClearKanvas Global for one service or all four.",
 };
 
 export default function ServicesPage() {
@@ -23,12 +23,12 @@ export default function ServicesPage() {
             <div className="head reveal">
               <span className="eyebrow">Services</span>
               <h1 className="svc-index-title">
-                Recruitment, Employer of Record, and Staff Offshoring
+                Recruitment, Employer of Record, Talent Offshoring, and Leadership Training
               </h1>
               <p>
-                Three ways to put the right people in your business: find them, employ them
-                compliantly, and run them long term. Start with one service or use all three.
-                Either way, we own the outcome.
+                Four ways to build and lead your team: find talent, employ it compliantly, run a
+                dedicated offshore team, and develop the leaders who guide it. Start with one
+                service or use all four. Either way, we own the outcome.
               </p>
             </div>
           </div>
@@ -49,7 +49,7 @@ export default function ServicesPage() {
                     {s.flagship && <span className="svc-flag">Flagship</span>}
                   </div>
                   <h2>{s.name}</h2>
-                  <p className="index-tag">{s.promise}</p>
+                  <p className="index-tag">{s.summary}</p>
                   <span className="learn-static">
                     Explore {s.name.split(/[ &,]/)[0]} <Arrow />
                   </span>

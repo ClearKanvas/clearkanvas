@@ -8,6 +8,7 @@ const SERVICE_IMG: Record<string, string> = {
   recruitment: "/recruitment.jpg",
   "employer-of-record": "/EOR.jpg",
   "staff-offshoring": "/staff-offshoring.jpg",
+  "training-leadership-retreats": "/training.jpg",
 };
 
 export default function Services() {
@@ -16,13 +17,13 @@ export default function Services() {
       <div className="wrap">
         <div className="head reveal">
           <span className="eyebrow">What we do</span>
-          <h2>Three ways we put the right people in your business</h2>
+          <h2>Four ways we help you build and lead your team</h2>
           <p>
-            One partner for finding talent, employing it compliantly, and running it long term.
-            Start with one service or use all three.
+            One partner to find talent, employ it compliantly, run it long term, and develop the
+            leaders who guide it. Start with one service or use all four.
           </p>
         </div>
-        <div className="svc-grid svc-grid-3" data-stagger>
+        <div className="svc-grid svc-grid-4" data-stagger>
           {SERVICE_NAV.map((s, i) => (
             <Link
               className={`svc-card${s.flagship ? " svc-card-flag" : ""}`}

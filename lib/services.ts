@@ -5,56 +5,35 @@ export interface ServiceStep {
   desc: string;
 }
 
-/** Region + delivery model row (used by EOR coverage). */
-export interface CoverageRow {
-  region: string;
-  note: string;
-}
-
-/** A specialized recruitment domain (fintech & compliance). */
-export interface SpecializedDomain {
-  domain: string;
-  desc: string;
-}
-
 export interface Service {
   slug: string;
   num: string;
   name: string;
-  /** Headline experience stat, e.g. "25+ years". */
-  experience: string;
-  /** Italic one-line promise shown under the title. */
-  promise: string;
-  /** Short label used on grids and the homepage service cards. */
+  /** Short one-liner for the nav menu and SEO description. */
   summary: string;
-  /** Hero subheadline on the detail page. */
-  heroTag: string;
-  /** Opening paragraph on the detail page. */
-  intro: string;
-  /** "What we do" , the sub-services / roles, shown as a clean grid. */
-  subServices: string[];
-  /** "How we do it" , the process steps. */
-  how: ServiceStep[];
-  /** "What you gain" , outcome statements. */
-  gains: string[];
-  /** "What's included" , concrete deliverables. */
-  whatsIncluded: string[];
-  /** "Why ClearKanvas Global" , short block. */
-  why: string;
-  /** Symbolic background image (no people) for the "What you gain" band. */
-  bandImg?: string;
-  /** Simple region coverage list (recruitment, offshoring). */
-  regions?: string[];
-  /** Region + delivery model coverage (EOR). */
-  coverage?: CoverageRow[];
-  /** Technical roles (recruitment). */
-  rolesTech?: string[];
-  /** Non-technical roles (recruitment). */
-  rolesNonTech?: string[];
-  /** Fintech & compliance domains (recruitment). */
-  specialized?: SpecializedDomain[];
-  /** Flagship service gets extra emphasis. */
   flagship?: boolean;
+  /** Hero: headline, subline, CTA label. */
+  hero: { headline: string; subline: string; cta: string };
+  /** "The Problem" section. */
+  problem: {
+    heading: string;
+    intro?: string;
+    cards: ServiceStep[];
+    /** Dark stat callout panel (e.g. recruitment). */
+    stat?: { big: string; small: string };
+    /** Single emphasized hook line (e.g. EOR). */
+    hook?: string;
+  };
+  /** "What's Included" section. */
+  included: { heading: string; items: ServiceStep[] };
+  /** "How It Works" section (rendered as the animated flow). */
+  process: { heading: string; steps: ServiceStep[] };
+  /** "Why ClearKanvas" section (optional, recruitment only in the current copy). */
+  why?: { heading: string; items: ServiceStep[] };
+  /** Closing CTA. */
+  closing: { heading: string; supporting?: string; cta: string };
+  /** Symbolic background image (no people) for the closing CTA band. */
+  bandImg: string;
   /** Per-service orb palette for the animated hero background. */
   orbs: Orb[];
 }
@@ -72,169 +51,208 @@ export const SERVICES: Service[] = [
     slug: "recruitment",
     num: "01",
     name: "Recruitment",
-    experience: "25+ years",
-    promise: "Hire the person, not the paperwork.",
     summary:
-      "We source, screen, and place the right people for any role, tech or non-tech, in any region. You only meet candidates who genuinely fit.",
-    heroTag:
-      "For over 25 years our founding team has sourced, screened, and placed the right people across tech and non-tech roles, in every region we serve. You meet only genuine contenders, and you pay only when you hire.",
-    intro:
-      "Great hiring is not about volume, it is about fit. We work your requirement hard before you ever see a CV, so the shortlist that lands on your desk is short for a reason: every name on it can actually do the job. From a single critical hire to an entire team, we place people who stay.",
-    regions: ["GCC", "MENA", "Europe", "North America", "APAC", "LATAM"],
-    rolesTech: [
-      "Software Engineering (frontend, backend, full-stack, mobile)",
-      "DevOps & Cloud Engineering",
-      "Data Engineering, Data Science & AI/ML",
-      "QA & Test Engineering",
-      "Product & UI/UX Design",
-      "Prompt Engineering",
-    ],
-    rolesNonTech: [
-      "Sales & Business Development",
-      "Marketing & Growth",
-      "Operations & Customer Support",
-      "Finance & Accounting",
-      "HR & People Operations",
-    ],
-    specialized: [
-      { domain: "SaaS", desc: "Sales, customer success, and engineering talent for SaaS businesses." },
-      { domain: "IT", desc: "Infrastructure, support, and technical staffing across industries." },
-      { domain: "Payments", desc: "Talent for payment processors, fintechs, and payment infrastructure providers." },
-      { domain: "IDV", desc: "People who know identity verification systems and operations." },
-      { domain: "AML", desc: "Compliance analysts and anti-money-laundering operations talent." },
-      { domain: "KYC", desc: "Know Your Customer analysts and onboarding compliance talent." },
-    ],
-    subServices: [
-      "Software Engineering",
-      "DevOps & Cloud",
-      "Data, AI & ML",
-      "QA & Test",
-      "Product & UI/UX",
-      "Prompt Engineering",
-      "Sales & Business Development",
-      "Marketing & Growth",
-      "Finance & Accounting",
-      "HR & People Operations",
-      "SaaS & Payments",
-      "IDV, AML & KYC",
-    ],
-    how: [
-      { title: "Requirement scoping", desc: "We learn the role, the must-have skills, the timeline, and what good looks like for you." },
-      { title: "Sourcing & screening", desc: "We source from our global network and screen candidates before anyone reaches your inbox." },
-      { title: "Shortlisting", desc: "You get a curated shortlist within an agreed turnaround." },
-      { title: "Interviews", desc: "We coordinate interviews and gather structured feedback." },
-      { title: "Offer & onboarding", desc: "We support the offer, negotiation, acceptance, and first weeks." },
-      { title: "Post-placement support", desc: "A replacement guarantee window and ongoing check-ins." },
-    ],
-    gains: [
-      "A shortlist that is short for a reason.",
-      "A strong hit rate: most shortlists we present go on to a hire.",
-      "No placement, no fee, our interests stay aligned with yours.",
-      "A replacement guarantee window if a hire does not work out.",
-    ],
-    whatsIncluded: [
-      "Precision screening against your must-have skills and experience.",
-      "A focused shortlist, typically 3 to 5 fully assessed candidates per role.",
-      "A strong submission-to-hire success rate, because we screen hard before we submit.",
-      "Post-placement support, onboarding help, and a replacement guarantee window.",
-    ],
-    why: "25+ years of combined experience, a specialist edge in fintech and compliance hiring, and a no placement, no fee model that keeps our interests aligned with yours: we only win when you hire someone who stays.",
-    bandImg: "/bands/recruitment.jpg",
+      "End-to-end recruitment for companies building offshore teams in Pakistan and beyond. We find, vet, and deliver people you can trust.",
     flagship: true,
+    hero: {
+      headline: "Hire proven offshore talent. Without the guesswork.",
+      subline:
+        "End-to-end recruitment for companies building teams in Pakistan and beyond. We find, vet, and deliver people you can trust with your business.",
+      cta: "Book a Discovery Call",
+    },
+    problem: {
+      heading: "The Hiring Problem",
+      intro: "Six things go wrong when companies hire offshore. We built our practice to fix all of them.",
+      cards: [
+        { title: "Hiring takes too long", desc: "Open roles sit empty for weeks, stalling projects and burning out teams." },
+        { title: "Wrong hires are expensive", desc: "A bad match means restarting the search and absorbing the sunk cost." },
+        { title: "Talent shortage", desc: "Specialized roles have far more demand than qualified supply." },
+        { title: "Multiple vendors to manage", desc: "Juggling agencies fragments accountability and slows decisions." },
+        { title: "High agency fees", desc: "Premium rates, no guaranteed results." },
+        { title: "Poor communication", desc: "Hiring managers left guessing on pipeline status." },
+      ],
+      stat: {
+        big: "30% of annual salary",
+        small: "The estimated cost of a single wrong hire in lost productivity, re-hiring, and team disruption.",
+      },
+    },
+    included: {
+      heading: "Everything between the job description and day one.",
+      items: [
+        { title: "Role scoping and salary benchmarking", desc: "We define the role and show you what the market pays." },
+        { title: "Sourcing and multi-stage screening", desc: "Technical, communication, and culture checks before you see a CV." },
+        { title: "Curated shortlists, not CV dumps", desc: "Three to five candidates with our honest recommendation." },
+        { title: "Offer management", desc: "We handle both sides so offers land and start dates hold." },
+        { title: "90-day replacement guarantee", desc: "If a hire doesn't work out, we replace them. No debate, no fee." },
+      ],
+    },
+    process: {
+      heading: "From brief to hire in four steps.",
+      steps: [
+        { title: "Discover", desc: "A 30-minute call to understand the role and what great looks like." },
+        { title: "Source and screen", desc: "We search, assess, and pressure-test against your bar." },
+        { title: "Shortlist", desc: "Interview only the candidates worth your time." },
+        { title: "Hire", desc: "We manage the offer, the paperwork, and the first 90 days." },
+      ],
+    },
+    why: {
+      heading: "Why companies choose us.",
+      items: [
+        { title: "Operators, not resellers", desc: "Led by HR leaders with 15+ years across 15+ countries." },
+        { title: "Local depth, global standards", desc: "We know the Pakistan market and deliver to board-level standards." },
+        { title: "Compliance built in", desc: "Entity, payroll, and contract risks flagged before they become penalties." },
+        { title: "Fixed pricing", desc: "One fee, agreed upfront. No surprises." },
+      ],
+    },
+    closing: {
+      heading: "Tell us the role. We'll show you the market.",
+      supporting: "Your next hire is already out there. We know where to look.",
+      cta: "Book a Discovery Call",
+    },
+    bandImg: "/bands/recruitment.jpg",
     orbs: navyOrange(0.4),
   },
   {
     slug: "employer-of-record",
     num: "02",
     name: "Employer of Record",
-    experience: "5+ years",
-    promise: "Employ anyone, anywhere, compliantly.",
     summary:
-      "Hire talent in markets where you have no legal entity. We become the compliant legal employer and handle contracts, payroll, and HR.",
-    heroTag:
-      "Hire the person you want in a country where you have no legal entity. ClearKanvas becomes their legal employer of record and takes on the contracts, payroll, tax, and compliance, so the hire is legitimate from day one and the risk never lands on you.",
-    intro:
-      "Opening a legal entity in a new country is slow, expensive, and hard to unwind. EOR removes that barrier entirely. You choose the talent, we employ them properly under local law, and you get a fully compliant team member without the cost or commitment of setting up abroad. 5+ years of combined EOR and compliant-employment experience stands behind every engagement.",
-    coverage: [
-      { region: "Pakistan", note: "Direct EOR, ClearKanvas is the legal employer." },
-      { region: "GCC", note: "Direct and partner-supported EOR." },
-      { region: "MENA & Europe", note: "Partner-supported EOR." },
-      { region: "North America", note: "Partner-supported EOR via PlayRoll and Deel." },
-      { region: "APAC & LATAM", note: "Partner-supported EOR reaching well over 180 countries through our PlayRoll network." },
-    ],
-    subServices: [
-      "Local-law employment contracts",
-      "Payroll processing",
-      "Statutory tax filing",
-      "Benefits & leave administration",
-      "Onboarding & termination",
-      "Ongoing compliance monitoring",
-    ],
-    how: [
-      { title: "You choose the talent", desc: "You pick the person you want to hire, in any market we cover." },
-      { title: "We become the legal employer", desc: "We put them on a locally compliant contract, correctly and quickly." },
-      { title: "We run payroll, compliance & HR", desc: "You manage the work. We manage everything else." },
-    ],
-    gains: [
-      "Hire without opening a local entity.",
-      "Fully compliant from day one.",
-      "One accountable partner, not a vendor patchwork.",
-      "Payroll, tax, and HR handled for you.",
-    ],
-    whatsIncluded: [
-      "Locally compliant employment contracts drafted for the hire's country.",
-      "Monthly payroll processing and statutory tax filing.",
-      "Benefits and leave administration.",
-      "A dedicated point of contact for onboarding, HR queries, and offboarding.",
-      "Ongoing compliance monitoring as local labor regulations change.",
-    ],
-    why: "Direct employment where we operate, and a trusted partner network everywhere else, so you get one accountable partner instead of a patchwork of vendors. We keep your hires compliant while you focus on the work.",
+      "Employ your people in Pakistan legally, without setting up an entity. Payroll, contracts, benefits, and compliance handled.",
+    hero: {
+      headline: "Hire in Pakistan. Without an entity.",
+      subline:
+        "We employ your people legally on your behalf. Payroll, contracts, benefits, and compliance handled. You manage the work, we manage the risk.",
+      cta: "Get a Compliance Check",
+    },
+    problem: {
+      heading: "Paying contractors abroad isn't a strategy. It's exposure.",
+      cards: [
+        { title: "Misclassification risk", desc: "Long-term contractors are employees in the eyes of regulators." },
+        { title: "Permanent establishment risk", desc: "Direct hiring can trigger local tax obligations you didn't plan for." },
+        { title: "No local contracts", desc: "Unenforceable agreements leave your IP and confidentiality unprotected." },
+        { title: "Payroll complexity", desc: "Local tax, social security, and benefits rules change and carry penalties." },
+      ],
+      hook: "Most companies discover their compliance gap only when it becomes a penalty.",
+    },
+    included: {
+      heading: "Full legal employment, minus the entity.",
+      items: [
+        { title: "Compliant employment contracts", desc: "Locally enforceable, with IP and confidentiality protection." },
+        { title: "Payroll and tax filing", desc: "Salaries, withholdings, and statutory contributions on time, every month." },
+        { title: "Benefits administration", desc: "Health coverage, leave, and statutory benefits managed end to end." },
+        { title: "HR support", desc: "Onboarding, documentation, and offboarding handled locally." },
+        { title: "Ongoing compliance", desc: "We track regulatory changes so you never fall behind." },
+      ],
+    },
+    process: {
+      heading: "Compliant in days, not months.",
+      steps: [
+        { title: "Assess", desc: "We review your current setup and flag every risk." },
+        { title: "Contract", desc: "Your people move onto compliant local employment agreements." },
+        { title: "Run", desc: "We handle payroll, benefits, and filings each month." },
+        { title: "Report", desc: "One invoice, one point of contact, full visibility." },
+      ],
+    },
+    closing: {
+      heading: "Already paying people in Pakistan? Let's make it safe.",
+      cta: "Get a Compliance Check",
+    },
     bandImg: "/bands/eor.jpg",
     orbs: navyOrange(1.6),
   },
   {
     slug: "staff-offshoring",
     num: "03",
-    name: "Staff Offshoring",
-    experience: "5+ years",
-    promise: "Your dedicated team, without the overhead.",
+    name: "Talent Offshoring",
     summary:
-      "A dedicated, full time team member who works only for you, inside your tools and hours, while we handle HR, payroll, and retention.",
-    heroTag:
-      "A full time professional who works exclusively for you, inside your tools and on your hours, as part of your team. We handle sourcing, employment, payroll, and retention, so you get the person and none of the admin.",
-    intro:
-      "Offshoring is not a freelancer and it is not a placement. It is a dedicated team member, embedded in your workflows for the long term, who happens to be employed and supported by us. You get continuity, focus, and a genuine extension of your team, at a fraction of the cost and effort of hiring locally. 5+ years of combined offshoring and staff augmentation experience sits behind every engagement.",
-    regions: ["North America", "Europe", "GCC", "MENA", "APAC"],
-    subServices: [
-      "Software Developers",
-      "DevOps & Cloud Engineers",
-      "QA Engineers",
-      "UI/UX & Product Designers",
-      "Customer Support",
-      "Operations",
-    ],
-    how: [
-      { title: "Role & team-fit scoping", desc: "We learn your stack, the seniority you need, and your working hours." },
-      { title: "Candidate selection", desc: "You interview and approve the dedicated team member." },
-      { title: "Deployment", desc: "They are onboarded directly into your tools and workflows." },
-      { title: "Ongoing management", desc: "We handle HR, payroll, and retention. You manage the daily work." },
-    ],
-    gains: [
-      "A dedicated hire, fully managed.",
-      "The continuity of a full-time team member.",
-      "HR, payroll, and retention handled for you.",
-      "A replacement guarantee window if the fit is not right.",
-    ],
-    whatsIncluded: [
-      "A dedicated, full time resource working only for you, inside your tools and workflows.",
-      "Candidate screening and technical vetting before deployment.",
-      "HR management, local payroll, and retention handled on our side.",
-      "A replacement guarantee window if the fit is not right.",
-      "Ongoing performance check-ins between you, us, and the deployed team member.",
-    ],
-    why: "You get the continuity of a full time hire and the ease of a managed service. We keep the person supported, paid, and retained, so you keep the output without the employment burden.",
+      "Build a dedicated offshore team in Pakistan that works as an extension of yours. We recruit, employ, house, and support them.",
+    hero: {
+      headline: "Your team. Our ground game.",
+      subline:
+        "Build a dedicated offshore team in Pakistan that works as an extension of yours. We recruit, employ, house, and support them. You direct the work.",
+      cta: "Plan Your Team",
+    },
+    problem: {
+      heading: "Scaling headcount shouldn't mean scaling overhead.",
+      cards: [
+        { title: "Costs climbing", desc: "Onshore salaries make growth math impossible for many functions." },
+        { title: "Freelancers don't scale", desc: "No loyalty, no continuity, no institutional knowledge." },
+        { title: "BPOs dilute quality", desc: "Shared teams and high churn mean your work is nobody's priority." },
+        { title: "Building alone is slow", desc: "Entity setup, office, hiring, and compliance take a year you don't have." },
+      ],
+    },
+    included: {
+      heading: "A dedicated team, fully operational.",
+      items: [
+        { title: "Dedicated staff", desc: "Your people, working only for you, on your tools and hours." },
+        { title: "Full employment infrastructure", desc: "Contracts, payroll, benefits, and HR through our EOR backbone." },
+        { title: "Workspace and equipment", desc: "Office, hardware, and IT support if you want them in one place." },
+        { title: "Performance management", desc: "On-ground oversight, engagement, and retention support." },
+        { title: "Scale on demand", desc: "Add or restructure roles as your needs change." },
+      ],
+    },
+    process: {
+      heading: "From plan to productive team.",
+      steps: [
+        { title: "Design", desc: "We map the roles, costs, and structure with you." },
+        { title: "Build", desc: "We recruit and onboard your dedicated team." },
+        { title: "Run", desc: "We manage employment and operations. You manage the work." },
+        { title: "Grow", desc: "Scale up as the model proves itself." },
+      ],
+    },
+    closing: {
+      heading: "Same team quality. A fraction of the cost.",
+      cta: "Plan Your Team",
+    },
     bandImg: "/bands/offshoring.jpg",
     orbs: navyOrange(2.8),
+  },
+  {
+    slug: "training-leadership-retreats",
+    num: "04",
+    name: "Training & Leadership Retreats",
+    summary:
+      "Practical training programs and immersive leadership retreats, designed and delivered by seasoned operators.",
+    hero: {
+      headline: "Develop the leaders your growth depends on.",
+      subline:
+        "Practical training programs and immersive leadership retreats, designed and delivered by operators who have built and led teams across 15+ countries.",
+      cta: "Design Your Program",
+    },
+    problem: {
+      heading: "Promoted into leadership. Never trained for it.",
+      cards: [
+        { title: "Managers by accident", desc: "Great performers promoted without the skills to lead people." },
+        { title: "Generic training fails", desc: "Off-the-shelf workshops don't stick and don't fit your context." },
+        { title: "Culture drifts", desc: "Growing and distributed teams lose alignment without deliberate work." },
+        { title: "Retention suffers", desc: "People leave managers, not companies." },
+      ],
+    },
+    included: {
+      heading: "Built for your people, not off a shelf.",
+      items: [
+        { title: "Leadership development programs", desc: "Multi-week cohorts on managing people, performance, and change." },
+        { title: "Manager essentials training", desc: "Feedback, difficult conversations, delegation, and coaching." },
+        { title: "Leadership retreats", desc: "Offsite experiences that align leadership teams around strategy and culture." },
+        { title: "Team workshops", desc: "Focused sessions on communication, collaboration, and ways of working." },
+        { title: "Follow-through", desc: "Post-program coaching and measurement so learning becomes behavior." },
+      ],
+    },
+    process: {
+      heading: "Diagnose, design, deliver, embed.",
+      steps: [
+        { title: "Diagnose", desc: "We assess your team's real gaps, not assumed ones." },
+        { title: "Design", desc: "A program built around your business, roles, and culture." },
+        { title: "Deliver", desc: "Facilitated by senior HR practitioners, not career trainers." },
+        { title: "Embed", desc: "Coaching and check-ins that make it stick." },
+      ],
+    },
+    closing: {
+      heading: "Your best people are ready to lead. Get them ready.",
+      cta: "Design Your Program",
+    },
+    bandImg: "/bands/training.jpg",
+    orbs: navyOrange(4.0),
   },
 ];
 
@@ -262,9 +280,10 @@ export interface ServiceNav {
 export const SERVICE_GROUPS: ServiceGroup[] = ["Our Services"];
 
 export const SERVICE_NAV: ServiceNav[] = [
-  { slug: "recruitment", name: "Recruitment", shortName: "Recruitment", menuDesc: "Source, screen, and place the right people", group: "Our Services", flagship: true },
-  { slug: "employer-of-record", name: "Employer of Record", shortName: "Employer of Record", menuDesc: "Employ talent compliantly, anywhere", group: "Our Services" },
-  { slug: "staff-offshoring", name: "Staff Offshoring", shortName: "Staff Offshoring", menuDesc: "A dedicated team, fully managed", group: "Our Services" },
+  { slug: "recruitment", name: "Recruitment", shortName: "Recruitment", menuDesc: "Find, vet, and deliver proven talent", group: "Our Services", flagship: true },
+  { slug: "employer-of-record", name: "Employer of Record", shortName: "Employer of Record", menuDesc: "Employ your people compliantly, no entity", group: "Our Services" },
+  { slug: "staff-offshoring", name: "Talent Offshoring", shortName: "Talent Offshoring", menuDesc: "A dedicated offshore team, fully run", group: "Our Services" },
+  { slug: "training-leadership-retreats", name: "Training & Leadership Retreats", shortName: "Training & Retreats", menuDesc: "Develop the leaders your growth needs", group: "Our Services" },
 ];
 
 export const FLAGSHIP_SERVICE = SERVICE_NAV.find((s) => s.flagship)!;

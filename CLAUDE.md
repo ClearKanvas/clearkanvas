@@ -1,16 +1,19 @@
 # ClearKanvas Website: Project Guide for Claude Code
 
 ## What this is
-The marketing website for ClearKanvas Global, a talent partner that helps companies hire the
-right people anywhere in the world. Three core services: Recruitment (flagship), Employer of
-Record (EOR), and Staff Offshoring. We find talent, employ it compliantly, and can run the day
-to day, so clients grow into any market without setting up in one. Clients are served across the
-GCC, MENA, Europe, North America, APAC, and LATAM, delivered from Pakistan.
+The marketing website for ClearKanvas Global, a talent partner that helps companies build and
+lead great teams. Four core services: Recruitment (flagship), Employer of Record (EOR), Talent
+Offshoring, and Training & Leadership Retreats. We find talent, employ it compliantly, run the
+day to day, and develop the leaders who guide it, delivered from Pakistan. Clients are served
+across the GCC, MENA, Europe, North America, APAC, and LATAM.
 
 Tagline: "The right people, anywhere in the world."
 
-Note: the site was repositioned from an earlier 8-service Global Business Services (GBS) model.
-Ignore the old GBS framing; the three services above are the current business.
+Note: the site was repositioned from an earlier 8-service Global Business Services (GBS) model,
+then from a 3-service model. Ignore those; the four services above are the current business.
+The service-page copy comes from the founder's "ClearKanvas_Service_Pages_Copy" doc and lives in
+the structured layer `lib/services.ts` (problem-driven layout). Note the service-page copy leans
+Pakistan-offshore, while the homepage and Global Reach section keep the broader global framing.
 
 ## Offices vs markets (honesty guardrail, do not blur)
 - Offices (only two): Pakistan (delivery hub) and the United States (ClearKanvas Global LLC,
@@ -54,16 +57,18 @@ site: Hanken Grotesk, loaded via `next/font/google` as `--font-sans`. See `BRAND
    Call", "Request Talent", "Talk to our team".
 
 ## Navigation
-Services (dropdown: Recruitment, Employer of Record, Staff Offshoring), Regions, About (Our
-Story, Team & Offices), Careers, Contact, and a "Request Talent" button (top right, accent
-color). No Insights section yet.
+Services (dropdown: Recruitment, Employer of Record, Talent Offshoring, Training & Leadership
+Retreats), Regions, About (Our Story, Team & Offices), Careers, Contact, and a "Request Talent"
+button (top right, accent color). No Insights section yet.
 
 ## Site structure
 - Homepage sections: Hero + trust bar, three service cards, Regions we cover, Recruitment
   highlight, Partners, Team & Offices, FAQ, closing CTA.
 - Service detail pages: one shared template (`components/ServiceDetail.tsx`) driven by
   `lib/services.ts`, generating `/services/recruitment`, `/services/employer-of-record`,
-  `/services/staff-offshoring`.
+  `/services/staff-offshoring` (Talent Offshoring), and `/services/training-leadership-retreats`.
+  Layout per page: Hero, The Problem (cards + optional stat/hook), What's Included, How It Works
+  (animated flow), Why ClearKanvas (recruitment only), Closing CTA.
 - About: `/about` (Story blurb, Purpose/Mission/Vision, Values) and `/about/story`.
 - Careers: `/careers` (copy in `lib/careers.ts`, rendered by `components/CareersMain.tsx`).
 - Contact: `/contact`.
