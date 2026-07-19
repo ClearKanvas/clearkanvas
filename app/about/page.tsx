@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -58,8 +59,13 @@ export default function AboutPage() {
             <div className="pmv-grid" data-stagger>
               {PMV.map((x) => (
                 <div className="pmv-card" key={x.k}>
-                  <span className="pmv-k">{x.k}</span>
-                  <p>{x.v}</p>
+                  <div className="pmv-media">
+                    <Image src={x.img} alt={x.alt} fill sizes="(max-width: 620px) 100vw, (max-width: 975px) 50vw, 33vw" />
+                  </div>
+                  <div className="pmv-body">
+                    <span className="pmv-k">{x.k}</span>
+                    <p>{x.v}</p>
+                  </div>
                 </div>
               ))}
             </div>

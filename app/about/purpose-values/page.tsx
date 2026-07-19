@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -28,7 +29,7 @@ export default function PurposeValuesPage() {
         />
 
         {/* Purpose, Mission, Vision */}
-        <section className="section" id="purpose">
+        <section className="section pv-stack" id="purpose">
           <div className="wrap">
             <div className="head reveal">
               <span className="eyebrow">Purpose, mission, vision</span>
@@ -37,8 +38,13 @@ export default function PurposeValuesPage() {
             <div className="pmv-grid" data-stagger>
               {PMV.map((x) => (
                 <div className="pmv-card" key={x.k}>
-                  <span className="pmv-k">{x.k}</span>
-                  <p>{x.v}</p>
+                  <div className="pmv-media">
+                    <Image src={x.img} alt={x.alt} fill sizes="(max-width: 620px) 100vw, (max-width: 975px) 50vw, 33vw" />
+                  </div>
+                  <div className="pmv-body">
+                    <span className="pmv-k">{x.k}</span>
+                    <p>{x.v}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -55,8 +61,13 @@ export default function PurposeValuesPage() {
             <div className="vlist-grid" data-stagger>
               {VALUES.map((v) => (
                 <div className="vlist-card" key={v.t}>
-                  <h3>{v.t}</h3>
-                  <p>{v.d}</p>
+                  <div className="vlist-media">
+                    <Image src={v.img} alt={v.alt} fill sizes="(max-width: 620px) 100vw, (max-width: 975px) 50vw, 25vw" />
+                  </div>
+                  <div className="vlist-body">
+                    <h3>{v.t}</h3>
+                    <p>{v.d}</p>
+                  </div>
                 </div>
               ))}
             </div>

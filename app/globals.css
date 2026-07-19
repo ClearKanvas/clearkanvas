@@ -830,17 +830,38 @@ a.v-link:hover { color: var(--orange-ink); }
 
 /* Purpose / mission / vision */
 .pmv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.pmv-card { background: var(--bg-warm); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 32px; }
+.pmv-card { background: var(--bg-warm); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; display: flex; flex-direction: column; }
+.pmv-body { padding: 28px 32px 32px; }
 .pmv-k { display: block; font-family: var(--body); font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange-ink); margin-bottom: 16px; }
 .pmv-card p { font-family: var(--display); font-weight: 500; font-size: 19px; line-height: 1.45; color: var(--navy); text-wrap: pretty; }
 
+/* Symbolic imagery on the purpose / mission / vision cards */
+.pmv-media { position: relative; aspect-ratio: 16 / 9; background: var(--navy-deep); overflow: hidden; }
+.pmv-media img { object-fit: cover; transition: transform .5s var(--ease); }
+.pmv-card:hover .pmv-media img { transform: scale(1.04); }
+
 /* Values list */
-.vlist-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 52px; }
-.vlist-card { background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 28px; transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+.vlist-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 52px; }
+.vlist-card { background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; display: flex; flex-direction: column; transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
 .vlist-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card); }
+.vlist-body { padding: 24px 26px 28px; }
 .vlist-card h3 { font-size: 19px; }
 .vlist-card h3::before { content: ""; display: block; width: 26px; height: 3px; background: var(--orange); border-radius: 2px; margin-bottom: 14px; }
 .vlist-card p { margin-top: 10px; color: var(--slate); font-size: 15.5px; text-wrap: pretty; }
+
+.vlist-media { position: relative; aspect-ratio: 4 / 3; background: var(--navy-deep); overflow: hidden; }
+.vlist-media img { object-fit: cover; transition: transform .5s var(--ease); }
+.vlist-card:hover .vlist-media img { transform: scale(1.04); }
+
+@media (prefers-reduced-motion: reduce) {
+  .pmv-card:hover .pmv-media img,
+  .vlist-card:hover .vlist-media img { transform: none; }
+}
+
+/* Purpose & Values page: tighten the gap between the two bands */
+.pv-stack { padding-bottom: clamp(32px, 4vw, 52px); }
+.pv-stack + .section.values { padding-top: clamp(40px, 5vw, 64px); }
+.pv-stack + .section.values .vlist-grid { margin-top: 34px; }
 
 /* Leadership */
 .leader-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 760px; }
