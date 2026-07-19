@@ -322,7 +322,7 @@ export const REGIONS: RegionRow[] = [
   { region: "MENA", coverage: "Middle East and North Africa", img: "/regions/mena.jpg", flags: ["eg", "ma", "jo", "tn", "lb"] },
   { region: "Europe", coverage: "United Kingdom, Western and Eastern Europe", img: "/regions/europe.jpg", flags: ["gb", "de", "fr", "nl", "es", "pl"] },
   { region: "North America", coverage: "United States, Canada", img: "/regions/north-america.jpg", flags: ["us", "ca"] },
-  { region: "APAC", coverage: "Asia-Pacific markets", img: "/regions/apac.jpg", flags: ["sg", "au", "in", "jp", "ph"] },
+  { region: "APAC", coverage: "Asia-Pacific markets", img: "/regions/apac.jpg", flags: ["sg", "au", "jp", "ph"] },
   { region: "LATAM", coverage: "Latin America", img: "/regions/latam.jpg", flags: ["br", "mx", "ar", "co", "cl"] },
 ];
 
