@@ -1661,6 +1661,25 @@ a.v-link:hover { color: var(--orange-ink); }
 }
 
 /* =========================================================
+   Service hero , cinematic photo slideshow
+   ========================================================= */
+.svc-hero-cine { background: var(--navy-deep); color: #fff; }
+.svc-hero-cine .svc-hero-bg::after {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(10,17,36,0.78) 0%, rgba(6,11,22,0.9) 100%),
+    linear-gradient(90deg, rgba(6,11,22,0.72) 0%, rgba(6,11,22,0.28) 65%, rgba(6,11,22,0.4) 100%);
+}
+.svc-hero-cine h1,
+.svc-hero-cine .svc-hero-tag { color: #fff; }
+.svc-hero-cine .svc-hero-intro { color: rgba(255,255,255,0.78); }
+.svc-hero-cine .crumb { color: rgba(255,255,255,0.62); }
+.svc-hero-cine .crumb a { color: rgba(255,255,255,0.82); }
+.svc-hero-cine .crumb a:hover { color: var(--orange); }
+/* A little more breathing room so the imagery reads as a band, not a strip. */
+.svc-hero-cine .svc-hero-inner { padding: clamp(64px,8vw,124px) 0 clamp(56px,7vw,88px); }
+
+/* =========================================================
    Careers v2 (per Careers Page copy)
    ========================================================= */
 /* Partner placeholder card */

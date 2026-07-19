@@ -19,18 +19,27 @@ function Tick({ size = 18 }: { size?: number }) {
 
 export default function ServiceDetail({ service }: { service: Service }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  // With a hero slideshow the aurora canvas is skipped, so the photos stay crisp.
+  const hasSlides = service.heroSlides.length > 0;
 
   useEffect(() => {
+    if (hasSlides) return;
     return orbField(canvasRef.current, service.orbs, "source-over");
-  }, [service.orbs]);
+  }, [service.orbs, hasSlides]);
 
   return (
     <>
       {/* HERO */}
-      <section className="svc-hero">
+      <section className={`svc-hero${hasSlides ? " svc-hero-cine" : ""}`}>
         <div className="svc-hero-bg" aria-hidden="true">
-          <div className="hero-aurora"></div>
-          <canvas className="orb-canvas" ref={canvasRef}></canvas>
+          {hasSlides ? (
+            <Slideshow images={service.heroSlides} />
+          ) : (
+            <>
+              <div className="hero-aurora"></div>
+              <canvas className="orb-canvas" ref={canvasRef}></canvas>
+            </>
+          )}
         </div>
         <div className="wrap svc-hero-inner">
           <nav className="crumb reveal" aria-label="Breadcrumb">

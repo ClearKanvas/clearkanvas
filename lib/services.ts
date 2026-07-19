@@ -38,6 +38,13 @@ export interface Service {
   heroImg: string;
   /** Three lively/symbolic images for the "What's Included" background slideshow. */
   slides: string[];
+  /**
+   * Five symbolic, people-free images for the hero background slideshow. Each set
+   * is chosen for that service: search and reach for recruitment, law and entity
+   * for EOR, infrastructure and Pakistan for offshoring, retreat and growth for
+   * training.
+   */
+  heroSlides: string[];
   /** Per-service orb palette for the animated hero background. */
   orbs: Orb[];
 }
@@ -116,6 +123,13 @@ export const SERVICES: Service[] = [
     bandImg: "/bands/recruitment.jpg",
     heroImg: "/heroes/recruitment.jpg",
     slides: ["/regions/north-america.jpg", "/regions/gcc.jpg", "/regions/apac.jpg"],
+    heroSlides: [
+      "/bands/recruitment.jpg",
+      "/slides/rec-search.jpg",
+      "/slides/rec-board.jpg",
+      "/slides/rec-city.jpg",
+      "/values/purpose.jpg",
+    ],
     orbs: navyOrange(0.4),
   },
   {
@@ -166,6 +180,13 @@ export const SERVICES: Service[] = [
     bandImg: "/bands/eor.jpg",
     heroImg: "/heroes/eor.jpg",
     slides: ["/regions/gcc.jpg", "/regions/europe.jpg", "/regions/apac.jpg"],
+    heroSlides: [
+      "/slides/eor-columns.jpg",
+      "/slides/eor-contract.jpg",
+      "/bands/eor.jpg",
+      "/slides/eor-tower.jpg",
+      "/slides/eor-facade.jpg",
+    ],
     orbs: navyOrange(1.6),
   },
   {
@@ -216,6 +237,13 @@ export const SERVICES: Service[] = [
     bandImg: "/bands/offshoring.jpg",
     heroImg: "/heroes/offshoring.jpg",
     slides: ["/regions/apac.jpg", "/regions/latam.jpg", "/regions/north-america.jpg"],
+    heroSlides: [
+      "/slides/off-pakistan.jpg",
+      "/slides/off-data.jpg",
+      "/bands/offshoring.jpg",
+      "/slides/off-clocks.jpg",
+      "/slides/off-fiber.jpg",
+    ],
     orbs: navyOrange(2.8),
   },
   {
@@ -265,6 +293,13 @@ export const SERVICES: Service[] = [
     bandImg: "/bands/training.jpg",
     heroImg: "/heroes/training.jpg",
     slides: ["/heroes/training.jpg", "/about-clarity.jpg", "/bands/training.jpg"],
+    heroSlides: [
+      "/slides/tr-peaks.jpg",
+      "/bands/training.jpg",
+      "/slides/tr-lodge.jpg",
+      "/slides/tr-books.jpg",
+      "/slides/tr-sunrise.jpg",
+    ],
     orbs: navyOrange(4.0),
   },
 ];
