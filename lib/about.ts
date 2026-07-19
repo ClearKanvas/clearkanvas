@@ -59,13 +59,13 @@ export const VALUES: Value[] = [
     t: "Integrity",
     d: "We do what is right, especially when no one is watching.",
     img: "/values/integrity.jpg",
-    alt: "An ancient oak standing firm in a forest",
+    alt: "A balance scale weighing a single chess piece",
   },
   {
     t: "Partnership",
     d: "We own what we promise. Our clients' success is the only measure that matters.",
     img: "/values/partnership.jpg",
-    alt: "A stone arch bridge crossing calm water",
+    alt: "A heavy rope knotted tight around a rail",
   },
 ];
 
