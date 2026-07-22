@@ -10,13 +10,13 @@ export default function PrivacyPolicyPage() {
   return (
     <LegalPage
       title="Privacy Policy"
-      updated="June 2026"
+      updated="July 2026"
       intro="This policy explains what information ClearKanvas Global collects, how we use it, and the choices you have."
       sections={[
         {
           h: "Who we are",
           body: [
-            "ClearKanvas Global provides finance, talent, technology, and operations services to clients in the USA, Pakistan, and Bahrain, and is growing into new markets, delivered from our operations base in Pakistan. In this policy, \"ClearKanvas Global\", \"we\", \"us\", and \"our\" refer to ClearKanvas Global.",
+            "ClearKanvas Global is a talent partner providing recruitment, Employer of Record, talent offshoring, and training and leadership services. We serve clients across the GCC, MENA, Europe, North America, APAC, and LATAM, delivered from our operations base in Pakistan and our entity in the United States. In this policy, \"ClearKanvas Global\", \"we\", \"us\", and \"our\" refer to ClearKanvas Global.",
           ],
         },
         {
@@ -24,6 +24,14 @@ export default function PrivacyPolicyPage() {
           body: [
             "We collect information you give us directly, such as your name, work email, company, country, and the details you include when you contact us through our website or by email.",
             "We also collect limited technical information automatically when you visit our site, such as your browser type, device, and pages viewed, to help us understand how the site is used and to keep it secure.",
+          ],
+        },
+        {
+          h: "Job applications and candidate information",
+          body: [
+            "If you apply for a role with us or join our talent network, we collect the details you submit, including your name, contact details, LinkedIn profile, CV, and the answers you provide. We use this to assess your application, to contact you about it, and to consider you for current and future roles.",
+            "Where you are a candidate we are placing with a client, we share relevant details with that client for the purposes of the role, with your knowledge.",
+            "We keep candidate information for as long as it is useful for recruitment purposes, and you can ask us to remove it at any time using the contact details below.",
           ],
         },
         {
