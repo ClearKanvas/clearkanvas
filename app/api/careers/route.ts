@@ -65,6 +65,10 @@ export async function POST(req: Request) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        // Shared secret so only this site can write to the sheet. The Apps Script
+        // Web App has to be open to "Anyone", so the secret is what actually
+        // guards it. Set CAREERS_WEBHOOK_SECRET to the same value in both places.
+        secret: process.env.CAREERS_WEBHOOK_SECRET ?? "",
         name,
         email,
         phone,

@@ -395,5 +395,5 @@ export const PARTNER_GROUPS: PartnerGroup[] = [
 export const ABOUT_NAV = [
   { href: "/about/story", label: "Our Story" },
   { href: "/about/purpose-values", label: "Purpose & Values" },
-  { href: "/#team", label: "Team & Offices" },
+  { href: "/#team", label: "Our Offices" },
 ];

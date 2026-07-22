@@ -1,30 +1,23 @@
 import { OFFICES } from "@/lib/services";
 
-// Placeholder team slots until real names, titles, bios, photos, and LinkedIn
-// links are supplied. Count only, no invented people.
-const TEAM_SLOTS = 4;
-
+/**
+ * Offices section. The placeholder team cards were removed deliberately: nothing
+ * on the site should read "coming soon". Real team members can be reintroduced
+ * here once names, titles, and photos are supplied.
+ *
+ * Keeps id="team" so existing /#team links in the nav and footer still resolve.
+ */
 export default function Team() {
   return (
     <section className="section team" id="team">
       <div className="wrap">
         <div className="head reveal">
-          <span className="eyebrow">Real people, real presence</span>
-          <h2>The people behind ClearKanvas</h2>
+          <span className="eyebrow">Where we operate from</span>
+          <h2>Real entities in two countries</h2>
           <p>
-            A named team you can actually talk to, backed by real legal entities in two
-            countries.
+            A named team you can actually talk to, backed by real legal entities in Pakistan and
+            the United States.
           </p>
-        </div>
-
-        <div className="team-grid" data-stagger>
-          {Array.from({ length: TEAM_SLOTS }).map((_, i) => (
-            <div className="team-card team-card-placeholder" key={i}>
-              <div className="team-photo" aria-hidden="true" />
-              <span className="team-name">Team member</span>
-              <span className="team-role">Coming soon</span>
-            </div>
-          ))}
         </div>
 
         <div className="offices-strip reveal">
