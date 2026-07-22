@@ -4,7 +4,6 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Regions from "@/components/Regions";
 import Partners from "@/components/Partners";
-import Team from "@/components/Team";
 import ClosingCTA from "@/components/ClosingCTA";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -26,9 +25,7 @@ export default function Home() {
         <Regions />
         {/* 4 Industry partners */}
         <Partners />
-        {/* 5 Offices */}
-        <Team />
-        {/* 6 Final CTA */}
+        {/* 5 Final CTA */}
         <ClosingCTA />
       </main>
       <Footer />

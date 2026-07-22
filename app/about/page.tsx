@@ -19,7 +19,6 @@ export const metadata: Metadata = {
 const BLURB: Record<string, string> = {
   "Our Story": "Why we built ClearKanvas Global, and who we serve.",
   "Purpose & Values": "Our purpose, mission, vision, and the values behind every engagement.",
-  "Our Offices": "Where we operate from, and the entities behind our work.",
 };
 
 export default function AboutPage() {
