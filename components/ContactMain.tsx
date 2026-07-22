@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Arrow from "./Arrow";
 import { orbField } from "@/lib/orbField";
+import { REGIONS } from "@/lib/services";
 
 const COUNTRIES = [
   "United States",
@@ -15,11 +16,13 @@ const COUNTRIES = [
   "Other",
 ];
 
-// Markets we serve (clients), shown in the info panel.
-const MARKETS = ["United States", "Pakistan", "Bahrain"];
+// Markets we serve (clients), shown in the info panel. Taken from the same
+// regions listed on the homepage so the two never drift apart.
+const MARKETS = REGIONS.map((r) => r.region);
 
-// Where we operate (delivery + on-the-ground presence). USA and Bahrain notes are
-// generic until full addresses are confirmed.
+// Where we operate. Only the two real offices: the Pakistan delivery hub and the
+// US entity. Markets we serve are listed separately above and are never called
+// offices.
 const OPERATE: { country: string; note: string; address?: string; phone?: string }[] = [
   { country: "United States", note: "Local presence" },
   {
@@ -28,7 +31,6 @@ const OPERATE: { country: string; note: string; address?: string; phone?: string
     address: "Plot 1-E, Lower Ground Floor, Ali Plaza, Blue Area, Islamabad, Pakistan",
     phone: "+92 309 6661176",
   },
-  { country: "Bahrain", note: "Regional presence" },
 ];
 
 const NEXT_STEPS = [
