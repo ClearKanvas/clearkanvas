@@ -10,6 +10,7 @@ import {
   FLAGSHIP_SERVICE,
   ABOUT_NAV,
 } from "@/lib/services";
+import { MEDIA_PRODUCTION } from "@/lib/media";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -89,6 +90,22 @@ export default function Nav() {
                     ))}
                   </div>
                 ))}
+                {/* Emerging ClearKanvas Group line, kept separate from the four core services. */}
+                <div className="mega-col">
+                  <p className="mega-head">ClearKanvas Group</p>
+                  <Link
+                    className="mega-link"
+                    href={`/services/${MEDIA_PRODUCTION.slug}`}
+                    role="menuitem"
+                    onClick={close}
+                  >
+                    <span className="mega-link-name">
+                      {MEDIA_PRODUCTION.headline}
+                      <span className="mega-flag">{MEDIA_PRODUCTION.tag}</span>
+                    </span>
+                    <span className="mega-link-desc">Creative and visual production, in-house</span>
+                  </Link>
+                </div>
               </div>
               <div className="mega-feature">
                 <p className="mega-feature-title">

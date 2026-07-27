@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import Arrow from "@/components/Arrow";
 import { SERVICES } from "@/lib/services";
+import { MEDIA_PRODUCTION } from "@/lib/media";
 
 export const metadata: Metadata = {
   title: "Services | ClearKanvas Global",
@@ -55,6 +56,31 @@ export default function ServicesPage() {
                   </span>
                 </Link>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section engage">
+          <div className="wrap">
+            <div className="head reveal">
+              <span className="eyebrow">ClearKanvas Group</span>
+              <h2>A new line, in the making</h2>
+              <p>
+                As ClearKanvas grows into a group of specialist businesses, we are building new
+                lines beyond our core services. The first is Media Production.
+              </p>
+            </div>
+            <div className="index-grid" data-stagger>
+              <Link className="index-card" href={`/services/${MEDIA_PRODUCTION.slug}`} data-tilt>
+                <div className="svc-head">
+                  <span className="svc-flag">{MEDIA_PRODUCTION.tag}</span>
+                </div>
+                <h2>{MEDIA_PRODUCTION.headline}</h2>
+                <p className="index-tag">{MEDIA_PRODUCTION.subhead}</p>
+                <span className="learn-static">
+                  Explore Media Production <Arrow />
+                </span>
+              </Link>
             </div>
           </div>
         </section>
