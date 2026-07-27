@@ -42,4 +42,14 @@ export const MEDIA_PRODUCTION = {
     "/slides/mp-lens.jpg",
     "/slides/mp-clap.jpg",
   ],
+  /**
+   * Lightweight crossfading slideshow behind "What we are building". Uses
+   * next/image-optimized stills (a few tens of KB each) instead of a multi-MB
+   * video, to keep the page fast. Motion graphics, editing, and camera.
+   */
+  buildingSlides: [
+    "/slides/mp-motion.jpg",
+    "/slides/mp-edit.jpg",
+    "/slides/mp-camera.jpg",
+  ],
 };

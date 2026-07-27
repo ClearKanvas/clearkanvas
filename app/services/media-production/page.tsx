@@ -4,7 +4,6 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import Slideshow from "@/components/Slideshow";
-import SectionVideo from "@/components/SectionVideo";
 import Arrow from "@/components/Arrow";
 import { MEDIA_PRODUCTION as M } from "@/lib/media";
 
@@ -68,11 +67,9 @@ export default function MediaProductionPage() {
           </div>
         </section>
 
-        {/* WHAT WE ARE BUILDING , capabilities over a cinematic video band */}
+        {/* WHAT WE ARE BUILDING , capabilities over a light crossfade slideshow */}
         <section className="section wi-section">
-          <div className="wi-video-bg" aria-hidden="true">
-            <SectionVideo src="/mp-building-bg.mp4" />
-          </div>
+          <Slideshow images={M.buildingSlides} />
           <div className="wrap">
             <div className="head reveal">
               <span className="eyebrow on-navy">What we are building</span>
