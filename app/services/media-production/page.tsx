@@ -94,7 +94,6 @@ export default function MediaProductionPage() {
         {/* CLOSING , launching-soon note (no contact CTA while the line is pre-launch) */}
         <section className="section cta-band cta-band-static">
           <div className="wrap cta-inner reveal">
-            <span className="svc-flag mp-closing-tag">{M.tag}</span>
             <h2>{M.closingHeading}</h2>
             <p>{M.closingSupporting}</p>
           </div>

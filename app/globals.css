@@ -1682,8 +1682,6 @@ a.v-link:hover { color: var(--orange-ink); }
 /* Media Production: eyebrow + launching tag on one row */
 .mp-eyebrow-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .mp-eyebrow-row .svc-flag { margin: 0; }
-/* Launching-soon pill above the closing note */
-.mp-closing-tag { display: inline-block; margin: 0 0 18px; }
 
 /* Glass capability cards on the dark "What we are building" band (mirrors .wi-item). */
 .wi-section .cap-card {
