@@ -1679,6 +1679,10 @@ a.v-link:hover { color: var(--orange-ink); }
 /* A little more breathing room so the imagery reads as a band, not a strip. */
 .svc-hero-cine .svc-hero-inner { padding: clamp(64px,8vw,124px) 0 clamp(56px,7vw,88px); }
 
+/* Media Production: eyebrow + "Launching 2026" tag on one row */
+.mp-eyebrow-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.mp-eyebrow-row .svc-flag { margin: 0; }
+
 /* =========================================================
    Careers v2 (per Careers Page copy)
    ========================================================= */
