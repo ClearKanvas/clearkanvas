@@ -4,7 +4,6 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import Slideshow from "@/components/Slideshow";
-import Arrow from "@/components/Arrow";
 import { MEDIA_PRODUCTION as M } from "@/lib/media";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.clearkanvas.com";
@@ -52,11 +51,6 @@ export default function MediaProductionPage() {
             </div>
             <h1 className="reveal">{M.headline}</h1>
             <p className="svc-hero-tag reveal">{M.subhead}</p>
-            <div className="hero-cta reveal">
-              <Link className="btn btn-primary" href="/contact">
-                {M.cta} <Arrow size={15} />
-              </Link>
-            </div>
           </div>
         </section>
 
@@ -97,16 +91,12 @@ export default function MediaProductionPage() {
           </div>
         </section>
 
-        {/* CLOSING CTA */}
+        {/* CLOSING , launching-soon note (no contact CTA while the line is pre-launch) */}
         <section className="section cta-band cta-band-static">
           <div className="wrap cta-inner reveal">
+            <span className="svc-flag mp-closing-tag">{M.tag}</span>
             <h2>{M.closingHeading}</h2>
             <p>{M.closingSupporting}</p>
-            <div className="hero-cta">
-              <Link className="btn btn-primary" href="/contact">
-                {M.cta} <Arrow size={15} />
-              </Link>
-            </div>
           </div>
         </section>
       </main>

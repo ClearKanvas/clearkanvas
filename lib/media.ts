@@ -31,9 +31,9 @@ export const MEDIA_PRODUCTION = {
   whoHeading: "Reliability and craft, in one place",
   whoText:
     "Businesses that want the reliability of a delivery partner and the craft of a creative studio in one place, without managing multiple vendors.",
-  closingHeading: "Launching as part of ClearKanvas Group.",
-  closingSupporting: "To talk about creative production for your brand, get in touch.",
-  cta: "Get in touch",
+  closingHeading: "Launching soon.",
+  closingSupporting:
+    "Media Production is being built now, as part of ClearKanvas Group, delivered through its own team and its own standards. It goes live soon.",
   /** Five symbolic, people-free images for the cinematic hero slideshow. */
   heroSlides: [
     "/slides/mp-camera.jpg",
