@@ -14,7 +14,7 @@ export const MEDIA_PRODUCTION = {
   slug: "media-production",
   eyebrow: "ClearKanvas Group",
   /** Honest signal while the line is still being built. */
-  tag: "Launching 2026",
+  tag: "Launching soon",
   headline: "Media Production",
   subhead:
     "Creative and visual production, built on the same standard of delivery as everything we do.",

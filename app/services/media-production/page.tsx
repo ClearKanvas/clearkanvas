@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Media Production | ClearKanvas Global",
   alternates: { canonical: "/services/media-production" },
   description:
-    "Media Production is a new ClearKanvas Group line, launching in 2026: video, branded content, motion graphics, post-production, and creative direction, built to our standard of delivery.",
+    "Media Production is a new ClearKanvas Group line, launching soon: video, branded content, motion graphics, post-production, and creative direction, built to our standard of delivery.",
 };
 
 export default function MediaProductionPage() {
