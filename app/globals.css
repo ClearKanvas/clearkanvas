@@ -1679,9 +1679,22 @@ a.v-link:hover { color: var(--orange-ink); }
 /* A little more breathing room so the imagery reads as a band, not a strip. */
 .svc-hero-cine .svc-hero-inner { padding: clamp(64px,8vw,124px) 0 clamp(56px,7vw,88px); }
 
-/* Media Production: eyebrow + "Launching 2026" tag on one row */
+/* Media Production: eyebrow + launching tag on one row */
 .mp-eyebrow-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .mp-eyebrow-row .svc-flag { margin: 0; }
+
+/* Media Production: looping video behind the "What we are building" band.
+   Reuses .wi-section (dark base + legibility overlay via ::after). The video
+   sits at z-index 0, the overlay at 1, content at 2. */
+.wi-video-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: var(--navy-deep); }
+.wi-video-bg .section-video { width: 100%; height: 100%; object-fit: cover; }
+/* Glass capability cards on the dark video band (mirrors .wi-item on dark). */
+.wi-section .cap-card {
+  background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12);
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+}
+.wi-section .cap-card h3 { color: #fff; }
+.wi-section .cap-card:hover { border-color: transparent; background: rgba(255,255,255,0.1); }
 
 /* =========================================================
    Careers v2 (per Careers Page copy)

@@ -4,6 +4,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import Slideshow from "@/components/Slideshow";
+import SectionVideo from "@/components/SectionVideo";
 import Arrow from "@/components/Arrow";
 import { MEDIA_PRODUCTION as M } from "@/lib/media";
 
@@ -67,11 +68,14 @@ export default function MediaProductionPage() {
           </div>
         </section>
 
-        {/* WHAT WE ARE BUILDING , capabilities */}
-        <section className="section engage">
+        {/* WHAT WE ARE BUILDING , capabilities over a cinematic video band */}
+        <section className="section wi-section">
+          <div className="wi-video-bg" aria-hidden="true">
+            <SectionVideo src="/mp-building-bg.mp4" />
+          </div>
           <div className="wrap">
             <div className="head reveal">
-              <span className="eyebrow">What we are building</span>
+              <span className="eyebrow on-navy">What we are building</span>
               <h2>{M.buildingHeading}</h2>
             </div>
             <div className="cap-grid" data-stagger>
