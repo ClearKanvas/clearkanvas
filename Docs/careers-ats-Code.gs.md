@@ -112,7 +112,7 @@ function doPost(e) {
         "Hi " + (d.name || "there") + ", thanks for your interest in ClearKanvas Global. " +
         "We appreciate you taking the time to apply. If your experience matches a current or " +
         "upcoming role, our team will reach out." +
-        "  With appreciation,\nClearKanvas Global Team",
+        "\nWith appreciation,\nClearKanvas Global Team",
         senderOptions({ name: FROM_NAME, replyTo: REPLY_TO }));
     }
 
