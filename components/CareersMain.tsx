@@ -53,7 +53,6 @@ export default function CareersMain() {
       <section className="section engage" id="open-roles">
         <div className="wrap">
           <div className="head reveal">
-            <span className="eyebrow">Open roles</span>
             <h2>Open roles.</h2>
           </div>
           {ACTIVE_ROLES.length > 0 ? (
