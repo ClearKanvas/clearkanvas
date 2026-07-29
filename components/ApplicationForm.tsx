@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { APPLICATION_DOMAINS } from "@/lib/careers";
+import { APPLICATION_TAXONOMY, APPLICATION_CATEGORIES, TALENT_NETWORK_OPTION } from "@/lib/careers";
 
 const MAX_CV_MB = 5;
 const MAX_ANSWER = 500;
@@ -11,20 +11,29 @@ type Status = "idle" | "submitting" | "success" | "error";
 export default function ApplicationForm({
   open,
   onClose,
-  role,
-  roleOptions,
+  posting,
 }: {
   open: boolean;
   onClose: () => void;
-  role: string;
-  roleOptions: string[];
+  /** The specific open posting the applicant clicked Apply on, or Talent Network. */
+  posting: string;
 }) {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string>("");
   const [answer, setAnswer] = useState("");
   const [isStudent, setIsStudent] = useState(false);
+  // Two-level expertise cascade: category drives the specialization options.
+  const [category, setCategory] = useState("");
+  const [specialization, setSpecialization] = useState("");
   const dialogRef = useRef<HTMLDivElement>(null);
   const firstFieldRef = useRef<HTMLInputElement>(null);
+
+  const specializations =
+    APPLICATION_TAXONOMY.find((t) => t.category === category)?.specializations ?? [];
+
+  // A specific posting is only recorded when the applicant came from an open
+  // role; the talent network / general entry point has no posting attached.
+  const appliedPosting = posting === TALENT_NETWORK_OPTION ? "" : posting;
 
   // Reset transient state and focus the first field when opened.
   useEffect(() => {
@@ -33,6 +42,8 @@ export default function ApplicationForm({
     setError("");
     setAnswer("");
     setIsStudent(false);
+    setCategory("");
+    setSpecialization("");
     const t = setTimeout(() => firstFieldRef.current?.focus(), 60);
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -64,6 +75,15 @@ export default function ApplicationForm({
     }
     if (cv.size > MAX_CV_MB * 1024 * 1024) {
       setError(`CV must be under ${MAX_CV_MB} MB.`);
+      return;
+    }
+
+    if (!category) {
+      setError("Please choose the role you are applying for.");
+      return;
+    }
+    if (!specialization) {
+      setError("Please choose your area of expertise.");
       return;
     }
 
@@ -119,7 +139,7 @@ export default function ApplicationForm({
         ) : (
           <>
             <h3 className="af-title">
-              {role === "Talent Network" ? "Join the talent network" : "Apply"}
+              {posting === TALENT_NETWORK_OPTION ? "Join the talent network" : "Apply"}
             </h3>
             <p className="af-sub">Five minutes. CV plus one short question. No login, no portal.</p>
 
@@ -146,21 +166,40 @@ export default function ApplicationForm({
                 </label>
               </div>
 
+              {appliedPosting && <input type="hidden" name="appliedPosting" value={appliedPosting} />}
+
               <div className="af-row">
                 <label className="af-field">
                   <span>Role applying for *</span>
-                  <select name="role" defaultValue={role} required>
-                    {roleOptions.map((r) => (
-                      <option key={r} value={r}>{r}</option>
+                  <select
+                    name="category"
+                    value={category}
+                    onChange={(e) => {
+                      setCategory(e.target.value);
+                      setSpecialization("");
+                    }}
+                    required
+                  >
+                    <option value="" disabled>Select a function</option>
+                    {APPLICATION_CATEGORIES.map((c) => (
+                      <option key={c} value={c}>{c}</option>
                     ))}
                   </select>
                 </label>
                 <label className="af-field">
                   <span>Area of expertise *</span>
-                  <select name="domain" defaultValue="" required>
-                    <option value="" disabled>Select your area</option>
-                    {APPLICATION_DOMAINS.map((d) => (
-                      <option key={d} value={d}>{d}</option>
+                  <select
+                    name="specialization"
+                    value={specialization}
+                    onChange={(e) => setSpecialization(e.target.value)}
+                    required
+                    disabled={!category}
+                  >
+                    <option value="" disabled>
+                      {category ? "Select your area" : "Choose a role first"}
+                    </option>
+                    {specializations.map((s) => (
+                      <option key={s} value={s}>{s}</option>
                     ))}
                   </select>
                 </label>

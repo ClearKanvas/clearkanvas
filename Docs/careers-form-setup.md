@@ -132,8 +132,13 @@ the authorization step, or a mismatch between the two `CAREERS_WEBHOOK_SECRET` v
 ## Managing open roles
 
 Roles live in `lib/roles.ts`. Set `active: true` on a role to publish it. The Careers page renders
-only active roles and shows the empty state when none are active. Active role titles also populate
-the "Role applying for" dropdown in the form automatically.
+only active roles and shows the empty state when none are active. When someone clicks Apply on a
+posting, that posting title is recorded on the application as `appliedPosting`.
+
+The form's "Role applying for" and "Area of expertise" dropdowns are a two-level cascade driven by
+`APPLICATION_TAXONOMY` in `lib/careers.ts` (category, then its specializations), not by open roles.
+The deployed Apps Script is documented in `docs/careers-ats-Code.gs.md`; its `CATEGORIES` list must
+stay identical to `APPLICATION_CATEGORIES` in `lib/careers.ts`.
 
 ## Rotating the secret
 

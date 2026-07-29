@@ -58,7 +58,6 @@ export default function CareersMain() {
     return orbField(canvasRef.current, CAREERS_ORBS, "source-over");
   }, []);
 
-  const roleOptions = [...ACTIVE_ROLES.map((r) => r.title), TALENT_NETWORK_OPTION];
   const openForm = (role: string) => {
     setFormRole(role);
     setFormOpen(true);
@@ -191,8 +190,7 @@ export default function CareersMain() {
       <ApplicationForm
         open={formOpen}
         onClose={() => setFormOpen(false)}
-        role={formRole}
-        roleOptions={roleOptions}
+        posting={formRole}
       />
     </>
   );

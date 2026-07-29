@@ -28,8 +28,11 @@ export async function POST(req: Request) {
   const email = String(form.get("email") || "").trim();
   const phone = String(form.get("phone") || "").trim();
   const linkedin = String(form.get("linkedin") || "").trim();
-  const role = String(form.get("role") || "").trim();
-  const domain = String(form.get("domain") || "").trim();
+  // Two-level expertise: category ("Role applying for") + specialization
+  // ("Area of expertise"). appliedPosting is the specific open role, if any.
+  const category = String(form.get("category") || "").trim();
+  const specialization = String(form.get("specialization") || "").trim();
+  const appliedPosting = String(form.get("appliedPosting") || "").trim();
   const answer = String(form.get("answer") || "").trim();
   // Optional academic fields (only present for student / recent-grad applicants).
   const studentOrGrad = form.get("studentOrGrad") ? "Yes" : "";
@@ -43,7 +46,7 @@ export async function POST(req: Request) {
   const portfolio = String(form.get("portfolio") || "").trim();
   const cv = form.get("cv");
 
-  if (!name || !email || !role || !answer) {
+  if (!name || !email || !category || !specialization || !answer) {
     return NextResponse.json({ error: "Please complete the required fields." }, { status: 400 });
   }
   if (!EMAIL_RE.test(email)) {
@@ -84,8 +87,9 @@ export async function POST(req: Request) {
         email,
         phone,
         linkedin,
-        role,
-        domain,
+        category,
+        specialization,
+        appliedPosting,
         studentOrGrad,
         university,
         degree,

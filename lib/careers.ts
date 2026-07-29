@@ -35,16 +35,133 @@ export const HIRING_PROMISE =
 // Value shown in the role dropdown for open applications with no specific role.
 export const TALENT_NETWORK_OPTION = "Talent Network";
 
-// Areas of expertise an applicant can pick. Drives the ATS: the label chosen
-// here becomes the candidate's Drive subfolder and the domain the AI validates
-// against. MUST stay identical to the DOMAINS list in the Apps Script (ATS).
-export const APPLICATION_DOMAINS = [
-  "Recruitment & Talent",
-  "Software & Technology",
-  "Finance & Accounting",
-  "Sales & Business Development",
-  "Marketing & Creative",
-  "Operations & Administration",
-  "Customer Support & Success",
-  "Other / General",
+// Two-level expertise taxonomy for the application form. The applicant first
+// picks a `category` ("Role applying for"), which then reveals the matching
+// `specializations` ("Area of expertise"). The ATS uses the category as the
+// candidate's Drive subfolder; the specialization is stored as a sheet column.
+//
+// This is the single source of truth. The category list MUST stay identical to
+// the CATEGORIES list in the Apps Script (ATS) so folder names line up. To edit
+// any label, add, or remove an area, change it here only; the form updates
+// automatically.
+export interface ExpertiseArea {
+  /** Top-level function. Becomes the "Role applying for" option and Drive subfolder. */
+  category: string;
+  /** Sub-specializations shown once this category is chosen. */
+  specializations: string[];
+}
+
+export const APPLICATION_TAXONOMY: ExpertiseArea[] = [
+  {
+    category: "Human Resources & Recruitment",
+    specializations: [
+      "Talent Acquisition",
+      "Technical Recruitment",
+      "Executive Search",
+      "Sourcing",
+      "Recruitment Coordination / Ops",
+      "RPO Delivery",
+      "HR Operations",
+      "HR Business Partnering",
+      "Learning & Development",
+      "Organizational Development",
+      "Employee Relations",
+      "Compensation & Benefits",
+      "HRIS / People Analytics",
+      "Talent Management",
+      "Diversity, Equity & Inclusion",
+      "HR Generalist",
+    ],
+  },
+  {
+    category: "Finance & Accounting",
+    specializations: [
+      "Bookkeeping / Financial Accounting",
+      "Management Accounting / FP&A",
+      "Accounts Payable",
+      "Accounts Receivable",
+      "Payroll",
+      "Tax",
+      "Audit & Assurance",
+      "Treasury",
+      "Financial Analysis",
+      "Controller / Finance Leadership",
+    ],
+  },
+  {
+    category: "Software & Technology",
+    specializations: [
+      "Frontend Engineering",
+      "Backend Engineering",
+      "Full-Stack Engineering",
+      "Mobile Engineering",
+      "DevOps / Cloud / SRE",
+      "QA / Test Automation",
+      "Data Engineering",
+      "Data Science / ML / AI",
+      "Product Management",
+      "UI / UX Design",
+      "IT Support / SysAdmin",
+      "Cybersecurity",
+    ],
+  },
+  {
+    category: "Sales & Business Development",
+    specializations: [
+      "SDR / Inside Sales",
+      "Account Executive",
+      "Business Development",
+      "Account Management",
+      "Sales Operations",
+      "Partnerships",
+      "Pre-Sales / Solutions",
+    ],
+  },
+  {
+    category: "Marketing & Creative",
+    specializations: [
+      "Digital / Performance Marketing",
+      "Content & Copywriting",
+      "SEO / SEM",
+      "Social Media",
+      "Brand & Communications",
+      "Graphic Design",
+      "Video / Motion",
+      "Product Marketing",
+      "Marketing Analytics",
+    ],
+  },
+  {
+    category: "Operations & Administration",
+    specializations: [
+      "Project / Program Management",
+      "Business Operations",
+      "Executive Assistant / Admin",
+      "Office Management",
+      "Supply Chain / Procurement",
+      "Process Improvement",
+    ],
+  },
+  {
+    category: "Customer Support & Success",
+    specializations: [
+      "Customer Support",
+      "Customer Success",
+      "Technical Support",
+      "Onboarding / Implementation",
+      "Support Operations",
+    ],
+  },
+  {
+    category: "Other / General",
+    specializations: [
+      "General Application",
+      "Internship / Fresh Graduate",
+      "Not sure yet",
+    ],
+  },
 ];
+
+// Category names only (drives the "Role applying for" select and the Drive
+// subfolder). MUST match the CATEGORIES list in the Apps Script.
+export const APPLICATION_CATEGORIES = APPLICATION_TAXONOMY.map((t) => t.category);
