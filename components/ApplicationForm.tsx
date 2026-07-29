@@ -22,6 +22,7 @@ export default function ApplicationForm({
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string>("");
   const [answer, setAnswer] = useState("");
+  const [isStudent, setIsStudent] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
   const firstFieldRef = useRef<HTMLInputElement>(null);
 
@@ -31,6 +32,7 @@ export default function ApplicationForm({
     setStatus("idle");
     setError("");
     setAnswer("");
+    setIsStudent(false);
     const t = setTimeout(() => firstFieldRef.current?.focus(), 60);
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -63,6 +65,23 @@ export default function ApplicationForm({
     if (cv.size > MAX_CV_MB * 1024 * 1024) {
       setError(`CV must be under ${MAX_CV_MB} MB.`);
       return;
+    }
+
+    // When applying as a student / recent grad, the academic basics are required
+    // so the database stays filterable (university, degree, CGPA, grad year).
+    if (isStudent) {
+      const need = [
+        ["university", "your university"],
+        ["degree", "your degree and field of study"],
+        ["cgpa", "your CGPA or grade"],
+        ["gradYear", "your graduation year"],
+      ];
+      for (const [key, label] of need) {
+        if (!String(data.get(key) || "").trim()) {
+          setError(`Please add ${label}.`);
+          return;
+        }
+      }
     }
 
     setStatus("submitting");
@@ -146,6 +165,62 @@ export default function ApplicationForm({
                   </select>
                 </label>
               </div>
+
+              <label className="af-check">
+                <input
+                  type="checkbox"
+                  name="studentOrGrad"
+                  value="Yes"
+                  checked={isStudent}
+                  onChange={(e) => setIsStudent(e.target.checked)}
+                />
+                <span>I&apos;m a student or recent graduate (internship / entry level)</span>
+              </label>
+
+              {isStudent && (
+                <div className="af-student">
+                  <div className="af-row">
+                    <label className="af-field">
+                      <span>University / institution *</span>
+                      <input name="university" type="text" />
+                    </label>
+                    <label className="af-field">
+                      <span>Degree &amp; field of study *</span>
+                      <input name="degree" type="text" placeholder="e.g. BS Computer Science" />
+                    </label>
+                  </div>
+                  <div className="af-row">
+                    <label className="af-field">
+                      <span>CGPA / grade *</span>
+                      <input name="cgpa" type="text" placeholder="e.g. 3.4 / 4.0" />
+                    </label>
+                    <label className="af-field">
+                      <span>Graduation year *</span>
+                      <input name="gradYear" type="text" placeholder="e.g. 2026 (or expected)" />
+                    </label>
+                  </div>
+                  <div className="af-row">
+                    <label className="af-field">
+                      <span>Current year / semester (if studying)</span>
+                      <input name="studyStatus" type="text" placeholder="e.g. Final year, 7th semester" />
+                    </label>
+                    <label className="af-field">
+                      <span>Availability</span>
+                      <input name="availability" type="text" placeholder="e.g. From June, full-time, 3 months" />
+                    </label>
+                  </div>
+                  <div className="af-row">
+                    <label className="af-field">
+                      <span>Location</span>
+                      <input name="location" type="text" placeholder="City, and remote or onsite" />
+                    </label>
+                    <label className="af-field">
+                      <span>Portfolio / GitHub (optional)</span>
+                      <input name="portfolio" type="url" placeholder="https://" />
+                    </label>
+                  </div>
+                </div>
+              )}
 
               <label className="af-field">
                 <span>CV (PDF or DOCX, max {MAX_CV_MB} MB) *</span>

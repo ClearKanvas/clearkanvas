@@ -31,6 +31,16 @@ export async function POST(req: Request) {
   const role = String(form.get("role") || "").trim();
   const domain = String(form.get("domain") || "").trim();
   const answer = String(form.get("answer") || "").trim();
+  // Optional academic fields (only present for student / recent-grad applicants).
+  const studentOrGrad = form.get("studentOrGrad") ? "Yes" : "";
+  const university = String(form.get("university") || "").trim();
+  const degree = String(form.get("degree") || "").trim();
+  const cgpa = String(form.get("cgpa") || "").trim();
+  const gradYear = String(form.get("gradYear") || "").trim();
+  const studyStatus = String(form.get("studyStatus") || "").trim();
+  const availability = String(form.get("availability") || "").trim();
+  const location = String(form.get("location") || "").trim();
+  const portfolio = String(form.get("portfolio") || "").trim();
   const cv = form.get("cv");
 
   if (!name || !email || !role || !answer) {
@@ -76,6 +86,15 @@ export async function POST(req: Request) {
         linkedin,
         role,
         domain,
+        studentOrGrad,
+        university,
+        degree,
+        cgpa,
+        gradYear,
+        studyStatus,
+        availability,
+        location,
+        portfolio,
         answer,
         cvName: cv.name,
         cvType: cv.type || "application/octet-stream",

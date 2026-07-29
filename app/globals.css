@@ -1764,6 +1764,13 @@ a.v-link:hover { color: var(--orange-ink); }
 }
 .af-field textarea { resize: vertical; }
 .af-count { align-self: flex-end; font-size: 12px; color: var(--muted); }
+/* Student / recent-grad toggle + revealed academic block */
+.af-check { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; color: var(--slate); cursor: pointer; }
+.af-check input { width: auto; margin-top: 3px; accent-color: var(--orange); }
+.af-student {
+  display: flex; flex-direction: column; gap: 16px; padding: 18px;
+  border: 1px dashed var(--line); border-radius: var(--r-md); background: var(--bg-warm);
+}
 .af-error { color: var(--orange-ink); font-size: 14px; font-weight: 500; }
 .af-submit { margin-top: 4px; align-self: flex-start; }
 .af-success { text-align: left; padding: 8px 0; }
