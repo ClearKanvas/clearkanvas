@@ -59,7 +59,7 @@ const TEAM_EMAIL = "clearkanvasglobal@gmail.com";
 // Settings > Accounts and Import > "Send mail as" (done via app password), so it
 // appears in GmailApp.getAliases(). Used as both the From and Reply-To.
 const REPLY_TO = "careers@clearkanvas.com";
-const FROM_NAME = "ClearKanvas Global Talent Team";
+const FROM_NAME = "ClearKanvas Global";
 
 // AI tagging (optional). Leave the key blank to keep AI off (no cost, no errors).
 const GEMINI_API_KEY = "";
