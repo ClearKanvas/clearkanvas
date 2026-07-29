@@ -156,7 +156,7 @@ export default function Nav() {
 
         <div className="nav-right">
           <Link className="btn btn-primary btn-sm" href="/contact" onClick={close}>
-            Request Talent <Arrow />
+            Book a Discovery Call <Arrow />
           </Link>
           <button
             className="btn btn-ghost btn-sm nav-toggle"
