@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { APPLICATION_DOMAINS } from "@/lib/careers";
 
 const MAX_CV_MB = 5;
 const MAX_ANSWER = 500;
@@ -126,14 +127,25 @@ export default function ApplicationForm({
                 </label>
               </div>
 
-              <label className="af-field">
-                <span>Role applying for *</span>
-                <select name="role" defaultValue={role} required>
-                  {roleOptions.map((r) => (
-                    <option key={r} value={r}>{r}</option>
-                  ))}
-                </select>
-              </label>
+              <div className="af-row">
+                <label className="af-field">
+                  <span>Role applying for *</span>
+                  <select name="role" defaultValue={role} required>
+                    {roleOptions.map((r) => (
+                      <option key={r} value={r}>{r}</option>
+                    ))}
+                  </select>
+                </label>
+                <label className="af-field">
+                  <span>Area of expertise *</span>
+                  <select name="domain" defaultValue="" required>
+                    <option value="" disabled>Select your area</option>
+                    {APPLICATION_DOMAINS.map((d) => (
+                      <option key={d} value={d}>{d}</option>
+                    ))}
+                  </select>
+                </label>
+              </div>
 
               <label className="af-field">
                 <span>CV (PDF or DOCX, max {MAX_CV_MB} MB) *</span>

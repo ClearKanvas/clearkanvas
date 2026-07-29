@@ -34,3 +34,17 @@ export const HIRING_PROMISE =
 
 // Value shown in the role dropdown for open applications with no specific role.
 export const TALENT_NETWORK_OPTION = "Talent Network";
+
+// Areas of expertise an applicant can pick. Drives the ATS: the label chosen
+// here becomes the candidate's Drive subfolder and the domain the AI validates
+// against. MUST stay identical to the DOMAINS list in the Apps Script (ATS).
+export const APPLICATION_DOMAINS = [
+  "Recruitment & Talent",
+  "Software & Technology",
+  "Finance & Accounting",
+  "Sales & Business Development",
+  "Marketing & Creative",
+  "Operations & Administration",
+  "Customer Support & Success",
+  "Other / General",
+];

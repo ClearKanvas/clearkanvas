@@ -29,6 +29,7 @@ export async function POST(req: Request) {
   const phone = String(form.get("phone") || "").trim();
   const linkedin = String(form.get("linkedin") || "").trim();
   const role = String(form.get("role") || "").trim();
+  const domain = String(form.get("domain") || "").trim();
   const answer = String(form.get("answer") || "").trim();
   const cv = form.get("cv");
 
@@ -74,6 +75,7 @@ export async function POST(req: Request) {
         phone,
         linkedin,
         role,
+        domain,
         answer,
         cvName: cv.name,
         cvType: cv.type || "application/octet-stream",
