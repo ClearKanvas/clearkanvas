@@ -1678,6 +1678,9 @@ a.v-link:hover { color: var(--orange-ink); }
 .svc-hero-cine .crumb a:hover { color: var(--orange); }
 /* A little more breathing room so the imagery reads as a band, not a strip. */
 .svc-hero-cine .svc-hero-inner { padding: clamp(64px,8vw,124px) 0 clamp(56px,7vw,88px); }
+/* Ghost button stays legible on the dark cinematic hero. */
+.svc-hero-cine .btn-ghost { color: #fff; border-color: rgba(255,255,255,0.35); }
+.svc-hero-cine .btn-ghost:hover { color: #fff; border-color: var(--orange); background: rgba(255,106,43,0.14); }
 
 /* Media Production: eyebrow + launching tag on one row */
 .mp-eyebrow-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }

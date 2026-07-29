@@ -139,7 +139,7 @@ export default function ApplicationForm({
         ) : (
           <>
             <h3 className="af-title">
-              {posting === TALENT_NETWORK_OPTION ? "Join the talent network" : "Apply"}
+              {appliedPosting ? `Apply: ${appliedPosting}` : "Apply"}
             </h3>
             <p className="af-sub">Five minutes. CV plus one short question. No login, no portal.</p>
 
