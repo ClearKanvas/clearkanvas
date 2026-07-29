@@ -55,6 +55,9 @@ const SHEET_ID = "17Iit6Y8sQx7HLv6vXpa3rTlfmmGmbtI7Vumlv8FX_zg";
 const FOLDER_ID = "1aT9fjaV7atxSLQ7EqF5L6-LDjmPL4EX3";
 const SHARED_SECRET = "m07XULd3aEItDLASqhRWsxLr3PDe8K8vCM0LhmW4";
 const TEAM_EMAIL = "clearkanvasglobal@gmail.com";
+// Applicant emails are sent from this address. It must be set up in Gmail under
+// Settings > Accounts and Import > "Send mail as" (done via app password), so it
+// appears in GmailApp.getAliases(). Used as both the From and Reply-To.
 const REPLY_TO = "careers@clearkanvas.com";
 const FROM_NAME = "ClearKanvas Global Talent Team";
 
@@ -103,14 +106,14 @@ function doPost(e) {
       d.portfolio || "", d.answer || "", cvUrl,
       "", "", "", "", "", "", "New"]);
 
-    // Acknowledge the applicant (from the recruitment inbox, reply-to careers@).
+    // Acknowledge the applicant, sent FROM the careers@ alias (see senderOptions).
     if (d.email) {
       GmailApp.sendEmail(d.email, "We received your application",
         "Hi " + (d.name || "there") + ",\n\n" +
         "Thanks for applying to ClearKanvas Global. We reply to every applicant, so you will " +
         "hear from us either way. If your background fits a live or upcoming role, we will be " +
         "in touch.\n\n" + FROM_NAME,
-        { name: FROM_NAME, replyTo: REPLY_TO });
+        senderOptions({ name: FROM_NAME, replyTo: REPLY_TO }));
     }
 
     // Alert the team. Reply-to is set to the applicant for a one-click response.
@@ -161,6 +164,14 @@ function getCategoryFolder(category) {
 function json(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+// Send applicant email FROM the careers@ alias when it is configured as a
+// "Send mail as" address on this account; otherwise fall back to the default
+// sender so mail is never blocked.
+function senderOptions(base) {
+  if (GmailApp.getAliases().indexOf(REPLY_TO) !== -1) base.from = REPLY_TO;
+  return base;
 }
 
 // ---- Optional AI tagging (OFF unless GEMINI_API_KEY is set) --------------
