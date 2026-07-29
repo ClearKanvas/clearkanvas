@@ -110,9 +110,9 @@ function doPost(e) {
     if (d.email) {
       GmailApp.sendEmail(d.email, "We received your application",
         "Hi " + (d.name || "there") + ",\n\n" +
-        "Thanks for applying to ClearKanvas Global. We reply to every applicant, so you will " +
-        "hear from us either way. If your background fits a live or upcoming role, we will be " +
-        "in touch.\n\n" + FROM_NAME,
+        "Thanks for your interest in ClearKanvas Global. We appreciate you taking the time to " +
+        "apply. If your experience matches a current or upcoming role, our team will reach out." +
+        "\n\n" + FROM_NAME,
         senderOptions({ name: FROM_NAME, replyTo: REPLY_TO }));
     }
 
