@@ -129,8 +129,8 @@ export default function ApplicationForm({
           <div className="af-success">
             <h3>Application received.</h3>
             <p>
-              Thanks for applying. We reply to every applicant, so you will hear from us. If your
-              background fits a live or upcoming role, we will be in touch.
+              Thanks for your interest in ClearKanvas Global. We appreciate you taking the time to
+              apply. If your experience matches a current or upcoming role, our team will reach out.
             </p>
             <button type="button" className="btn btn-primary" onClick={onClose}>
               Done
