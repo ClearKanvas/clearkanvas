@@ -7,13 +7,13 @@ import Slideshow from "./Slideshow";
 import { TALENT_NETWORK_OPTION } from "@/lib/careers";
 import { ACTIVE_ROLES } from "@/lib/roles";
 
-// Careers hero slideshow: license-clear people/team imagery. Swap for real
-// ClearKanvas team photos later by replacing these files in public/slides.
+// Careers hero slideshow: license-clear, people-free symbolic imagery on a
+// dark/warm palette (growth, strategy, ideas). Swap by replacing these files
+// in public/slides.
 const CAREER_SLIDES = [
-  "/slides/career-team.jpg",
-  "/slides/career-interview.jpg",
-  "/slides/career-laptop.jpg",
-  "/slides/career-group.jpg",
+  "/slides/career-stairs.jpg",
+  "/slides/career-chess.jpg",
+  "/slides/career-bulb.jpg",
 ];
 
 export default function CareersMain() {
