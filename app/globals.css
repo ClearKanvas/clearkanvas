@@ -1682,6 +1682,12 @@ a.v-link:hover { color: var(--orange-ink); }
 .svc-hero-cine .btn-ghost { color: #fff; border-color: rgba(255,255,255,0.35); }
 .svc-hero-cine .btn-ghost:hover { color: #fff; border-color: var(--orange); background: rgba(255,106,43,0.14); }
 
+/* Internship program: 2-up card grid for the "what you will gain" cards. */
+.intern-grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 720px) { .intern-grid { grid-template-columns: 1fr; } }
+/* Link to the internship program from the Careers open-roles section. */
+.intern-callout { margin-top: 22px; }
+
 /* Media Production: eyebrow + launching tag on one row */
 .mp-eyebrow-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .mp-eyebrow-row .svc-flag { margin: 0; }

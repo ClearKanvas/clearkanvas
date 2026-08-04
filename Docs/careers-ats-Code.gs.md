@@ -18,6 +18,18 @@ skills, fitScore, summary, status`
 The last six before `status` (aiCategory..summary) are filled only if the
 optional AI tagging is enabled; otherwise they stay blank.
 
+## Internship Program (separate tab and folder)
+
+Internship applications come from `app/api/internships/route.ts` tagged with
+`applicationType: "Internship"`. The script routes them to their own
+**"Internships" tab** (columns include `cohort`, the academic and availability
+fields, `unpaidAck`, plus `stage` and `status` for the pipeline) and saves the CV
+under **`Internships / <cohort> / <function>/`** in Drive. Both the tab and the
+folders are created automatically on the first internship submission, so there is
+nothing to set up by hand. The `cohort` label comes from `INTERNSHIP_COHORT` in
+`lib/internships.ts` (currently "Internship Program"); change it per intake if you
+want each intake in its own folder. Interns receive their own acknowledgment email.
+
 ## How to apply an update
 
 1. Open the Sheet, **Extensions > Apps Script**.
@@ -84,11 +96,23 @@ const HEADERS = ["timestamp","name","email","phone","linkedin","category",
   "gradYear","studyStatus","availability","location","portfolio","answer","cvLink",
   "aiCategory","seniority","years","skills","fitScore","summary","status"];
 
+// Internship Program: its own tab and its own Drive subfolder tree. Applications
+// posted by app/api/internships/route.ts carry applicationType "Internship".
+const INTERN_SHEET_NAME = "Internships";
+const INTERN_HEADERS = ["timestamp","name","email","phone","linkedin","cohort","category",
+  "specialization","university","degree","cgpa","gradYear","studyStatus","startDate",
+  "commit3Months","availability","workMode","location","conflicts","portfolio","source",
+  "unpaidAck","motivation","cvLink","aiCategory","seniority","skills","fitScore","summary",
+  "stage","status"];
+
 // ---- Web app entry point ------------------------------------------------
 function doPost(e) {
   try {
     const d = JSON.parse(e.postData.contents);
     if (d.secret !== SHARED_SECRET) return json({ ok: false, error: "unauthorized" });
+
+    // Internship applications take a separate path (own tab, own folder, own email).
+    if (d.applicationType === "Internship") return handleInternship(d);
 
     const category = sanitizeCategory(d.category);
 
@@ -172,6 +196,81 @@ function json(obj) {
 function senderOptions(base) {
   if (GmailApp.getAliases().indexOf(REPLY_TO) !== -1) base.from = REPLY_TO;
   return base;
+}
+
+// ---- Internship Program -------------------------------------------------
+function handleInternship(d) {
+  const category = sanitizeCategory(d.category);
+  const cohort = String(d.cohort || "Internship Program");
+
+  // Save the CV under Internships / <cohort> / <function>/.
+  const bytes = Utilities.base64Decode(d.cvBase64);
+  const blob = Utilities.newBlob(bytes, d.cvType || "application/octet-stream", d.cvName || "cv");
+  const file = getInternFolder(cohort, category).createFile(blob);
+  file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+  const cvUrl = file.getUrl();
+
+  getInternSheet().appendRow([new Date(), d.name || "", d.email || "", d.phone || "",
+    d.linkedin || "", cohort, category, d.specialization || "", d.university || "",
+    d.degree || "", d.cgpa || "", d.gradYear || "", d.studyStatus || "", d.startDate || "",
+    d.commit3Months || "", d.availability || "", d.workMode || "", d.location || "",
+    d.conflicts || "", d.portfolio || "", d.source || "", d.unpaidAck || "", d.answer || "",
+    cvUrl, "", "", "", "", "", "", "New"]);
+
+  // Acknowledge the applicant (internship-specific copy).
+  if (d.email) {
+    GmailApp.sendEmail(d.email, "We received your internship application",
+      "Hi " + (d.name || "there") + ",\n\n" +
+      "Thanks for applying to the ClearKanvas Global Internship Program. This is a learning-based, " +
+      "unpaid internship of about three months. We appreciate you taking the time to apply, and if " +
+      "your application is a fit for the current intake, our team will reach out." +
+      "\n\nWith appreciation,\nClearKanvas Global Team",
+      senderOptions({ name: FROM_NAME, replyTo: REPLY_TO }));
+  }
+
+  // Alert the team.
+  const lines = [
+    d.name, d.email, d.phone || "no phone", d.linkedin || "no LinkedIn",
+    "Cohort: " + cohort,
+    "Area: " + category + " / " + (d.specialization || ""),
+    "Study: " + (d.university || "") + ", " + (d.degree || "") + ", CGPA " + (d.cgpa || "") +
+      ", grad " + (d.gradYear || ""),
+    "Start: " + (d.startDate || "") + " | 3 months: " + (d.commit3Months || "") +
+      " | " + (d.availability || "") + " | " + (d.workMode || ""),
+    d.location ? ("Location: " + d.location) : "",
+    d.conflicts ? ("Conflicts: " + d.conflicts) : "",
+    "", "Why this internship:", d.answer || "", "", "CV: " + cvUrl,
+  ].filter(function (x) { return x !== ""; });
+  GmailApp.sendEmail(TEAM_EMAIL, "New internship application: " + category + " (" + (d.name || "") + ")",
+    lines.join("\n"), { replyTo: d.email || REPLY_TO });
+
+  return json({ ok: true });
+}
+
+function getInternSheet() {
+  const ss = SpreadsheetApp.openById(SHEET_ID);
+  let sheet = ss.getSheetByName(INTERN_SHEET_NAME);
+  if (!sheet) sheet = ss.insertSheet(INTERN_SHEET_NAME);
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(INTERN_HEADERS);
+    sheet.getRange(1, 1, 1, INTERN_HEADERS.length).setFontWeight("bold");
+    sheet.setFrozenRows(1);
+  }
+  return sheet;
+}
+
+function getInternFolder(cohort, category) {
+  const root = DriveApp.getFolderById(FOLDER_ID);
+  return childFolder(childFolder(childFolder(root, "Internships"), safeName(cohort)), safeName(category));
+}
+
+function childFolder(parent, name) {
+  const it = parent.getFoldersByName(name);
+  return it.hasNext() ? it.next() : parent.createFolder(name);
+}
+
+function safeName(s) {
+  return String(s || "").replace(/[\\/:*?"<>|]/g, "-").trim() || "Other";
 }
 
 // ---- Optional AI tagging (OFF unless GEMINI_API_KEY is set) --------------

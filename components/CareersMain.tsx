@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Arrow from "./Arrow";
 import ApplicationForm from "./ApplicationForm";
 import Slideshow from "./Slideshow";
+import { INTERNSHIPS_OPEN } from "@/lib/internships";
 import { TALENT_NETWORK_OPTION } from "@/lib/careers";
 import { ACTIVE_ROLES } from "@/lib/roles";
 
@@ -85,6 +87,12 @@ export default function CareersMain() {
                 </button>
               </div>
             </div>
+          )}
+          {INTERNSHIPS_OPEN && (
+            <p className="intern-callout reveal">
+              Student or recent graduate?{" "}
+              <Link href="/careers/internships">Explore our Internship Program</Link> (learning-based, ~3 months).
+            </p>
           )}
         </div>
       </section>
