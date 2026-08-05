@@ -227,6 +227,35 @@ function handleInternship(d) {
   return json({ ok: true });
 }
 
+// Diagnostic: run this once from the editor to verify the Internships tab and the
+// Drive folders build correctly. It creates a clearly-marked TEST row + dummy
+// resume and picture, and sends NO email (email is left blank). Delete the TEST
+// row and the dummy files afterward.
+function testInternship() {
+  handleInternship({
+    source: "TEST",
+    cohort: INTERN_DEFAULT_COHORT,
+    fullName: "TEST Applicant",
+    phone: "0000000000",
+    email: "", // blank so no acknowledgment email is sent
+    linkedin: "https://www.linkedin.com/in/test",
+    country: "Pakistan", city: "Lahore",
+    university: "Test University", degreeProgram: "BS Test",
+    currentStatus: "Final-Year Student", gradYear: "2026", cgpa: "3.5",
+    position: "Software Engineer", secondChoice: "Data Analyst",
+    unpaidOk: "Yes, I understand and am okay with this",
+    estAvailability: "Yes, fully available", commit3Months: "Yes",
+    portfolio: "https://github.com/test",
+    whyJoin: "This is a test submission.", goodFit: "Testing the pipeline.",
+    heardAbout: "ClearKanvas Website", consent: "Yes",
+    cvName: "test-resume.pdf", cvType: "application/pdf",
+    cvBase64: Utilities.base64Encode("%PDF-1.4 test resume %%EOF"),
+    pictureName: "test-picture.png", pictureType: "image/png",
+    pictureBase64: Utilities.base64Encode("test-picture-bytes"),
+  });
+  console.log("Done. Check the Internships tab and the Internships Drive folder, then delete the TEST row and its files.");
+}
+
 // Shared by the website path and the Google Form onFormSubmit path.
 function writeInternRow(v) {
   getInternSheet().appendRow([new Date(), v.source || "", v.fullName || "", v.phone || "",
