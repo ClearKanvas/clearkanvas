@@ -133,13 +133,17 @@ function doPost(e) {
       "", "", "", "", "", "", "New"]);
 
     // Acknowledge the applicant, sent FROM the careers@ alias (see senderOptions).
+    // Non-fatal: the row and CV are already saved above, so if the daily email
+    // quota is reached we still keep the application and only skip the auto-reply.
     if (d.email) {
-      GmailApp.sendEmail(d.email, "We received your application",
-        "Hi " + (d.name || "there") + ",\n\n" +
-        "Thanks for your interest in ClearKanvas Global. We appreciate you taking the time to " +
-        "apply. If your experience matches a current or upcoming role, our team will reach out." +
-        "\n\nWith appreciation,\nClearKanvas Global Team",
-        senderOptions({ name: FROM_NAME, replyTo: REPLY_TO }));
+      try {
+        GmailApp.sendEmail(d.email, "We received your application",
+          "Hi " + (d.name || "there") + ",\n\n" +
+          "Thanks for your interest in ClearKanvas Global. We appreciate you taking the time to " +
+          "apply. If your experience matches a current or upcoming role, our team will reach out." +
+          "\n\nWith appreciation,\nClearKanvas Global Team",
+          senderOptions({ name: FROM_NAME, replyTo: REPLY_TO }));
+      } catch (mailErr) { /* quota reached or send failed; application still saved */ }
     }
 
     // No team alert email: new applications are reviewed in the Applications
@@ -209,15 +213,18 @@ function handleInternship(d) {
     d.conflicts || "", d.portfolio || "", d.source || "", d.unpaidAck || "", d.answer || "",
     cvUrl, "", "", "", "", "", "", "New"]);
 
-  // Acknowledge the applicant (internship-specific copy).
+  // Acknowledge the applicant (internship-specific copy). Non-fatal: the row and
+  // CV are already saved, so a reached email quota never loses an application.
   if (d.email) {
-    GmailApp.sendEmail(d.email, "We received your internship application",
-      "Hi " + (d.name || "there") + ",\n\n" +
-      "Thanks for applying to the ClearKanvas Global Internship Program. This is a learning-based, " +
-      "unpaid internship of about three months. We appreciate you taking the time to apply, and if " +
-      "your application is a fit for the current intake, our team will reach out." +
-      "\n\nWith appreciation,\nClearKanvas Global Team",
-      senderOptions({ name: FROM_NAME, replyTo: REPLY_TO }));
+    try {
+      GmailApp.sendEmail(d.email, "We received your internship application",
+        "Hi " + (d.name || "there") + ",\n\n" +
+        "Thanks for applying to the ClearKanvas Global Internship Program. This is a learning-based, " +
+        "unpaid internship of about three months. We appreciate you taking the time to apply, and if " +
+        "your application is a fit for the current intake, our team will reach out." +
+        "\n\nWith appreciation,\nClearKanvas Global Team",
+        senderOptions({ name: FROM_NAME, replyTo: REPLY_TO }));
+    } catch (mailErr) { /* quota reached or send failed; application still saved */ }
   }
 
   // No team alert email: new interns are reviewed in the Internships sheet.
