@@ -4,16 +4,18 @@ import { INTERNSHIP_COHORT } from "@/lib/internships";
 export const runtime = "nodejs";
 
 const MAX_CV_BYTES = 5 * 1024 * 1024;
+const MAX_PIC_BYTES = 5 * 1024 * 1024;
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
 /**
- * Internship application endpoint.
+ * Internship application endpoint (Summer Internship Program).
  *
- * Validates the submission, then forwards it (with the CV as base64) to the same
- * Google Apps Script Web App as the main careers form (CAREERS_WEBHOOK_URL),
- * tagged with applicationType "Internship". The script routes internship rows to
- * the "Internships" sheet tab and a cohort/function Drive subfolder, and sends
- * the internship-specific acknowledgment. See docs/careers-ats-Code.gs.md.
+ * Mirrors the founder's Google Form. Validates the submission, then forwards it
+ * (with the resume, and optional professional picture, as base64) to the same
+ * Google Apps Script Web App as the careers form (CAREERS_WEBHOOK_URL), tagged
+ * applicationType "Internship" and source "Website". The script routes it to the
+ * "Internships" sheet tab, saves the resume and picture to their own Drive
+ * folders, and sends the internship acknowledgment. See docs/careers-ats-Code.gs.md.
  */
 export async function POST(req: Request) {
   let form: FormData;
@@ -23,57 +25,89 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid submission." }, { status: 400 });
   }
 
-  const get = (k: string) => String(form.get(k) || "").trim();
+  const g = (k: string) => String(form.get(k) || "").trim();
 
-  const name = get("name");
-  const email = get("email");
-  const phone = get("phone");
-  const linkedin = get("linkedin");
-  const category = get("category");
-  const specialization = get("specialization");
-  const university = get("university");
-  const degree = get("degree");
-  const cgpa = get("cgpa");
-  const gradYear = get("gradYear");
-  const studyStatus = get("studyStatus");
-  const startDate = get("startDate");
-  const commit3Months = get("commit3Months");
-  const availability = get("availability");
-  const workMode = get("workMode");
-  const location = get("location");
-  const conflicts = get("conflicts");
-  const portfolio = get("portfolio");
-  const source = get("source");
-  const unpaidAck = form.get("unpaidAck") ? "Yes" : "";
-  const answer = get("answer");
-  const cv = form.get("cv");
+  const fields = {
+    fullName: g("fullName"),
+    phone: g("phone"),
+    email: g("email"),
+    linkedin: g("linkedin"),
+    country: g("country"),
+    city: g("city"),
+    university: g("university"),
+    degreeProgram: g("degreeProgram"),
+    currentStatus: g("currentStatus"),
+    gradYear: g("gradYear"),
+    cgpa: g("cgpa"),
+    position: g("position"),
+    secondChoice: g("secondChoice"),
+    unpaidOk: g("unpaidOk"),
+    estAvailability: g("estAvailability"),
+    commit3Months: g("commit3Months"),
+    portfolio: g("portfolio"),
+    whyJoin: g("whyJoin"),
+    goodFit: g("goodFit"),
+    heardAbout: g("heardAbout"),
+    consent: form.get("consent") ? "Yes" : "",
+  };
 
-  if (
-    !name || !email || !category || !specialization || !university || !degree ||
-    !cgpa || !gradYear || !startDate || !commit3Months || !answer
-  ) {
-    return NextResponse.json({ error: "Please complete the required fields." }, { status: 400 });
+  // Required fields (match the form's required questions).
+  const required: [keyof typeof fields, string][] = [
+    ["fullName", "full name"],
+    ["phone", "phone / WhatsApp number"],
+    ["email", "email address"],
+    ["country", "country"],
+    ["city", "city"],
+    ["university", "university / institution"],
+    ["degreeProgram", "degree program"],
+    ["currentStatus", "current status"],
+    ["gradYear", "graduation year"],
+    ["cgpa", "CGPA"],
+    ["position", "position applying for"],
+    ["unpaidOk", "unpaid basis answer"],
+    ["estAvailability", "EST availability"],
+    ["commit3Months", "3-month commitment"],
+    ["whyJoin", "why you want to join"],
+  ];
+  for (const [k, label] of required) {
+    if (!fields[k]) {
+      return NextResponse.json({ error: `Please complete: ${label}.` }, { status: 400 });
+    }
   }
-  if (!EMAIL_RE.test(email)) {
+  if (!EMAIL_RE.test(fields.email)) {
     return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
   }
-  if (!unpaidAck) {
-    return NextResponse.json(
-      { error: "Please confirm you understand this is an unpaid, learning-based internship." },
-      { status: 400 },
-    );
+  if (!fields.consent) {
+    return NextResponse.json({ error: "Please confirm the consent statement." }, { status: 400 });
   }
-  if (answer.length > 500) {
-    return NextResponse.json({ error: "Your answer is too long (max 500 characters)." }, { status: 400 });
+
+  const resume = form.get("resume");
+  if (!(resume instanceof File) || resume.size === 0) {
+    return NextResponse.json({ error: "Please attach your resume." }, { status: 400 });
   }
-  if (!(cv instanceof File) || cv.size === 0) {
-    return NextResponse.json({ error: "Please attach your CV." }, { status: 400 });
+  if (!/\.(pdf|docx)$/i.test(resume.name)) {
+    return NextResponse.json({ error: "Resume must be a PDF or DOCX file." }, { status: 400 });
   }
-  if (!/\.(pdf|docx)$/i.test(cv.name)) {
-    return NextResponse.json({ error: "CV must be a PDF or DOCX file." }, { status: 400 });
+  if (resume.size > MAX_CV_BYTES) {
+    return NextResponse.json({ error: "Resume must be under 5 MB." }, { status: 400 });
   }
-  if (cv.size > MAX_CV_BYTES) {
-    return NextResponse.json({ error: "CV must be under 5 MB." }, { status: 400 });
+
+  // Optional professional picture.
+  const picture = form.get("picture");
+  let picturePayload: { name: string; type: string; base64: string } | null = null;
+  if (picture instanceof File && picture.size > 0) {
+    if (!/\.(png|jpe?g)$/i.test(picture.name)) {
+      return NextResponse.json({ error: "Professional picture must be a PNG or JPG." }, { status: 400 });
+    }
+    if (picture.size > MAX_PIC_BYTES) {
+      return NextResponse.json({ error: "Picture must be under 5 MB." }, { status: 400 });
+    }
+    const pbuf = Buffer.from(await picture.arrayBuffer());
+    picturePayload = {
+      name: picture.name,
+      type: picture.type || "application/octet-stream",
+      base64: pbuf.toString("base64"),
+    };
   }
 
   const webhook = process.env.CAREERS_WEBHOOK_URL;
@@ -85,38 +119,22 @@ export async function POST(req: Request) {
   }
 
   try {
-    const buf = Buffer.from(await cv.arrayBuffer());
+    const buf = Buffer.from(await resume.arrayBuffer());
     const res = await fetch(webhook, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         secret: process.env.CAREERS_WEBHOOK_SECRET ?? "",
         applicationType: "Internship",
+        source: "Website",
         cohort: INTERNSHIP_COHORT,
-        name,
-        email,
-        phone,
-        linkedin,
-        category,
-        specialization,
-        university,
-        degree,
-        cgpa,
-        gradYear,
-        studyStatus,
-        startDate,
-        commit3Months,
-        availability,
-        workMode,
-        location,
-        conflicts,
-        portfolio,
-        source,
-        unpaidAck,
-        answer,
-        cvName: cv.name,
-        cvType: cv.type || "application/octet-stream",
+        ...fields,
+        cvName: resume.name,
+        cvType: resume.type || "application/octet-stream",
         cvBase64: buf.toString("base64"),
+        pictureName: picturePayload?.name ?? "",
+        pictureType: picturePayload?.type ?? "",
+        pictureBase64: picturePayload?.base64 ?? "",
       }),
     });
     if (!res.ok) throw new Error(`Webhook responded ${res.status}`);

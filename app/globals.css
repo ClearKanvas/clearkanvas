@@ -1687,6 +1687,9 @@ a.v-link:hover { color: var(--orange-ink); }
 @media (max-width: 720px) { .intern-grid { grid-template-columns: 1fr; } }
 /* Link to the internship program from the Careers open-roles section. */
 .intern-callout { margin-top: 22px; }
+/* Stepped application form: Back on the left, Next/Submit on the right. */
+.af-steps-nav { display: flex; gap: 12px; justify-content: flex-end; align-items: center; margin-top: 6px; }
+.af-steps-nav .btn-ghost { margin-right: auto; }
 
 /* Media Production: eyebrow + launching tag on one row */
 .mp-eyebrow-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
