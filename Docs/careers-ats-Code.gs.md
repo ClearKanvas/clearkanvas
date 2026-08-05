@@ -56,7 +56,7 @@ want each intake in its own folder. Interns receive their own acknowledgment ema
  *   1. Verify the shared secret.
  *   2. Save the CV to Drive, in a subfolder named after the category.
  *   3. Append a row to the Applications sheet.
- *   4. Acknowledge the applicant and alert the team.
+ *   4. Acknowledge the applicant (no internal alert email: review the sheet).
  *
  * processNewApplications (optional, OFF by default): fills the AI columns via
  * Gemini. Stays off unless GEMINI_API_KEY is set AND setupTriggers() is run.
@@ -66,6 +66,8 @@ want each intake in its own folder. Interns receive their own acknowledgment ema
 const SHEET_ID = "17Iit6Y8sQx7HLv6vXpa3rTlfmmGmbtI7Vumlv8FX_zg";
 const FOLDER_ID = "1aT9fjaV7atxSLQ7EqF5L6-LDjmPL4EX3";
 const SHARED_SECRET = "m07XULd3aEItDLASqhRWsxLr3PDe8K8vCM0LhmW4";
+// Recruitment inbox (kept for reference). Per-application alert emails were
+// removed to save quota; review new rows in the sheet instead.
 const TEAM_EMAIL = "clearkanvasglobal@gmail.com";
 // Applicant emails are sent from this address. It must be set up in Gmail under
 // Settings > Accounts and Import > "Send mail as" (done via app password), so it
@@ -140,19 +142,9 @@ function doPost(e) {
         senderOptions({ name: FROM_NAME, replyTo: REPLY_TO }));
     }
 
-    // Alert the team. Reply-to is set to the applicant for a one-click response.
-    const label = d.specialization ? (category + " , " + d.specialization) : category;
-    const lines = [
-      d.name, d.email, d.phone || "no phone", d.linkedin || "no LinkedIn",
-      d.appliedPosting ? ("Applied to posting: " + d.appliedPosting) : "",
-      "Category: " + category,
-      "Area: " + (d.specialization || ""),
-      d.studentOrGrad ? ("Student / grad: " + (d.university || "") + ", " + (d.degree || "") +
-        ", CGPA " + (d.cgpa || "") + ", grad " + (d.gradYear || "")) : "",
-      "", "Why this role:", d.answer || "", "", "CV: " + cvUrl,
-    ].filter(function (x) { return x !== ""; });
-    GmailApp.sendEmail(TEAM_EMAIL, "New application: " + label + " (" + (d.name || "") + ")",
-      lines.join("\n"), { replyTo: d.email || REPLY_TO });
+    // No team alert email: new applications are reviewed in the Applications
+    // sheet (optionally with the Sheet's own Tools > Notification settings). This
+    // keeps one email per application, so the free Gmail quota goes further.
 
     return json({ ok: true });
   } catch (err) {
@@ -228,21 +220,7 @@ function handleInternship(d) {
       senderOptions({ name: FROM_NAME, replyTo: REPLY_TO }));
   }
 
-  // Alert the team.
-  const lines = [
-    d.name, d.email, d.phone || "no phone", d.linkedin || "no LinkedIn",
-    "Cohort: " + cohort,
-    "Area: " + category + " / " + (d.specialization || ""),
-    "Study: " + (d.university || "") + ", " + (d.degree || "") + ", CGPA " + (d.cgpa || "") +
-      ", grad " + (d.gradYear || ""),
-    "Start: " + (d.startDate || "") + " | 3 months: " + (d.commit3Months || "") +
-      " | " + (d.availability || "") + " | " + (d.workMode || ""),
-    d.location ? ("Location: " + d.location) : "",
-    d.conflicts ? ("Conflicts: " + d.conflicts) : "",
-    "", "Why this internship:", d.answer || "", "", "CV: " + cvUrl,
-  ].filter(function (x) { return x !== ""; });
-  GmailApp.sendEmail(TEAM_EMAIL, "New internship application: " + category + " (" + (d.name || "") + ")",
-    lines.join("\n"), { replyTo: d.email || REPLY_TO });
+  // No team alert email: new interns are reviewed in the Internships sheet.
 
   return json({ ok: true });
 }
