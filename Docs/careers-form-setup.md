@@ -73,8 +73,8 @@ function doPost(e) {
     MailApp.sendEmail(
       d.email,
       "We received your application",
-      "Hi " + d.name + ",\n\nThanks for applying for " + d.role + ". We reply to every applicant, "
-        + "so you will hear from us either way.\n\nClearKanvas Global"
+      "Hi " + d.name + ",\n\nThanks for your interest in ClearKanvas Global. We appreciate you "
+        + "taking the time to apply.\n\nWith appreciation,\nClearKanvas Global Team"
     );
     MailApp.sendEmail(
       TEAM_EMAIL,

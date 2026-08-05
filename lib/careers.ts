@@ -29,9 +29,6 @@ export const HIRING_STEPS: HiringStep[] = [
   { title: "Offer", desc: "Clear terms, fast decision, honest feedback either way." },
 ];
 
-export const HIRING_PROMISE =
-  "We reply to every applicant. We're a talent company. Anything less would be malpractice.";
-
 // Value shown in the role dropdown for open applications with no specific role.
 export const TALENT_NETWORK_OPTION = "Talent Network";
 
