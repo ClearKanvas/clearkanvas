@@ -21,6 +21,7 @@ type Status = "idle" | "submitting" | "success" | "error";
 // Sectioned like the Google Form. All fields stay mounted (hidden steps use
 // display:none) so file selections and inputs persist as you move between steps.
 const STEPS = [
+  "Overview",
   "Personal",
   "Education",
   "Role",
@@ -80,7 +81,7 @@ export default function InternshipForm({
 
   // Required fields per step; returns an error message or "" if valid.
   const validateStep = (s: number): string => {
-    if (s === 0) {
+    if (s === 1) {
       for (const [k, label] of [
         ["fullName", "your full name"],
         ["phone", "your phone / WhatsApp number"],
@@ -92,7 +93,7 @@ export default function InternshipForm({
       }
       if (!EMAIL_RE.test(val("email"))) return "Please enter a valid email address.";
     }
-    if (s === 1) {
+    if (s === 2) {
       for (const [k, label] of [
         ["university", "your university / institution"],
         ["degreeProgram", "your degree program"],
@@ -103,8 +104,8 @@ export default function InternshipForm({
         if (!val(k)) return `Please add ${label}.`;
       }
     }
-    if (s === 2 && !val("position")) return "Please choose the position you are applying for.";
-    if (s === 3) {
+    if (s === 3 && !val("position")) return "Please choose the position you are applying for.";
+    if (s === 4) {
       for (const [k, label] of [
         ["unpaidOk", "your answer about the unpaid basis"],
         ["estAvailability", "your EST availability"],
@@ -113,7 +114,7 @@ export default function InternshipForm({
         if (!val(k)) return `Please answer: ${label}.`;
       }
     }
-    if (s === 4) {
+    if (s === 5) {
       const cv = file("resume");
       if (!cv) return "Please attach your resume (PDF or DOCX).";
       if (!/\.(pdf|docx)$/i.test(cv.name)) return "Resume must be a PDF or DOCX file.";
@@ -124,7 +125,7 @@ export default function InternshipForm({
         if (pic.size > MAX_PIC_MB * 1024 * 1024) return `Picture must be under ${MAX_PIC_MB} MB.`;
       }
     }
-    if (s === 5 && !val("whyJoin")) return "Please tell us why you want to join.";
+    if (s === 6 && !val("whyJoin")) return "Please tell us why you want to join.";
     return "";
   };
 
@@ -205,8 +206,17 @@ export default function InternshipForm({
             </p>
 
             <form className="af-form" ref={formRef} onSubmit={onSubmit} noValidate>
-              {/* STEP 1: Personal */}
+              {/* STEP 1: Overview */}
               <div style={show(0)}>
+                <p className="af-sub">
+                  Summer Internship Program 2026. Lahore and Islamabad, remote on an EST schedule,
+                  about three months. This is a learning-based, unpaid internship. It takes a few
+                  minutes to apply.
+                </p>
+              </div>
+
+              {/* STEP 2: Personal */}
+              <div style={show(1)}>
                 <div className="af-row">
                   <label className="af-field">
                     <span>Full name *</span>
@@ -239,8 +249,8 @@ export default function InternshipForm({
                 </div>
               </div>
 
-              {/* STEP 2: Education */}
-              <div style={show(1)}>
+              {/* STEP 3: Education */}
+              <div style={show(2)}>
                 <div className="af-row">
                   <label className="af-field">
                     <span>University / institution *</span>
@@ -272,8 +282,8 @@ export default function InternshipForm({
                 </label>
               </div>
 
-              {/* STEP 3: Role */}
-              <div style={show(2)}>
+              {/* STEP 4: Role */}
+              <div style={show(3)}>
                 <label className="af-field">
                   <span>Which position are you applying for? *</span>
                   <select name="position" defaultValue="">
@@ -294,8 +304,8 @@ export default function InternshipForm({
                 </label>
               </div>
 
-              {/* STEP 4: Logistics */}
-              <div style={show(3)}>
+              {/* STEP 5: Logistics */}
+              <div style={show(4)}>
                 <label className="af-field">
                   <span>This is an unpaid internship. Are you okay with proceeding on this basis? *</span>
                   <select name="unpaidOk" defaultValue="">
@@ -325,8 +335,8 @@ export default function InternshipForm({
                 </label>
               </div>
 
-              {/* STEP 5: Resume & Portfolio */}
-              <div style={show(4)}>
+              {/* STEP 6: Resume & Portfolio */}
+              <div style={show(5)}>
                 <label className="af-field">
                   <span>Upload your resume (PDF or DOCX, max {MAX_CV_MB} MB) *</span>
                   <input name="resume" type="file" accept=".pdf,.docx" />
@@ -341,8 +351,8 @@ export default function InternshipForm({
                 </label>
               </div>
 
-              {/* STEP 6: About you */}
-              <div style={show(5)}>
+              {/* STEP 7: About you */}
+              <div style={show(6)}>
                 <label className="af-field">
                   <span>Why do you want to join ClearKanvas Global? *</span>
                   <textarea
@@ -376,8 +386,8 @@ export default function InternshipForm({
                 </label>
               </div>
 
-              {/* STEP 7: Consent */}
-              <div style={show(6)}>
+              {/* STEP 8: Consent */}
+              <div style={show(7)}>
                 <label className="af-check">
                   <input type="checkbox" name="consent" value="Yes" />
                   <span>{CONSENT_TEXT}</span>
