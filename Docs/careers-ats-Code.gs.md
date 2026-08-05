@@ -101,11 +101,13 @@ const HEADERS = ["timestamp","name","email","phone","linkedin","category",
 // Internship Program: its own tab and its own Drive subfolder tree. Applications
 // posted by app/api/internships/route.ts carry applicationType "Internship".
 const INTERN_SHEET_NAME = "Internships";
-const INTERN_HEADERS = ["timestamp","name","email","phone","linkedin","cohort","category",
-  "specialization","university","degree","cgpa","gradYear","studyStatus","startDate",
-  "commit3Months","availability","workMode","location","conflicts","portfolio","source",
-  "unpaidAck","motivation","cvLink","aiCategory","seniority","skills","fitScore","summary",
-  "stage","status"];
+const INTERN_DEFAULT_COHORT = "Summer Internship Program 2026";
+// Mirrors the Summer Internship Program Google Form. Both the website form and
+// the Google Form (via onFormSubmit) map into these same columns.
+const INTERN_HEADERS = ["timestamp","source","fullName","phone","email","linkedin","country","city",
+  "university","degreeProgram","currentStatus","gradYear","cgpa","position","secondChoice",
+  "unpaidOk","estAvailability","commit3Months","portfolio","whyJoin","goodFit","heardAbout",
+  "consent","resumeLink","pictureLink","cohort","stage","status"];
 
 // ---- Web app entry point ------------------------------------------------
 function doPost(e) {
@@ -195,41 +197,65 @@ function senderOptions(base) {
 }
 
 // ---- Internship Program -------------------------------------------------
+// Website path: app/api/internships/route.ts posts these fields as JSON.
 function handleInternship(d) {
-  const category = sanitizeCategory(d.category);
-  const cohort = String(d.cohort || "Internship Program");
+  const cohort = String(d.cohort || INTERN_DEFAULT_COHORT);
+  const position = String(d.position || "Unspecified");
 
-  // Save the CV under Internships / <cohort> / <function>/.
-  const bytes = Utilities.base64Decode(d.cvBase64);
-  const blob = Utilities.newBlob(bytes, d.cvType || "application/octet-stream", d.cvName || "cv");
-  const file = getInternFolder(cohort, category).createFile(blob);
-  file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
-  const cvUrl = file.getUrl();
-
-  getInternSheet().appendRow([new Date(), d.name || "", d.email || "", d.phone || "",
-    d.linkedin || "", cohort, category, d.specialization || "", d.university || "",
-    d.degree || "", d.cgpa || "", d.gradYear || "", d.studyStatus || "", d.startDate || "",
-    d.commit3Months || "", d.availability || "", d.workMode || "", d.location || "",
-    d.conflicts || "", d.portfolio || "", d.source || "", d.unpaidAck || "", d.answer || "",
-    cvUrl, "", "", "", "", "", "", "New"]);
-
-  // Acknowledge the applicant (internship-specific copy). Non-fatal: the row and
-  // CV are already saved, so a reached email quota never loses an application.
-  if (d.email) {
-    try {
-      GmailApp.sendEmail(d.email, "We received your internship application",
-        "Hi " + (d.name || "there") + ",\n\n" +
-        "Thanks for applying to the ClearKanvas Global Internship Program. This is a learning-based, " +
-        "unpaid internship of about three months. We appreciate you taking the time to apply, and if " +
-        "your application is a fit for the current intake, our team will reach out." +
-        "\n\nWith appreciation,\nClearKanvas Global Team",
-        senderOptions({ name: FROM_NAME, replyTo: REPLY_TO }));
-    } catch (mailErr) { /* quota reached or send failed; application still saved */ }
+  // Resume (required) -> Internships / <cohort> / Resumes / <position>/.
+  const resumeUrl = saveInternFile(d.cvBase64, d.cvType, d.cvName || "resume",
+    getInternResumeFolder(cohort, position));
+  // Professional picture (optional) -> Internships / <cohort> / Professional Pictures/.
+  let pictureUrl = "";
+  if (d.pictureBase64) {
+    pictureUrl = saveInternFile(d.pictureBase64, d.pictureType, d.pictureName || "picture",
+      getInternPictureFolder(cohort));
   }
 
-  // No team alert email: new interns are reviewed in the Internships sheet.
+  writeInternRow({
+    source: d.source || "Website",
+    fullName: d.fullName, phone: d.phone, email: d.email, linkedin: d.linkedin,
+    country: d.country, city: d.city, university: d.university, degreeProgram: d.degreeProgram,
+    currentStatus: d.currentStatus, gradYear: d.gradYear, cgpa: d.cgpa,
+    position: position, secondChoice: d.secondChoice, unpaidOk: d.unpaidOk,
+    estAvailability: d.estAvailability, commit3Months: d.commit3Months, portfolio: d.portfolio,
+    whyJoin: d.whyJoin, goodFit: d.goodFit, heardAbout: d.heardAbout, consent: d.consent,
+    resumeLink: resumeUrl, pictureLink: pictureUrl, cohort: cohort,
+  });
 
+  internAck(d.email, d.fullName);
   return json({ ok: true });
+}
+
+// Shared by the website path and the Google Form onFormSubmit path.
+function writeInternRow(v) {
+  getInternSheet().appendRow([new Date(), v.source || "", v.fullName || "", v.phone || "",
+    v.email || "", v.linkedin || "", v.country || "", v.city || "", v.university || "",
+    v.degreeProgram || "", v.currentStatus || "", v.gradYear || "", v.cgpa || "",
+    v.position || "", v.secondChoice || "", v.unpaidOk || "", v.estAvailability || "",
+    v.commit3Months || "", v.portfolio || "", v.whyJoin || "", v.goodFit || "",
+    v.heardAbout || "", v.consent || "", v.resumeLink || "", v.pictureLink || "",
+    v.cohort || "", "", "New"]);
+}
+
+function internAck(email, name) {
+  if (!email) return;
+  try {
+    GmailApp.sendEmail(email, "We received your internship application",
+      "Hi " + (name || "there") + ",\n\n" +
+      "Thanks for applying to the ClearKanvas Global Summer Internship Program 2026. This is a " +
+      "learning-based, unpaid internship of about three months. We appreciate you taking the time " +
+      "to apply, and if your application is a fit for the current intake, our team will reach out." +
+      "\n\nWith appreciation,\nClearKanvas Global Team",
+      senderOptions({ name: FROM_NAME, replyTo: REPLY_TO }));
+  } catch (mailErr) { /* quota reached; application still saved */ }
+}
+
+function saveInternFile(base64, type, name, folder) {
+  const blob = Utilities.newBlob(Utilities.base64Decode(base64), type || "application/octet-stream", name);
+  const f = folder.createFile(blob);
+  f.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+  return f.getUrl();
 }
 
 function getInternSheet() {
@@ -244,9 +270,16 @@ function getInternSheet() {
   return sheet;
 }
 
-function getInternFolder(cohort, category) {
+function getInternResumeFolder(cohort, position) {
   const root = DriveApp.getFolderById(FOLDER_ID);
-  return childFolder(childFolder(childFolder(root, "Internships"), safeName(cohort)), safeName(category));
+  return childFolder(childFolder(childFolder(childFolder(root, "Internships"),
+    safeName(cohort)), "Resumes"), safeName(position));
+}
+
+function getInternPictureFolder(cohort) {
+  const root = DriveApp.getFolderById(FOLDER_ID);
+  return childFolder(childFolder(childFolder(root, "Internships"),
+    safeName(cohort)), "Professional Pictures");
 }
 
 function childFolder(parent, name) {
@@ -256,6 +289,160 @@ function childFolder(parent, name) {
 
 function safeName(s) {
   return String(s || "").replace(/[\\/:*?"<>|]/g, "-").trim() || "Other";
+}
+
+// ---- Google Form intake (same tab + folders as the website) -------------
+// The founder's Summer Internship Program Google Form (same Google account).
+const INTERN_FORM_ID = "1vK0II7bMXxhca-NpfmS_7g5bnhbqZ9Q3T8dCXiS3bwg";
+
+// Exact Google Form question titles -> our fields. If the trigger writes blanks,
+// run debugFormTitles() and correct any title here so it matches the form.
+const FORM_Q = {
+  fullName: "Full Name",
+  phone: "Phone / WhatsApp Number",
+  email: "Email Address",
+  linkedin: "LinkedIn Profile Link",
+  country: "Country",
+  city: "City",
+  university: "University / Institution",
+  degreeProgram: "Degree Program",
+  currentStatus: "Current Status",
+  gradYear: "Graduation Year",
+  cgpa: "CGPA",
+  position: "Which position are you applying for?",
+  secondChoice: "Second choice position (optional)",
+  unpaidOk: "This is an unpaid internship. Are you okay with proceeding on this basis?",
+  estAvailability: "Are you available to work in the EST (Eastern Standard Time) time zone for this internship?",
+  commit3Months: "Can you commit to the full 3-month duration?",
+  portfolio: "Portfolio / GitHub / Behance link",
+  whyJoin: "Why do you want to join ClearKanvas Global?",
+  goodFit: "What makes you a good fit for this role?",
+  heardAbout: "How did you hear about us?",
+  consent: "Please confirm before submitting:",
+  resume: "Upload you Resume",
+  picture: "Upload your Professional Picture",
+};
+
+// Run ONCE to install the on-form-submit trigger.
+function setupFormTrigger() {
+  const form = FormApp.openById(INTERN_FORM_ID);
+  ScriptApp.getProjectTriggers().forEach(function (t) {
+    if (t.getHandlerFunction() === "onInternFormSubmit") ScriptApp.deleteTrigger(t);
+  });
+  ScriptApp.newTrigger("onInternFormSubmit").forForm(form).onFormSubmit().create();
+}
+
+// Run ONCE to print the exact question titles (compare against FORM_Q above).
+function debugFormTitles() {
+  FormApp.openById(INTERN_FORM_ID).getItems().forEach(function (it) {
+    console.log(it.getType() + " | " + it.getTitle());
+  });
+}
+
+function onInternFormSubmit(e) {
+  const byTitle = {};
+  e.response.getItemResponses().forEach(function (ir) { byTitle[ir.getItem().getTitle()] = ir; });
+  const text = function (key) {
+    const ir = byTitle[FORM_Q[key]];
+    if (!ir) return "";
+    const a = ir.getResponse();
+    return Array.isArray(a) ? a.join(", ") : String(a || "");
+  };
+
+  const cohort = INTERN_DEFAULT_COHORT;
+  const position = text("position") || "Unspecified";
+
+  // Move the uploaded files out of the Form's default folder into our structure.
+  const resumeUrl = moveFormFile(byTitle[FORM_Q.resume], getInternResumeFolder(cohort, position));
+  const pictureUrl = moveFormFile(byTitle[FORM_Q.picture], getInternPictureFolder(cohort));
+
+  writeInternRow({
+    source: "Google Form",
+    fullName: text("fullName"), phone: text("phone"), email: text("email"), linkedin: text("linkedin"),
+    country: text("country"), city: text("city"), university: text("university"),
+    degreeProgram: text("degreeProgram"), currentStatus: text("currentStatus"),
+    gradYear: text("gradYear"), cgpa: text("cgpa"), position: position, secondChoice: text("secondChoice"),
+    unpaidOk: text("unpaidOk"), estAvailability: text("estAvailability"), commit3Months: text("commit3Months"),
+    portfolio: text("portfolio"), whyJoin: text("whyJoin"), goodFit: text("goodFit"),
+    heardAbout: text("heardAbout"), consent: text("consent"),
+    resumeLink: resumeUrl, pictureLink: pictureUrl, cohort: cohort,
+  });
+
+  internAck(text("email"), text("fullName"));
+}
+
+function moveFormFile(itemResponse, folder) {
+  if (!itemResponse) return "";
+  const ids = itemResponse.getResponse(); // array of file IDs for a file-upload question
+  if (!ids || !ids.length) return "";
+  try {
+    const file = DriveApp.getFileById(ids[0]);
+    file.moveTo(folder);
+    file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+    return file.getUrl();
+  } catch (err) { return ""; }
+}
+
+// ---- Interview scheduling / stage emails --------------------------------
+// Paste your free Google Calendar "appointment schedule" booking link here.
+const BOOKING_URL = "";
+
+// Run ONCE to install the edit trigger that sends stage emails.
+function setupStageTrigger() {
+  const ss = SpreadsheetApp.openById(SHEET_ID);
+  ScriptApp.getProjectTriggers().forEach(function (t) {
+    if (t.getHandlerFunction() === "onStageEdit") ScriptApp.deleteTrigger(t);
+  });
+  ScriptApp.newTrigger("onStageEdit").forSpreadsheet(ss).onEdit().create();
+}
+
+// Set a row's "stage" cell to Shortlist / Interview invite / Reject / Keep warm
+// and the matching email is sent to that applicant; "status" is then updated.
+// Works on any tab that has a "stage" column plus email/name columns.
+function onStageEdit(e) {
+  const sheet = e.range.getSheet();
+  const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+  const stageCol = headers.indexOf("stage") + 1;
+  if (stageCol === 0 || e.range.getColumn() !== stageCol || e.range.getRow() === 1) return;
+
+  const tmpl = stageTemplate(String(e.value || "").trim());
+  if (!tmpl) return;
+
+  const row = sheet.getRange(e.range.getRow(), 1, 1, sheet.getLastColumn()).getValues()[0];
+  const get = function (names) {
+    for (var i = 0; i < names.length; i++) {
+      var c = headers.indexOf(names[i]);
+      if (c !== -1 && row[c]) return String(row[c]);
+    }
+    return "";
+  };
+  const email = get(["email"]);
+  if (!email) return;
+  const name = get(["fullName", "name"]) || "there";
+  const role = get(["position", "category"]) || "the role you applied for";
+
+  try {
+    GmailApp.sendEmail(email, tmpl.subject, tmpl.body(name, role),
+      senderOptions({ name: FROM_NAME, replyTo: REPLY_TO }));
+    const statusCol = headers.indexOf("status") + 1;
+    if (statusCol > 0) sheet.getRange(e.range.getRow(), statusCol).setValue(tmpl.status);
+  } catch (err) { /* quota or send error; stage stays set so you can retry */ }
+}
+
+function stageTemplate(stage) {
+  if (stage === "Shortlist") return {
+    status: "Shortlisted", subject: "Your application with ClearKanvas Global",
+    body: function (n, r) { return "Hi " + n + ",\n\nYour application for " + r + " has been shortlisted, and we would like to take it to the next stage.\n\nWe will follow up shortly with the details.\n\nWith appreciation,\nClearKanvas Global Team"; } };
+  if (stage === "Interview invite") return {
+    status: "Interview invited", subject: "Let's schedule your interview, ClearKanvas Global",
+    body: function (n, r) { return "Hi " + n + ",\n\nThank you for your interest in " + r + ". We would like to invite you to an interview with our team.\n\nPlease pick a time that suits you using the link below, and a calendar invite with the meeting details will be sent to you automatically:\n\n" + (BOOKING_URL || "[booking link not set]") + "\n\nIf none of the available times work for you, just reply to this email and we will find another slot.\n\nWith appreciation,\nClearKanvas Global Team"; } };
+  if (stage === "Reject") return {
+    status: "Not proceeding", subject: "Update on your application, ClearKanvas Global",
+    body: function (n, r) { return "Hi " + n + ",\n\nThank you for taking the time to apply for " + r + " and for your interest in ClearKanvas Global. After careful consideration, we will not be moving forward at this stage.\n\nWe will keep your details on file and reach out should a suitable role open in the future. We wish you every success.\n\nWith appreciation,\nClearKanvas Global Team"; } };
+  if (stage === "Keep warm") return {
+    status: "Kept warm", subject: "Keeping in touch, ClearKanvas Global",
+    body: function (n, r) { return "Hi " + n + ",\n\nThank you for applying to ClearKanvas Global. We do not have a role that fits right now, but we would like to stay in touch.\n\nWe will reach out as soon as something suitable opens, here or with one of the companies we hire for.\n\nWith appreciation,\nClearKanvas Global Team"; } };
+  return null;
 }
 
 // ---- Optional AI tagging (OFF unless GEMINI_API_KEY is set) --------------
